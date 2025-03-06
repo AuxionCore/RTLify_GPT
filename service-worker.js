@@ -4,7 +4,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (tab.url.includes("chatgpt.com")) {
       chrome.scripting.executeScript({
         target: { tabId: tabId },
-        files: ["scripts/content.js"],
+        files: ["scripts/contentA.js", "scripts/contentB.js"],
       });
     }
   }
