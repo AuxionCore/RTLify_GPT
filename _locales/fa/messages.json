@@ -1,0 +1,30 @@
+{
+  "extensionName": {
+    "message": "سازگاری ChatGPT با زبان فارسی",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "سازگاری ChatGPT با زبان فارسی",
+    "description": "Description of the extension"
+  },
+  "popupWelcomeTitle": {
+    "message": "به سازگاری ChatGPT با زبان فارسی خوش آمدید",
+    "description": "Title of the welcome popup"
+  },
+  "popupWelcomeMessage": {
+    "message": "این برنامه به بهبود تجربه استفاده از ChatGPT در وب سایت شما کمک می کند.",
+    "description": "Message of the welcome popup"
+  },
+  "popupCloseButton": {
+    "message": "بستن",
+    "description": "Close button text"
+  },
+  "alignLeft": {
+    "message": "تراز به چپ",
+    "description": "Align text to the left"
+  },
+  "alignRight": {
+    "message": "تراز به راست",
+    "description": "Align text to the right"
+  }
+}

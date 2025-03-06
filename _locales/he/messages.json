@@ -1,0 +1,26 @@
+{
+  "extensionName": {
+    "message": "התאמת ChatGPT לשפה העברית",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "התאמת ChatGPT לשפה העברית",
+    "description": "Description of the extension"
+  },
+  "popupWelcomeTitle": {
+    "message": "ברוכים הבאים להתאמת ChatGPT לשפה העברית",
+    "description": "Title of the welcome popup"
+  },
+  "popupCloseButton": {
+    "message": "סגור",
+    "description": "Close button text"
+  },
+  "alignLeft": {
+    "message": "יישר לשמאל",
+    "description": "Align text to the left"
+  },
+  "alignRight": {
+    "message": "יישר לימין",
+    "description": "Align text to the right"
+  }
+}

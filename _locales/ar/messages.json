@@ -1,0 +1,30 @@
+{
+  "extensionName": {
+    "message": "تكييف ChatGPT للغة العربية",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "تكييف ChatGPT للغة العربية",
+    "description": "Description of the extension"
+  },
+  "popupWelcomeTitle": {
+    "message": "مرحبًا بك في تكييف ChatGPT للغة العربية",
+    "description": "Title of the welcome popup"
+  },
+  "popupWelcomeMessage": {
+    "message": "هذا التطبيق يساعد في تحسين تجربة استخدام ChatGPT على موقع الويب الخاص بك.",
+    "description": "Message of the welcome popup"
+  },
+  "popupCloseButton": {
+    "message": "إغلاق",
+    "description": "Close button text"
+  },
+  "alignLeft": {
+    "message": "محاذاة إلى اليسار",
+    "description": "Align text to the left"
+  },
+  "alignRight": {
+    "message": "محاذاة إلى اليمين",
+    "description": "Align text to the right"
+  }
+}

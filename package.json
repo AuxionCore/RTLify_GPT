@@ -1,0 +1,13 @@
+{
+  "name": "rtlify_chatgpt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yedidya Aberjel",
+  "description": "",
+  "dependencies": {
+    "chrome-types": "^0.1.325"
+  }
+}

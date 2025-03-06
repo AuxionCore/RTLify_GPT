@@ -1,0 +1,26 @@
+{
+  "extensionName": {
+    "message": "ChatGPT کو اردو زبان کے مطابق ڈھالنا",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "ChatGPT کو اردو زبان کے مطابق ڈھالنا",
+    "description": "Description of the extension"
+  },
+  "popupWelcomeTitle": {
+    "message": "ChatGPT کو اردو زبان کے مطابق ڈھالنے میں خوش آمدید",
+    "description": "Title of the welcome popup"
+  },
+  "popupCloseButton": {
+    "message": "بند کریں",
+    "description": "Close button text"
+  },
+  "alignLeft": {
+    "message": "بائیں جانب ڈھالیں",
+    "description": "Align text to the left"
+  },
+  "alignRight": {
+    "message": "دائیں جانب ڈھالیں",
+    "description": "Align text to the right"
+  }
+}

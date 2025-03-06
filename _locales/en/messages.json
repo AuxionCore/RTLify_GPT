@@ -1,0 +1,30 @@
+{
+  "extensionName": {
+    "message": "Rtlify ChatGPT",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Rtlify ChatGPT",
+    "description": "Description of the extension"
+  },
+  "popupWelcomeTitle": {
+    "message": "Welcome to Rtlify ChatGPT",
+    "description": "Title of the welcome popup"
+  },
+  "popupWelcomeMessage": {
+    "message": "This extension helps you align chatGPT to right-to-left languages.",
+    "description": "Message of the welcome popup"
+  },
+  "popupCloseButton": {
+    "message": "Close",
+    "description": "Close button text"
+  },
+  "alignLeft": {
+    "message": "Align Left",
+    "description": "Align text to the left"
+  },
+  "alignRight": {
+    "message": "Align Right",
+    "description": "Align text to the right"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0.0",
+  "author": "Yedidya Aberjel",
+  "version_name": "1.0.0",
+  "default_locale": "en",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://chatgpt.com/*"],
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/icons/Rtlify_ChatGPT.png",
+      "32": "images/icons/Rtlify_ChatGPT.png",
+      "64": "images/icons/Rtlify_ChatGPT.png",
+      "128": "images/icons/Rtlify_ChatGPT.png"
+    },
+    "commands": {
+      "_execute_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+F",
+          "mac": "MacCtrl+Shift+F"
+        }
+      }
+    }
+  },
+  "icons": {
+    "16": "images/icons/Rtlify_ChatGPT.png",
+    "32": "images/icons/Rtlify_ChatGPT.png",
+    "64": "images/icons/Rtlify_ChatGPT.png",
+    "128": "images/icons/Rtlify_ChatGPT.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/", "https://chatgpt.com/?model=auto"],
+      "js": ["scripts/main.js"]
+    },
+    {
+      "matches": ["https://chatgpt.com/c/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
+}
