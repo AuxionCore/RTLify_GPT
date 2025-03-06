@@ -13,7 +13,7 @@
     };
 
     const addAlignButton = (textareaMenu) => {
-      if (document.getElementById("align-icon-btn")) return; // אם הכפתור כבר קיים, לא להוסיף שוב
+      if (document.getElementById("align-icon-btn")) return;
 
       const alignRightText = chrome.i18n.getMessage("alignRight");
       const alignLeftText = chrome.i18n.getMessage("alignLeft");
@@ -68,16 +68,13 @@
       });
     };
 
-    // חכה שה- textarea יטען
     const textarea = await waitForTextarea();
     const textareaMenu = textarea.querySelector(
       ".justify-between .text-token-text-primary"
     );
 
-    // הוסף את הכפתור בפעם הראשונה
     addAlignButton(textareaMenu);
 
-    // התחלת מעקב על שינויים בדף כדי להוסיף את הכפתור מחדש אם הדף מתרענן
     const observer = new MutationObserver(() => {
       const updatedMenu = textarea.querySelector(
         ".justify-between .text-token-text-primary"
@@ -89,46 +86,4 @@
   } catch (error) {
     console.error("Error in main.js:", error);
   }
-})();
-
-(function () {
-  function applyLTRStyleToKaTeX() {
-    const katexElements = document.querySelectorAll(".katex");
-    katexElements.forEach((el) => {
-      el.style.direction = "ltr";
-      el.style.display = "inline-block"; // מבטיח שהשורה לא תישבר
-      el.style.unicodeBidi = "isolate"; // מונע ערבוב של כיווני טקסט
-    });
-  }
-
-  // החלת הסגנון על אלמנטים קיימים
-  applyLTRStyleToKaTeX();
-
-  // יצירת observer למעקב אחרי שינויים בדף
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === 1) {
-          // בודק אם זה אלמנט HTML
-          if (node.matches?.(".katex")) {
-            node.style.direction = "ltr";
-            node.style.display = "inline-block";
-            node.style.unicodeBidi = "isolate";
-          }
-          // אם האלמנט מכיל בתוכו משוואות
-          node.querySelectorAll?.(".katex").forEach((el) => {
-            el.style.direction = "ltr";
-            el.style.display = "inline-block";
-            el.style.unicodeBidi = "isolate";
-          });
-        }
-      });
-    });
-  });
-
-  // התחל להאזין לשינויים בדף
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-  });
 })();
