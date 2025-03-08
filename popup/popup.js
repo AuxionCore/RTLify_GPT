@@ -16,6 +16,9 @@ async function setupPopup() {
     .addEventListener("click", () =>
       openTab("https://www.buymeacoffee.com/yedidya")
     );
+  document.getElementById("version").textContent = `v${
+    chrome.runtime.getManifest().version
+  }`;
   document
     .getElementById("feedbackLink")
     .addEventListener("click", () =>
