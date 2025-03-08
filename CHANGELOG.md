@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Displaying multiple "Text Alignment" buttons when landing on the main chat page.
+- Update feedback link in popup.js to correct extension URL
 
 ### Removed
 
