@@ -20,7 +20,7 @@ async function setupPopup() {
     .getElementById("feedbackLink")
     .addEventListener("click", () =>
       openTab(
-        "https://chromewebstore.google.com/detail/egcbkglimjhpjocoiffcmggfgffnbecb/support"
+        "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support"
       )
     );
 }
