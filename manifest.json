@@ -9,7 +9,7 @@
   "permissions": ["scripting"],
   "host_permissions": ["https://chatgpt.com/*"],
   "background": {
-    "service_worker": "service-worker.js",
+    "service_worker": "serviceWorker.js",
     "type": "module"
   },
   "action": {

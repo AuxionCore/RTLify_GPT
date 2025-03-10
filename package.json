@@ -3,14 +3,14 @@
   "version": "1.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc --watch",
+    "build": "tsc && vite build"
   },
   "author": "Yedidya Aberjel",
   "description": "",
-  "dependencies": {
-    "chrome-types": "^0.1.325"
-  },
   "devDependencies": {
+    "@types/chrome": "^0.0.308",
+    "typescript": "^5.8.2",
     "vite": "^6.2.1",
     "vite-plugin-static-copy": "^2.3.0"
   }

@@ -1,6 +1,7 @@
 node_modules
 .vscode
-popup
+
 dist
-scripts
+./scripts
+popup.js
 serviceWorker.js
