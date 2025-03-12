@@ -6,7 +6,7 @@
   "author": "Yedidya Aberjel",
   "version_name": "1.0.1",
   "default_locale": "en",
-  "permissions": ["scripting"],
+  "permissions": ["scripting", "storage"],
   "host_permissions": ["https://chatgpt.com/*"],
   "background": {
     "service_worker": "serviceWorker.js",
@@ -38,7 +38,7 @@
   "content_scripts": [
     {
       "matches": ["https://chatgpt.com/", "https://chatgpt.com/?model=auto*"],
-      "js": ["scripts/main.js"]
+      "js": ["scripts/contentB.js"]
     },
     {
       "matches": ["https://chatgpt.com/c/*"],
