@@ -38,11 +38,11 @@
   "content_scripts": [
     {
       "matches": ["https://chatgpt.com/", "https://chatgpt.com/?model=auto*"],
-      "js": ["scripts/contentB.js"]
+      "js": ["scripts/textAlignmentButton.js"]
     },
     {
       "matches": ["https://chatgpt.com/c/*"],
-      "js": ["scripts/contentA.js", "scripts/contentB.js"]
+      "js": ["scripts/mathTextAlignment.js", "scripts/textAlignmentButton.js"]
     }
   ]
 }

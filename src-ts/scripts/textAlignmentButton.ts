@@ -29,27 +29,69 @@
   const alignLeftText: string = chrome.i18n.getMessage("alignLeft");
 
   try {
-    const waitForTextarea = () => {
+    function getComposerBackgroundElement(): Promise<HTMLElement> {
       return new Promise<HTMLElement>((resolve) => {
         const interval = setInterval(() => {
-          const textarea = document.getElementById("composer-background");
-          if (textarea) {
+          const composerBackgroundElement = document.getElementById(
+            "composer-background"
+          );
+          if (composerBackgroundElement) {
             clearInterval(interval);
-            resolve(textarea as HTMLElement);
+            resolve(composerBackgroundElement as HTMLElement);
           }
         }, 500);
       });
-    };
+    }
 
-    const addAlignButton = (textareaMenu: TextareaMenu) => {
+    async function getAlignState(): Promise<"left" | "right"> {
+      try {
+        const result = await chrome.storage.sync.get("alignState");
+
+        if (result.alignState) {
+          return result.alignState;
+        } else {
+          await chrome.storage.sync.set({ alignState: "left" });
+          return "left";
+        }
+      } catch (error) {
+        console.error(error);
+        return "left";
+      }
+    }
+
+    const alignState = await getAlignState();
+    const composerBackgroundElement = await getComposerBackgroundElement();
+    const promptTextarea = composerBackgroundElement.querySelector(
+      "#prompt-textarea"
+    ) as HTMLTextAreaElement;
+
+    promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
+    promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
+
+    const textareaMenu = composerBackgroundElement.querySelector(
+      ".justify-between .text-token-text-primary"
+    );
+
+    if (textareaMenu) {
+      const alignIconBtn = textareaMenu.querySelector("#align-icon-btn");
+
+      if (!alignIconBtn) {
+        addAlignButton(textareaMenu as TextareaMenu);
+      }
+    }
+
+    function addAlignButton(textareaMenu: TextareaMenu) {
       const alignIconBtn: AlignIconBtn = document.createElement(
         "div"
       ) as AlignIconBtn;
       alignIconBtn.id = "align-icon-btn";
-      alignIconBtn.innerHTML = formatAlignRightIcon;
+      alignIconBtn.innerHTML =
+        alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
       Object.assign(alignIconBtn.style, buttonStyles);
-      alignIconBtn.setAttribute("data-state", "left");
-      alignIconBtn.setAttribute("title", alignRightText);
+      alignIconBtn.setAttribute(
+        "title",
+        alignState === "left" ? alignRightText : alignLeftText
+      );
 
       textareaMenu.prepend(alignIconBtn);
 
@@ -61,36 +103,24 @@
         alignIconBtn.style.backgroundColor = "transparent";
       });
 
-      alignIconBtn.addEventListener("click", () => {
-        const promptTextarea: HTMLTextAreaElement = document.getElementById(
-          "prompt-textarea"
-        ) as HTMLTextAreaElement;
-        const newState =
-          alignIconBtn.getAttribute("data-state") === "left" ? "right" : "left";
+      alignIconBtn.addEventListener("click", async () => {
+        const newState = alignState === "left" ? "right" : "left";
         const newTitle = newState === "left" ? alignRightText : alignLeftText;
         const newSvg =
           newState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
 
-        alignIconBtn.setAttribute("data-state", newState);
         alignIconBtn.setAttribute("title", newTitle);
         alignIconBtn.innerHTML = newSvg;
 
-        promptTextarea.style.direction = newState === "left" ? "ltr" : "rtl";
-        promptTextarea.style.textAlign = newState === "left" ? "left" : "right";
+        promptTextarea.style.direction = newState;
+        promptTextarea.style.textAlign = newState;
+
+        try {
+          await chrome.storage.sync.set({ alignState: newState });
+        } catch (error) {
+          console.error(error);
+        }
       });
-    };
-
-    const textarea = await waitForTextarea();
-    const textareaMenu = textarea.querySelector(
-      ".justify-between .text-token-text-primary"
-    );
-
-    if (textareaMenu) {
-      const alignIconBtn = textareaMenu.querySelector("#align-icon-btn");
-
-      if (!alignIconBtn) {
-        addAlignButton(textareaMenu as TextareaMenu);
-      }
     }
   } catch (error) {
     console.error("Error in main.js:", error);
