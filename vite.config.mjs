@@ -16,10 +16,9 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: {
         popup: "popup/popup.html",
-        serviceWorker: "serviceWorker.ts",
-        "scripts/main": "scripts/main.ts",
-        "scripts/contentA": "scripts/contentA.ts",
-        "scripts/contentB": "scripts/contentB.ts",
+        serviceWorker: "src-ts/serviceWorker.ts",
+        "scripts/mathTextAlignment": "src-ts/scripts/mathTextAlignment.ts",
+        "scripts/textAlignmentButton": "src-ts/scripts/textAlignmentButton.ts",
       },
       output: {
         entryFileNames: "[name].js",
