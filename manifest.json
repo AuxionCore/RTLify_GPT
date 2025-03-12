@@ -37,7 +37,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/", "https://chatgpt.com/?model=auto"],
+      "matches": ["https://chatgpt.com/", "https://chatgpt.com/?model=auto*"],
       "js": ["scripts/main.js"]
     },
     {
