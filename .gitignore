@@ -3,7 +3,6 @@ node_modules
 
 dist
 popup.js
-main.js
-contentA.js
-contentB.js
+textAlignmentButton.js
+mathTextAlignment.js
 serviceWorker.js
