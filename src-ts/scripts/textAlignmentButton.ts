@@ -59,7 +59,7 @@
       }
     }
 
-    const alignState = await getAlignState();
+    let alignState = await getAlignState();
     const composerBackgroundElement = await getComposerBackgroundElement();
     const promptTextarea = composerBackgroundElement.querySelector(
       "#prompt-textarea"
@@ -72,18 +72,38 @@
       ".justify-between .text-token-text-primary"
     );
 
+    let alignIconBtn: AlignIconBtn | null = null;
     if (textareaMenu) {
-      const alignIconBtn = textareaMenu.querySelector("#align-icon-btn");
+      alignIconBtn = textareaMenu.querySelector("#align-icon-btn");
 
       if (!alignIconBtn) {
         addAlignButton(textareaMenu as TextareaMenu);
       }
     }
 
+    async function toggleAlignment(alignIconBtn: AlignIconBtn) {
+      promptTextarea.removeEventListener("input", handleInputEvent);
+
+      alignState = alignState === "left" ? "right" : "left";
+      const newTitle = alignState === "left" ? alignRightText : alignLeftText;
+      const newSvg =
+        alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
+
+      alignIconBtn.setAttribute("title", newTitle);
+      alignIconBtn.innerHTML = newSvg;
+
+      promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
+      promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
+
+      try {
+        await chrome.storage.sync.set({ alignState: alignState });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     function addAlignButton(textareaMenu: TextareaMenu) {
-      const alignIconBtn: AlignIconBtn = document.createElement(
-        "div"
-      ) as AlignIconBtn;
+      alignIconBtn = document.createElement("div") as AlignIconBtn;
       alignIconBtn.id = "align-icon-btn";
       alignIconBtn.innerHTML =
         alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
@@ -96,33 +116,145 @@
       textareaMenu.prepend(alignIconBtn);
 
       alignIconBtn.addEventListener("mouseover", () => {
-        alignIconBtn.style.backgroundColor = "#424242";
+        alignIconBtn!.style.backgroundColor = "#424242";
       });
 
       alignIconBtn.addEventListener("mouseout", () => {
-        alignIconBtn.style.backgroundColor = "transparent";
+        alignIconBtn!.style.backgroundColor = "transparent";
       });
 
       alignIconBtn.addEventListener("click", async () => {
-        const newState = alignState === "left" ? "right" : "left";
-        const newTitle = newState === "left" ? alignRightText : alignLeftText;
-        const newSvg =
-          newState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
-
-        alignIconBtn.setAttribute("title", newTitle);
-        alignIconBtn.innerHTML = newSvg;
-
-        promptTextarea.style.direction = newState;
-        promptTextarea.style.textAlign = newState;
-
-        try {
-          await chrome.storage.sync.set({ alignState: newState });
-        } catch (error) {
-          console.error(error);
-        }
+        await toggleAlignment(alignIconBtn as AlignIconBtn);
       });
     }
+
+    function detectDirectionFromChar(char: string): "ltr" | "rtl" {
+      // Hebrew characters
+      const HeRegex = /[\u0590-\u05FF]/;
+      // Arabic characters
+      const arRegex = /[\u0600-\u06FF]/;
+      // Persian characters
+      const faRegex = /[\u0750-\u077F]/;
+      return HeRegex.test(char) || arRegex.test(char) || faRegex.test(char)
+        ? "rtl"
+        : "ltr";
+    }
+
+    async function setAlignment(newAlign: "left" | "right") {
+      alignState = newAlign;
+      promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
+      promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
+
+      if (alignIconBtn) {
+        alignIconBtn.setAttribute(
+          "title",
+          alignState === "left" ? alignRightText : alignLeftText
+        );
+        alignIconBtn.innerHTML =
+        alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
+      }
+
+      try {
+        await chrome.storage.sync.set({ alignState: alignState });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function handleInputEvent(e: Event) {
+      let contentElement: HTMLElement | null;
+      if ((e.target as HTMLElement).tagName === "P") {
+        contentElement = e.target as HTMLElement;
+      } else {
+        contentElement = promptTextarea.querySelector("p");
+      }
+
+      if (contentElement) {
+        const text = contentElement.innerText;
+        if (text.trim().length > 0) {
+          const firstChar = text.trim().charAt(0);
+          const detectedDirection = detectDirectionFromChar(firstChar);
+          if (detectedDirection === "rtl") {
+            await setAlignment("right");
+          } else if (detectedDirection === "ltr") {
+            await setAlignment("left");
+          }
+        }
+      }
+    }
+    promptTextarea.addEventListener("input", handleInputEvent);
+
+    // const observer = new MutationObserver((mutations) => {
+    //   let hasChanged = false;
+
+    //   mutations.forEach(async (mutation) => {
+    //     if (
+    //       mutation.type === "childList" ||
+    //       mutation.type === "characterData"
+    //     ) {
+    //       const paragraphs = promptTextarea.querySelectorAll("p");
+    //       console.log("paragraphs:", paragraphs);
+
+    //       paragraphs.forEach((contentElement) => {
+    //         const text = contentElement.innerText.trim();
+    //         if (text.length > 0) {
+    //           console.log("text:", text);
+    //           const firstChar = text.charAt(0);
+    //           const detectedDirection = detectDirectionFromChar(firstChar);
+    //           console.log("detectedDirection:", detectedDirection);
+
+    //           const newDirection = detectedDirection;
+    //           const newAlign = detectedDirection === "rtl" ? "right" : "left";
+
+    //           // Check if the direction or alignment has changed
+    //           if (
+    //             contentElement.style.direction !== newDirection ||
+    //             contentElement.style.textAlign !== newAlign
+    //           ) {
+    //             // Set the new direction and alignment
+    //             console.log(contentElement.style.direction, newDirection);
+    //             console.log(contentElement.style.textAlign, newAlign);
+    //             contentElement.setAttribute("style", `direction: ${newDirection}; text-align: ${newAlign};`);
+    //             contentElement.style.textAlign = newAlign;
+
+    //             //
+    //             hasChanged = true;
+    //           }
+    //         }
+    //       });
+
+    //       // Prevent infinite loop
+    //       if (hasChanged) {
+    //         hasChanged = false;
+    //         observer.disconnect();
+    //         setTimeout(
+    //           () =>
+    //             observer.observe(promptTextarea, {
+    //               childList: true,
+    //               subtree: true,
+    //               characterData: true,
+    //             }),
+    //           0
+    //         );
+    //       }
+    //     }
+    //   });
+    // });
+
+    // // הפעלת המעקב
+    // observer.observe(promptTextarea, {
+    //   childList: true,
+    //   subtree: true,
+    //   characterData: true,
+    // });
+
+    // document.addEventListener("keydown", async (e) => {
+    //   if (e.shiftKey && e.altKey && !e.repeat) {
+    //     console.log("Shift+Alt pressed");
+    //     await toggleAlignment();
+    //   }
+    // });
   } catch (error) {
-    console.error("Error in main.js:", error);
+    console.error(error);
   }
 })();
