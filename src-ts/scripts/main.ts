@@ -1,4 +1,9 @@
 (async () => {
+  type TextareaMenu = HTMLElement;
+
+  const formatAlignRightIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-744v-72h672v72H144Zm192 150v-72h480v72H336ZM144-444v-72h672v72H144Zm192 150v-72h480v72H336ZM144-144v-72h672v72H144Z"/></svg>`;
+  const formatAlignLeftIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"/></svg>`;
+
   try {
     const waitForTextarea = () => {
       return new Promise<HTMLElement>((resolve) => {
@@ -13,6 +18,8 @@
     };
 
     const buttonStyles = {
+      width: "36px",
+      height: "36px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -20,27 +27,24 @@
       border: "solid 1px #b4b4b450",
       borderRadius: "50%",
       backgroundColor: "transparent",
-      paddingInline: "10px",
-      marginRight: "10px",
     };
 
-    const createAlignIconBtn = (direction: string): HTMLDivElement => {
-      const alignIconBtn: HTMLDivElement = document.createElement("div");
-      const alignRightText = chrome.i18n.getMessage("alignRight");
-      const alignLeftText = chrome.i18n.getMessage("alignLeft");
+    const addAlignButton = (textareaMenu: TextareaMenu) => {
+      if (document.getElementById("align-icon-btn")) return;
 
-      const formatAlignRight: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M120-760v-80h720v80H120Zm240 160v-80h480v80H360ZM120-440v-80h720v80H120Zm240 160v-80h480v80H360ZM120-120v-80h720v80H120Z"/></svg>`;
-      const formatAlignLeft: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M120-120v-80h720v80H120Zm0-160v-80h480v80H120Zm0-160v-80h720v80H120Zm0-160v-80h480v80H120Zm0-160v-80h720v80H120Z"/></svg>`;
+      const alignRightText: string = chrome.i18n.getMessage("alignRight");
+      const alignLeftText: string = chrome.i18n.getMessage("alignLeft");
 
-      alignIconBtn.innerHTML =
-        direction === "left" ? formatAlignRight : formatAlignLeft;
+      const alignIconBtn: HTMLDivElement = document.createElement(
+        "div"
+      ) as HTMLDivElement;
       alignIconBtn.id = "align-icon-btn";
+      alignIconBtn.innerHTML = formatAlignRightIcon;
       Object.assign(alignIconBtn.style, buttonStyles);
-      alignIconBtn.setAttribute("data-state", direction);
-      alignIconBtn.setAttribute(
-        "title",
-        direction === "left" ? alignRightText : alignLeftText
-      );
+      alignIconBtn.setAttribute("data-state", "left");
+      alignIconBtn.setAttribute("title", alignRightText);
+
+      textareaMenu.appendChild(alignIconBtn);
 
       alignIconBtn.addEventListener("mouseover", () => {
         alignIconBtn.style.backgroundColor = "#424242";
@@ -51,29 +55,22 @@
       });
 
       alignIconBtn.addEventListener("click", () => {
-        const promptTextarea = document.getElementById(
+        const promptTextarea: HTMLTextAreaElement = document.getElementById(
           "prompt-textarea"
         ) as HTMLTextAreaElement;
-        if (promptTextarea) {
-          const newDirection =
-            alignIconBtn.getAttribute("data-state") === "left"
-              ? "right"
-              : "left";
-          alignIconBtn.setAttribute("data-state", newDirection);
-          alignIconBtn.setAttribute(
-            "title",
-            newDirection === "left" ? alignRightText : alignLeftText
-          );
-          alignIconBtn.innerHTML =
-            newDirection === "left" ? formatAlignRight : formatAlignLeft;
-          promptTextarea.style.direction =
-            newDirection === "left" ? "ltr" : "rtl";
-          promptTextarea.style.textAlign =
-            newDirection === "left" ? "left" : "right";
-        }
-      });
+        const newState =
+          alignIconBtn.getAttribute("data-state") === "left" ? "right" : "left";
+        const newTitle = newState === "left" ? alignRightText : alignLeftText;
+        const newSvg =
+          newState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
 
-      return alignIconBtn;
+        alignIconBtn.setAttribute("data-state", newState);
+        alignIconBtn.setAttribute("title", newTitle);
+        alignIconBtn.innerHTML = newSvg;
+
+        promptTextarea.style.direction = newState === "left" ? "ltr" : "rtl";
+        promptTextarea.style.textAlign = newState === "left" ? "left" : "right";
+      });
     };
 
     const textarea = (await waitForTextarea()) as HTMLElement;
@@ -82,7 +79,11 @@
     );
 
     if (textareaMenu) {
-      textareaMenu.appendChild(createAlignIconBtn("left"));
+      const alignIconBtn = document.getElementById("align-icon-btn");
+
+      if (!alignIconBtn) {
+        addAlignButton(textareaMenu as TextareaMenu);
+      }
     }
   } catch (error) {
     console.error("Error in main.js:", error);

@@ -1,6 +1,5 @@
 (async () => {
   try {
-    // פונקציה לחכות להופעת ה-textarea
     const waitForTextarea = () => {
       return new Promise<HTMLElement>((resolve) => {
         const interval = setInterval(() => {
@@ -13,12 +12,10 @@
       });
     };
 
-    // ממשק לתיאור של תפריט ה-Textarea
     interface TextareaMenu extends HTMLElement {
       appendChild<T extends Node>(newChild: T): T;
     }
 
-    // אייקון כפתור alignment
     interface AlignIconBtn extends HTMLDivElement {
       setAttribute(qualifiedName: string, value: string): void;
       getAttribute(qualifiedName: string): string | null;
@@ -26,8 +23,9 @@
       style: CSSStyleDeclaration;
     }
 
-    // משתנים עבור הסגנון של הכפתור
     const buttonStyles = {
+      width: "36px",
+      height: "36px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -35,19 +33,11 @@
       border: "solid 1px #b4b4b450",
       borderRadius: "50%",
       backgroundColor: "transparent",
-      paddingInline: "10px",
-      marginRight: "10px",
     };
 
-    const svgAlignRight = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4">
-      <path d="M120-760v-80h720v80H120Zm240 160v-80h480v80H360ZM120-440v-80h720v80H120Zm240 160v-80h480v80H360ZM120-120v-80h720v80H120Z"/>
-    </svg>`;
+    const formatAlignRightIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-744v-72h672v72H144Zm192 150v-72h480v72H336ZM144-444v-72h672v72H144Zm192 150v-72h480v72H336ZM144-144v-72h672v72H144Z"/></svg>`;
+    const formatAlignLeftIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"/></svg>`;
 
-    const svgAlignLeft = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="http://www.w3.org/2000/svg" width="20px" fill="#b4b4b4">
-      <path d="M120-120v-80h720v80H120Zm0-160v-80h480v80H120Zm0-160v-80h720v80H120Zm0-160v-80h480v80H120Zm0-160v-80h720v80H120Z"/>
-    </svg>`;
-
-    // פונקציה להוספת כפתור alignment
     const addAlignButton = (textareaMenu: TextareaMenu) => {
       if (document.getElementById("align-icon-btn")) return;
 
@@ -58,7 +48,7 @@
         "div"
       ) as AlignIconBtn;
       alignIconBtn.id = "align-icon-btn";
-      alignIconBtn.innerHTML = svgAlignRight;
+      alignIconBtn.innerHTML = formatAlignRightIcon;
       Object.assign(alignIconBtn.style, buttonStyles);
       alignIconBtn.setAttribute("data-state", "left");
       alignIconBtn.setAttribute("title", alignRightText);
@@ -80,7 +70,8 @@
         const newState =
           alignIconBtn.getAttribute("data-state") === "left" ? "right" : "left";
         const newTitle = newState === "left" ? alignRightText : alignLeftText;
-        const newSvg = newState === "left" ? svgAlignRight : svgAlignLeft;
+        const newSvg =
+          newState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
 
         alignIconBtn.setAttribute("data-state", newState);
         alignIconBtn.setAttribute("title", newTitle);
@@ -97,7 +88,11 @@
     );
 
     if (textareaMenu) {
-      addAlignButton(textareaMenu as TextareaMenu);
+      const alignIconBtn = document.getElementById("align-icon-btn");
+
+      if (alignIconBtn) {
+        addAlignButton(textareaMenu as TextareaMenu);
+      }
     }
 
     const observer = new MutationObserver(() => {
