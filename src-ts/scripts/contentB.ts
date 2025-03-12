@@ -37,7 +37,7 @@
             clearInterval(interval);
             resolve(textarea as HTMLElement);
           }
-        }, 1000);
+        }, 500);
       });
     };
 
@@ -51,7 +51,7 @@
       alignIconBtn.setAttribute("data-state", "left");
       alignIconBtn.setAttribute("title", alignRightText);
 
-      textareaMenu.appendChild(alignIconBtn);
+      textareaMenu.prepend(alignIconBtn);
 
       alignIconBtn.addEventListener("mouseover", () => {
         alignIconBtn.style.backgroundColor = "#424242";
@@ -92,17 +92,6 @@
         addAlignButton(textareaMenu as TextareaMenu);
       }
     }
-
-    const observer = new MutationObserver(() => {
-      const updatedMenu = textarea.querySelector(
-        ".justify-between .text-token-text-primary"
-      );
-      if (updatedMenu) {
-        addAlignButton(updatedMenu as TextareaMenu);
-      }
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
   } catch (error) {
     console.error("Error in main.js:", error);
   }
