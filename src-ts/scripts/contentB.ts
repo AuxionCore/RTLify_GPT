@@ -1,4 +1,33 @@
 (async () => {
+  interface TextareaMenu extends HTMLElement {
+    appendChild<T extends Node>(newChild: T): T;
+  }
+
+  interface AlignIconBtn extends HTMLDivElement {
+    setAttribute(qualifiedName: string, value: string): void;
+    getAttribute(qualifiedName: string): string | null;
+    innerHTML: string;
+    style: CSSStyleDeclaration;
+  }
+
+  const buttonStyles = {
+    width: "36px",
+    height: "36px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    border: "solid 1px #b4b4b450",
+    borderRadius: "50%",
+    backgroundColor: "transparent",
+  };
+
+  const formatAlignRightIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-744v-72h672v72H144Zm192 150v-72h480v72H336ZM144-444v-72h672v72H144Zm192 150v-72h480v72H336ZM144-144v-72h672v72H144Z"/></svg>`;
+  const formatAlignLeftIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"/></svg>`;
+
+  const alignRightText: string = chrome.i18n.getMessage("alignRight");
+  const alignLeftText: string = chrome.i18n.getMessage("alignLeft");
+
   try {
     const waitForTextarea = () => {
       return new Promise<HTMLElement>((resolve) => {
@@ -12,38 +41,7 @@
       });
     };
 
-    interface TextareaMenu extends HTMLElement {
-      appendChild<T extends Node>(newChild: T): T;
-    }
-
-    interface AlignIconBtn extends HTMLDivElement {
-      setAttribute(qualifiedName: string, value: string): void;
-      getAttribute(qualifiedName: string): string | null;
-      innerHTML: string;
-      style: CSSStyleDeclaration;
-    }
-
-    const buttonStyles = {
-      width: "36px",
-      height: "36px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      border: "solid 1px #b4b4b450",
-      borderRadius: "50%",
-      backgroundColor: "transparent",
-    };
-
-    const formatAlignRightIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-744v-72h672v72H144Zm192 150v-72h480v72H336ZM144-444v-72h672v72H144Zm192 150v-72h480v72H336ZM144-144v-72h672v72H144Z"/></svg>`;
-    const formatAlignLeftIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"/></svg>`;
-
     const addAlignButton = (textareaMenu: TextareaMenu) => {
-      if (document.getElementById("align-icon-btn")) return;
-
-      const alignRightText: string = chrome.i18n.getMessage("alignRight");
-      const alignLeftText: string = chrome.i18n.getMessage("alignLeft");
-
       const alignIconBtn: AlignIconBtn = document.createElement(
         "div"
       ) as AlignIconBtn;
@@ -88,9 +86,9 @@
     );
 
     if (textareaMenu) {
-      const alignIconBtn = document.getElementById("align-icon-btn");
+      const alignIconBtn = textareaMenu.querySelector("#align-icon-btn");
 
-      if (alignIconBtn) {
+      if (!alignIconBtn) {
         addAlignButton(textareaMenu as TextareaMenu);
       }
     }
