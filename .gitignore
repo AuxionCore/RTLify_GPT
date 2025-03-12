@@ -2,6 +2,8 @@ node_modules
 .vscode
 
 dist
-scripts
 popup.js
+main.js
+contentA.js
+contentB.js
 serviceWorker.js
