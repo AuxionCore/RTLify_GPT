@@ -28,7 +28,7 @@
             clearInterval(interval);
             resolve(textarea);
           }
-        }, 1000);
+        }, 500);
       });
     };
 
@@ -42,7 +42,7 @@
       alignIconBtn.setAttribute("data-state", "left");
       alignIconBtn.setAttribute("title", alignRightText);
 
-      textareaMenu.appendChild(alignIconBtn);
+      textareaMenu.prepend(alignIconBtn);
 
       alignIconBtn.addEventListener("mouseover", () => {
         alignIconBtn.style.backgroundColor = "#424242";
