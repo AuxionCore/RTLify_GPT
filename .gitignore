@@ -2,6 +2,8 @@ node_modules
 .vscode
 
 dist
+whatsNew.js
+welcome.js
 popup.js
 textAlignmentButton.js
 mathTextAlignment.js
