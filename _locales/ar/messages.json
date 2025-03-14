@@ -51,6 +51,10 @@
     "message": "سيتم تعطيل هذه الميزة مؤقتًا بعد النقر على زر محاذاة اتجاه النص وسيتم تنشيطها مرة أخرى في كل مرة يتم فيها بدء محادثة جديدة",
     "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
   },
+  "feature4": {
+    "message": "حفظ تفضيلات المستخدم للاستخدام المتكرر",
+    "description": "Saving a user preference for repeated use"
+  },
   "improvement1": {
     "message": "تثبيت زر محاذاة اتجاه النص في أعلى قائمة الدردشة",
     "description": "Performance improvements and bug fixes"

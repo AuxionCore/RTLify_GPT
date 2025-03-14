@@ -29,7 +29,7 @@
   },
   "featuresTitle": {
     "message": "ویژگی های جدید",
-  "description": "New features title"
+    "description": "New features title"
   },
   "improvementsTitle": {
     "message": "بهبودها و رفع اشکالات",
@@ -49,7 +49,11 @@
   },
   "feature3Comment": {
     "message": "این ویژگی پس از کلیک بر روی دکمه تنظیم جهت متن غیرفعال می‌شود و هر بار که یک مکالمه جدید شروع می‌شود، فعال می‌شود",
-      "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+    "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "feature4": {
+    "message": "ذخیره ترجیح کاربر برای استفاده تکراری",
+    "description": "Saving a user preference for repeated use"
   },
   "improvement1": {
     "message": "دکمه تنظیم جهت متن در بالای منوی چت ثابت شد",

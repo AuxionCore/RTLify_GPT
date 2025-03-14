@@ -49,7 +49,11 @@
   },
   "feature3Comment": {
     "message": "תכונה זו תושבת באופן זמני לאחר לחיצה על כפתור יישור כיוון הטקסט ותופעל מחדש בכל פעם שמתחילה שיחה חדשה",
-       "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+    "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "feature4": {
+    "message": "שמירת העדפת משתמש לשימוש חוזר",
+    "description": "Saving a user preference for repeated use"
   },
   "improvement1": {
     "message": "קיבוע כפתור יישור כיוון הטקסט בתחילת תפריט הצ'אט",
