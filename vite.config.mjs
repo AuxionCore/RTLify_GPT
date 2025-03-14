@@ -15,6 +15,8 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist",
     rollupOptions: {
       input: {
+        welcome: "welcomePage/welcome.html",
+        whatsNew: "whatsNewPage/whatsNew.html",
         popup: "popup/popup.html",
         serviceWorker: "src-ts/serviceWorker.ts",
         "scripts/mathTextAlignment": "src-ts/scripts/mathTextAlignment.ts",
