@@ -1,3 +1,17 @@
+chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+  if (reason === "install") {
+    chrome.tabs.create({
+      url: "welcomePage/welcome.html",
+    });
+  }
+
+  if (reason === "update") {
+    chrome.tabs.create({
+      url: "whatsNewPage/whatsNew.html",
+    });
+  }
+});
+
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   try {
     // If the user navigates to a ChatGPT conversation, inject contentA.js and contentB.js
@@ -5,7 +19,10 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       if (tab.url && tab.url.includes("chatgpt.com/c/")) {
         await chrome.scripting.executeScript({
           target: { tabId: tabId },
-          files: ["scripts/mathTextAlignment.js", "scripts/textAlignmentButton.js"],
+          files: [
+            "scripts/mathTextAlignment.js",
+            "scripts/textAlignmentButton.js",
+          ],
         });
       }
 
