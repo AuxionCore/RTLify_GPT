@@ -4,16 +4,84 @@
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "تكييف ChatGPT للغة العربية",
+    "message": "اضبط ChatGPT على لغتك المفضلة",
     "description": "Description of the extension"
   },
-  "popupWelcomeTitle": {
-    "message": "مرحبًا بك في تكييف ChatGPT للغة العربية",
+  "welcomeTitle": {
+    "message": "مرحبًا بك في البرنامج الإضافي لتكييف ChatGPT مع اللغة العربية",
     "description": "Title of the welcome popup"
   },
-  "popupWelcomeMessage": {
-    "message": "هذا التطبيق يساعد في تحسين تجربة استخدام ChatGPT على موقع الويب الخاص بك.",
-    "description": "Message of the welcome popup"
+  "welcomeMessage": {
+    "message": "شكرًا لك على تثبيت البرنامج الإضافي لتكييف ChatGPT مع اللغة العربية. يمكنك الآن الاستمتاع باستخدام ChatGPT باللغة التي تفضلها.",
+    "description": "Message of the welcome page"
+  },
+  "GoToChatGpt": {
+    "message": "انتقل إلى موقع ChatGPT",
+    "description": "Go to ChatGPT website button text"
+  },
+  "whatsNewTitle": {
+    "message": "ما الجديد في هذا الإصدار",
+    "description": "What's new title"
+  },
+  "whatsNewMessage": {
+    "message": "نقدر استخدامك للبرنامج الإضافي لتكييف ChatGPT مع اللغة العربية. يمكنك هنا العثور على التحسينات والميزات الجديدة في الإصدار الأخير.",
+    "description": "What's new message"
+  },
+  "featuresTitle": {
+    "message": "ميزات جديدة",
+    "description": "New features title"
+  },
+  "improvementsTitle": {
+    "message": "تحسينات وإصلاحات",
+    "description": "Improvements title"
+  },
+  "feature1": {
+    "message": "تمت إضافة زر لتغيير اتجاه النص في صندوق الدردشة",
+    "description": "Added a button to change text direction in the chat box"
+  },
+  "feature2": {
+    "message": "عرض اتجاه النصوص الرياضية من اليسار إلى اليمين في جميع الأوضاع لسهولة القراءة",
+    "description": "Display mathematical text direction from left to right in all modes for easy reading"
+  },
+  "feature3": {
+    "message": "محاذاة اتجاه النص في صندوق الدردشة حسب الحرف الأول في المحادثة",
+    "description": "Align text direction in the chat box according to the first letter in the conversation"
+  },
+  "feature3Comment": {
+    "message": "سيتم تعطيل هذه الميزة مؤقتًا بعد النقر على زر محاذاة اتجاه النص وسيتم تنشيطها مرة أخرى في كل مرة يتم فيها بدء محادثة جديدة",
+    "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "improvement1": {
+    "message": "تثبيت زر محاذاة اتجاه النص في أعلى قائمة الدردشة",
+    "description": "Performance improvements and bug fixes"
+  },
+  "improvement2": {
+    "message": "تحسينات في الأداء وإصلاح الأخطاء",
+    "description": "Performance improvements and bug fixes"
+  },
+  "comingSoonTitle": {
+    "message": "قريبًا",
+    "description": "Coming soon title"
+  },
+  "comingSoonMessage": {
+    "message": "ستجد هنا تحديثات وميزات جديدة في الإصدار القادم من ChatGPT.",
+    "description": "Message of what's coming soon"
+  },
+  "comingSoonFeature1": {
+    "message": "تحسين عرض النصوص الرياضية بشكل أكثر دقة",
+    "description": "Improving the display of mathematical text more accurately"
+  },
+  "feedbackTitle": {
+    "message": "ملاحظات",
+    "description": "Feedback title"
+  },
+  "feedbackMessage": {
+    "message": "إذا كان لديك أي ملاحظات أو اقتراحات، فلا تتردد في إرسالها إلينا.",
+    "description": "Feedback message"
+  },
+  "feedbackButtonText": {
+    "message": "أرسل ملاحظاتك",
+    "description": "Feedback button text"
   },
   "popupCloseButton": {
     "message": "إغلاق",

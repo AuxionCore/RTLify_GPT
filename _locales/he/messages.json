@@ -1,15 +1,87 @@
 {
   "extensionName": {
     "message": "התאמת ChatGPT לשפה העברית",
-    "description": "Name of the extension"
+    "description": "שם התוסף"
   },
   "extensionDescription": {
-    "message": "התאמת ChatGPT לשפה העברית",
-    "description": "Description of the extension"
+    "message": "התאם את ChatGPT לשפה המועדפת עליך",
+    "description": "תיאור התוסף"
   },
-  "popupWelcomeTitle": {
-    "message": "ברוכים הבאים להתאמת ChatGPT לשפה העברית",
-    "description": "Title of the welcome popup"
+  "welcomeTitle": {
+    "message": "ברוכים הבאים לתוסף להתאמת ChatGPT לשפה העברית",
+    "description": "כותרת ברוכים הבאים"
+  },
+  "welcomeMessage": {
+    "message": "תודה שהתקנת את התוסף להתאמת ChatGPT לשפה העברית. עכשיו תוכל ליהנות משימוש ב-ChatGPT בשפה שאתה מעדיף.",
+    "description": "Message of the welcome popup"
+  },
+  "GoToChatGpt": {
+    "message": "עבור ל-ChatGPT",
+    "description": "Go to ChatGPT button text"
+  },
+  "whatsNewTitle": {
+    "message": "מה חדש בגרסה זו",
+    "description": "What's new title"
+  },
+  "whatsNewMessage": {
+    "message": "אנו מעריכים את השימוש שלך בתוסף להתאמת ChatGPT לשפה העברית. כאן תוכל למצוא את השיפורים והתכונות החדשות בגרסה האחרונה.",
+    "description": "What's new message"
+  },
+  "featuresTitle": {
+    "message": "תכונות חדשות",
+    "description": "New features title"
+  },
+  "improvementsTitle": {
+    "message": "שיפורים ותיקונים",
+    "description": "Improvements title"
+  },
+  "feature1": {
+    "message": "הוספת כפתור לשינוי כיוון טקסט בתיבת הצ'אט",
+    "description": "Added a button to change text direction in the chat box"
+  },
+  "feature2": {
+    "message": "הצגת כיוון טקסט מתמטי משמאל לימין בכל מצב לקריאה נוחה",
+    "description": "Display mathematical text direction from left to right in all modes for easy reading"
+  },
+  "feature3": {
+    "message": "יישור כיוון הטקסט בתיבת הצ'אט לפי האות הראשונה בשיחה",
+    "description": "Align text direction in the chat box according to the first letter in the conversation"
+  },
+  "feature3Comment": {
+    "message": "תכונה זו תושבת באופן זמני לאחר לחיצה על כפתור יישור כיוון הטקסט ותופעל מחדש בכל פעם שמתחילה שיחה חדשה",
+       "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "improvement1": {
+    "message": "קיבוע כפתור יישור כיוון הטקסט בתחילת תפריט הצ'אט",
+    "description": "Performance improvements and bug fixes"
+  },
+  "improvement2": {
+    "message": "שיפורי ביצועים ותיקוני באגים",
+    "description": "Performance improvements and bug fixes"
+  },
+  "comingSoonTitle": {
+    "message": "בקרוב",
+    "description": "Coming soon title"
+  },
+  "comingSoonMessage": {
+    "message": "כאן תוכל למצוא עדכונים חדשים ותכונות חדשות בגרסה הבאה של ChatGPT.",
+    "description": "Message of what's coming soon"
+  },
+  "comingSoonFeature1": {
+    "message": "שיפור הצגת טקסט מתמטי באופן מדוייק יותר",
+    "description": "Improving the display of mathematical text more accurately"
+  },
+  "feedbackTitle": {
+    "message": "משוב",
+    "description": "Feedback title"
+  },
+  "feedbackMessage": {
+    "message": "אנחנו מעריכים מאוד את המשוב שלך. אם יש לך הערות, שאלות או הצעות, אנא צרו איתנו קשר.",
+    "description": "Feedback message"
+  },
+  "feedbackButtonText": {
+    "message": "צור קשר",
+    "description": "Contact us button text"
   },
   "popupCloseButton": {
     "message": "סגור",

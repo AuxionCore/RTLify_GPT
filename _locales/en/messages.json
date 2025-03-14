@@ -4,16 +4,84 @@
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "Rtlify ChatGPT",
+    "message": "Align ChatGPT to right-to-left languages",
     "description": "Description of the extension"
   },
-  "popupWelcomeTitle": {
+  "welcomeTitle": {
     "message": "Welcome to Rtlify ChatGPT",
     "description": "Title of the welcome popup"
   },
-  "popupWelcomeMessage": {
+  "welcomeMessage": {
     "message": "This extension helps you align chatGPT to right-to-left languages.",
     "description": "Message of the welcome popup"
+  },
+  "GoToChatGpt": {
+    "message": "Go to ChatGPT",
+    "description": "Go to ChatGPT website"
+  },
+  "whatsNewTitle": {
+    "message": "What's new in this version",
+    "description": "What's new title"
+  },
+  "whatsNewMessage": {
+    "message": "Thank you for using Rtlify ChatGPT. Here you can find the improvements and new features in the latest version",
+    "description": "What's new message"
+  },
+  "featuresTitle": {
+    "message": "New features",
+    "description": "New features title"
+  },
+  "improvementsTitle": {
+    "message": "Improvements and fixes",
+    "description": "Improvements title"
+  },
+  "feature1": {
+    "message": "Added a button to change text direction in the chat box",
+    "description": "Added a button to change text direction in the chat box"
+  },
+  "feature2": {
+    "message": "Display mathematical text direction from left to right in all modes for easy reading",
+    "description": "Display mathematical text direction from left to right in all modes for easy reading"
+  },
+  "feature3": {
+    "message": "Align text direction in the chat box according to the first letter in the conversation",
+    "description": "Align text direction in the chat box according to the first letter in the conversation"
+  },
+  "feature3Comment": {
+    "message": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started",
+    "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "improvement1": {
+    "message": "Pin the text direction button at the top of the chat menu",
+    "description": "Performance improvements and bug fixes"
+  },
+  "improvement2": {
+    "message": "Performance improvements and bug fixes",
+    "description": "Performance improvements and bug fixes"
+  },
+  "comingSoonTitle": {
+    "message": "Coming soon",
+    "description": "Coming soon title"
+  },
+  "comingSoonMessage": {
+    "message": "Here you will find new updates and features in the next version of ChatGPT.",
+    "description": "Message of what's coming soon"
+  },
+  "comingSoonFeature1": {
+    "message": "Improving the display of mathematical text more accurately",
+    "description": "Improving the display of mathematical text more accurately"
+  },
+  "feedbackTitle": {
+    "message": "Feedback",
+    "description": "Feedback title"
+  },
+  "feedbackMessage": {
+    "message": "We would love to hear your feedback!",
+    "description": "Feedback message"
+  },
+  "feedbackButtonText": {
+    "message": "Send feedback",
+    "description": "Feedback button text"
   },
   "popupCloseButton": {
     "message": "Close",

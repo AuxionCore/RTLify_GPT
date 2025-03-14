@@ -7,13 +7,81 @@
     "message": "سازگاری ChatGPT با زبان فارسی",
     "description": "Description of the extension"
   },
-  "popupWelcomeTitle": {
-    "message": "به سازگاری ChatGPT با زبان فارسی خوش آمدید",
+  "welcomeTitle": {
+    "message": "به افزونه تطبیق ChatGPT با زبان فارسی خوش آمدید",
     "description": "Title of the welcome popup"
   },
-  "popupWelcomeMessage": {
-    "message": "این برنامه به بهبود تجربه استفاده از ChatGPT در وب سایت شما کمک می کند.",
+  "welcomeMessage": {
+    "message": "از نصب افزونه برای تطبیق ChatGPT با زبان فارسی سپاسگزاریم. اکنون می توانید از استفاده از ChatGPT به زبانی که ترجیح می دهید لذت ببرید.",
     "description": "Message of the welcome popup"
+  },
+  "GoToChatGpt": {
+    "message": "برو به ChatGPT",
+    "description": "Go to ChatGPT button text"
+  },
+  "whatsNewTitle": {
+    "message": "چه چیزی در این نسخه جدید است",
+    "description": "What's new title"
+  },
+  "whatsNewMessage": {
+    "message": "از استفاده شما از افزونه تطبیق ChatGPT با زبان فارسی سپاسگزاریم. در اینجا می توانید بهبودها و ویژگی های جدید در آخرین نسخه را ببینید.",
+    "description": "What's new message"
+  },
+  "featuresTitle": {
+    "message": "ویژگی های جدید",
+  "description": "New features title"
+  },
+  "improvementsTitle": {
+    "message": "بهبودها و رفع اشکالات",
+    "description": "Improvements title"
+  },
+  "feature1": {
+    "message": "یک دکمه برای تغییر جهت متن در جعبه چت اضافه شد",
+    "description": "Added a button to change text direction in the chat box"
+  },
+  "feature2": {
+    "message": "نمایش جهت متن‌های ریاضی از چپ به راست در تمام حالت‌ها برای خواندن راحت‌تر",
+    "description": "Display mathematical text direction from left to right in all modes for easy reading"
+  },
+  "feature3": {
+    "message": "جهت متن در جعبه چت بر اساس اولین حرف در مکالمه تنظیم می‌شود",
+    "description": "Align text direction in the chat box according to the first letter in the conversation"
+  },
+  "feature3Comment": {
+    "message": "این ویژگی پس از کلیک بر روی دکمه تنظیم جهت متن غیرفعال می‌شود و هر بار که یک مکالمه جدید شروع می‌شود، فعال می‌شود",
+      "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "improvement1": {
+    "message": "دکمه تنظیم جهت متن در بالای منوی چت ثابت شد",
+    "description": "Performance improvements and bug fixes"
+  },
+  "improvement2": {
+    "message": "بهبود عملکرد و رفع اشکالات",
+    "description": "Performance improvements and bug fixes"
+  },
+  "comingSoonTitle": {
+    "message": "به زودی",
+    "description": "Coming soon title"
+  },
+  "comingSoonMessage": {
+    "message": "اینجا می‌توانید به‌روزرسانی‌ها و ویژگی‌های جدید نسخه بعدی ChatGPT را ببینید.",
+    "description": "Message of what's coming soon"
+  },
+  "comingSoonFeature1": {
+    "message": "بهبود نمایش دقیق‌تر متن‌های ریاضی",
+    "description": "Improving the display of mathematical text more accurately"
+  },
+  "feedbackTitle": {
+    "message": "بازخورد",
+    "description": "Feedback title"
+  },
+  "feedbackMessage": {
+    "message": "اگر هر گونه بازخورد یا پیشنهادی دارید، لطفاً با ما تماس بگیرید.",
+    "description": "Feedback message"
+  },
+  "feedbackButtonText": {
+    "message": "ارسال بازخورد",
+    "description": "Feedback button text"
   },
   "popupCloseButton": {
     "message": "بستن",
