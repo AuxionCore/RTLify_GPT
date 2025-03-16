@@ -37,7 +37,15 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/", "https://chatgpt.com/?model=auto*"],
+      "matches": [
+        "https://chatgpt.com/",
+        "https://chatgpt.com/?model=auto*",
+        "https://chatgpt.com/?temporary-chat=true"
+      ],
+      "exclude_matches": [
+        "https://chatgpt.com/c/*",
+        "https://chatgpt.com/gpts"
+      ],
       "js": ["scripts/textAlignmentButton.js"]
     },
     {
