@@ -35,8 +35,9 @@ function setEventListeners() {
 }
 
 function setVersion() {
-  const version = document.getElementById(elements.version)!;
-  version.textContent = `v${chrome.runtime.getManifest().version}`;
+  const versionElement = document.getElementById(elements.version)!;
+  const versionNumber = chrome.runtime.getManifest().version;
+  versionElement.textContent = `v${versionNumber}`;
 }
 
 function openTab(url: string): void {
