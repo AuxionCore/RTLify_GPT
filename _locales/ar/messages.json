@@ -19,6 +19,28 @@
     "message": "انتقل إلى موقع ChatGPT",
     "description": "Go to ChatGPT website button text"
   },
+  "newReleaseTitle": {
+    "message": "إصدار جديد متاح",
+    "description": "New release title"
+  },
+  "whatsNewLinkText": {
+    "message": "شاهد ما الجديد",
+    "description": "What's new link text"
+  },
+  "extensionWasUpdated": {
+    "message": "تم تحديث البرنامج الإضافي إلى الإصدار $VERSION_NUMBER$ $ICON$",
+    "description": "Extension was updated to version $VERSION_NUMBER$",
+    "placeholders": {
+      "VERSION_NUMBER": {
+        "content": "$1",
+        "description": "Version number placeholder"
+      },
+      "ICON": {
+        "content": "$2",
+        "description": "Icon placeholder"
+      }
+    }
+  },
   "whatsNewTitle": {
     "message": "ما الجديد في هذا الإصدار",
     "description": "What's new title"

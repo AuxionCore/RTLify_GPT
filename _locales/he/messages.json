@@ -19,6 +19,28 @@
     "message": "עבור ל-ChatGPT",
     "description": "Go to ChatGPT button text"
   },
+  "newReleaseTitle": {
+    "message": "גרסה חדשה שוחררה",
+    "description": "New release title"
+  },
+  "whatsNewLinkText": {
+    "message": "ראה מה חדש",
+    "description": "What's new link text"
+  },
+  "extensionWasUpdated": {
+    "message": "התוסף עודכן לגרסה $VERSION_NUMBER$ $ICON$",
+    "description": "Extension was updated to version $VERSION_NUMBER$",
+    "placeholders": {
+      "VERSION_NUMBER": {
+        "content": "$1",
+        "description": "Version number placeholder"
+      },
+      "ICON": {
+        "content": "$2",
+        "description": "Icon placeholder"
+      }
+    }
+  },
   "whatsNewTitle": {
     "message": "מה חדש בגרסה זו",
     "description": "What's new title"

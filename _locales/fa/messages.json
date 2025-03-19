@@ -19,6 +19,28 @@
     "message": "برو به ChatGPT",
     "description": "Go to ChatGPT button text"
   },
+  "newReleaseTitle": {
+    "message": "نسخه جدید منتشر شد",
+    "description": "New release title"
+  },
+  "whatsNewLinkText": {
+    "message": "ببینید چه چیزی جدید است",
+    "description": "What's new link text"
+  },
+  "extensionWasUpdated": {
+    "message": "افزونه به نسخه $VERSION_NUMBER$ به روز شد $ICON$",
+    "description": "Extension was updated to version $VERSION_NUMBER$",
+    "placeholders": {
+      "VERSION_NUMBER": {
+        "content": "$1",
+        "description": "Version number placeholder"
+      },
+      "ICON": {
+        "content": "$2",
+        "description": "Icon placeholder"
+      }
+    }
+  },
   "whatsNewTitle": {
     "message": "چه چیزی در این نسخه جدید است",
     "description": "What's new title"

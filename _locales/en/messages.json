@@ -19,6 +19,28 @@
     "message": "Go to ChatGPT",
     "description": "Go to ChatGPT website"
   },
+  "newReleaseTitle": {
+    "message": "New release available",
+    "description": "New release title"
+  },
+  "whatsNewLinkText": {
+    "message": "See what's new",
+    "description": "What's new link text"
+  },
+  "extensionWasUpdated": {
+    "message": "Extension was updated to version $VERSION_NUMBER$ $ICON$",
+    "description": "Extension was updated to version $VERSION_NUMBER$",
+    "placeholders": {
+      "VERSION_NUMBER": {
+        "content": "$1",
+        "description": "Version number placeholder"
+      },
+      "ICON": {
+        "content": "$2",
+        "description": "Icon placeholder"
+      }
+    }
+  },
   "whatsNewTitle": {
     "message": "What's new in this version",
     "description": "What's new title"
