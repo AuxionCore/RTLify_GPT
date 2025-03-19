@@ -78,12 +78,16 @@
     "description": "Saving a user preference for repeated use"
   },
   "improvement1": {
-    "message": "دکمه تنظیم جهت متن در بالای منوی چت ثابت شد",
-    "description": "Performance improvements and bug fixes"
+    "message": "رفع عدم پشتیبانی از رنگ حالت روشن در دکمه تراز",
+    "description": "Fix lack of support for light mode color in the align button"
   },
   "improvement2": {
-    "message": "بهبود عملکرد و رفع اشکالات",
-    "description": "Performance improvements and bug fixes"
+    "message": "نمایش هشدار در پنجره جدید به جای تب جدید هنگام به روزرسانی افزونه",
+    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
+  },
+  "improvement3": {
+    "message": "رفع پیوندهای غیرفعال در صفحه پاپ‌آپ",
+    "description": "Fixing inactive links on the Popup page"
   },
   "comingSoonTitle": {
     "message": "به زودی",

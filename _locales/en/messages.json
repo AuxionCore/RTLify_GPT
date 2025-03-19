@@ -78,12 +78,16 @@
     "description": "Saving a user preference for repeated use"
   },
   "improvement1": {
-    "message": "Pin the text direction button at the top of the chat menu",
-    "description": "Performance improvements and bug fixes"
+    "message": "Fixing lack of support for light mode color in the align button",
+    "description": "Fix lack of support for light mode color in the align button"
   },
   "improvement2": {
-    "message": "Performance improvements and bug fixes",
-    "description": "Performance improvements and bug fixes"
+    "message": "Display alert of what's new in the popup when extension is updated instead of a new tab",
+    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
+  },
+  "improvement3": {
+    "message": "Fixing inactive links on the Popup page",
+    "description": "Fixing inactive links on the Popup page"
   },
   "comingSoonTitle": {
     "message": "Coming soon",

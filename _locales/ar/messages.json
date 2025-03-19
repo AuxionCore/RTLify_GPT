@@ -74,16 +74,20 @@
     "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
   },
   "feature4": {
-    "message": "حفظ تفضيلات المستخدم للاستخدام المتكرر",
-    "description": "Saving a user preference for repeated use"
+    "message": "تمت إضافة دعم لوضع النص الفاتح في زر المحاذاة",
+    "description": "Fix lack of support for light mode color in the align button"
   },
   "improvement1": {
-    "message": "تثبيت زر محاذاة اتجاه النص في أعلى قائمة الدردشة",
-    "description": "Performance improvements and bug fixes"
+    "message": "عرض تنبيه بما الجديد في النافذة المنبثقة عند تحديث الإضافة بدلاً من علامة تبويب جديدة",
+    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
   },
   "improvement2": {
     "message": "تحسينات في الأداء وإصلاح الأخطاء",
     "description": "Performance improvements and bug fixes"
+  },
+  "improvement3": {
+    "message": "إصلاح الروابط الغير نشطة على صفحة النافذة المنبثقة",
+    "description": "Fixing inactive links on the Popup page"
   },
   "comingSoonTitle": {
     "message": "قريبًا",

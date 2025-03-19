@@ -78,12 +78,16 @@
     "description": "Saving a user preference for repeated use"
   },
   "improvement1": {
-    "message": "קיבוע כפתור יישור כיוון הטקסט בתחילת תפריט הצ'אט",
-    "description": "Performance improvements and bug fixes"
+    "message": "תיקון חוסר תמיכה בצבע מצב בהיר בכפתור היישור",
+    "description": "Fix lack of support for light mode color in the align button"
   },
   "improvement2": {
-    "message": "שיפורי ביצועים ותיקוני באגים",
-    "description": "Performance improvements and bug fixes"
+    "message": "הצגת התראה על מה חדש בחלון הקופץ כאשר התוסף מתעדכן במקום כרטיסייה חדשה",
+    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
+  },
+  "improvement3": {
+    "message": "תיקון קישורים לא פעילים בחלון קופץ",
+    "description": "Fixing inactive links on the Popup page"
   },
   "comingSoonTitle": {
     "message": "בקרוב",
