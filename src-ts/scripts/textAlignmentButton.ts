@@ -22,11 +22,22 @@
     backgroundColor: "transparent",
   };
 
-  const formatAlignRightIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-744v-72h672v72H144Zm192 150v-72h480v72H336ZM144-444v-72h672v72H144Zm192 150v-72h480v72H336ZM144-144v-72h672v72H144Z"/></svg>`;
-  const formatAlignLeftIcon: string = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#b4b4b4"><path d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"/></svg>`;
-
   const alignRightText: string = chrome.i18n.getMessage("alignRight");
   const alignLeftText: string = chrome.i18n.getMessage("alignLeft");
+
+  const formatAlignRightPathEl: string = ` <path
+  fill-rule="evenodd"
+  clip-rule="evenodd"
+  fill="currentColor"
+  d="M144-744v-72h672v72H144Zm192 150v-72h480v72H336ZM144-444v-72h672v72H144Zm192 150v-72h480v72H336ZM144-144v-72h672v72H144Z"
+/>`;
+
+  const formatAlignLeftPathEl: string = ` <path
+  fill-rule="evenodd"
+  clip-rule="evenodd"
+  fill="currentColor"
+  d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"
+/>`;
 
   try {
     function getComposerBackgroundElement(): Promise<HTMLElement> {
@@ -72,25 +83,36 @@
       ".justify-between .text-token-text-primary"
     );
 
-    let alignIconBtn: AlignIconBtn | null = null;
+    let alignElement: AlignIconBtn | null = null;
     if (textareaMenu) {
-      alignIconBtn = textareaMenu.querySelector("#align-icon-btn");
+      alignElement = textareaMenu.querySelector(
+        "#alignElement"
+      ) as AlignIconBtn;
 
-      if (!alignIconBtn) {
+      if (!alignElement) {
         addAlignButton(textareaMenu as TextareaMenu);
       }
     }
 
-    async function toggleAlignment(alignIconBtn: AlignIconBtn) {
+    async function toggleAlignment(
+      alignElement: AlignIconBtn,
+      event: MouseEvent
+    ) {
+      event.preventDefault();
       promptTextarea.removeEventListener("input", handleInputEvent);
+
+      const alignButton = alignElement.querySelector(
+        "#alignButton"
+      ) as HTMLDivElement;
+      const svgIcon = alignElement.querySelector("svg") as SVGElement;
 
       alignState = alignState === "left" ? "right" : "left";
       const newTitle = alignState === "left" ? alignRightText : alignLeftText;
-      const newSvg =
-        alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
+      const newSvgPathEl =
+        alignState === "left" ? formatAlignRightPathEl : formatAlignLeftPathEl;
 
-      alignIconBtn.setAttribute("title", newTitle);
-      alignIconBtn.innerHTML = newSvg;
+      alignButton.setAttribute("title", newTitle);
+      svgIcon.innerHTML = newSvgPathEl;
 
       promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
       promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
@@ -103,28 +125,56 @@
     }
 
     function addAlignButton(textareaMenu: TextareaMenu) {
-      alignIconBtn = document.createElement("div") as AlignIconBtn;
-      alignIconBtn.id = "align-icon-btn";
-      alignIconBtn.innerHTML =
-        alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
-      Object.assign(alignIconBtn.style, buttonStyles);
-      alignIconBtn.setAttribute(
-        "title",
-        alignState === "left" ? alignRightText : alignLeftText
-      );
+      alignElement = document.createElement("div") as AlignIconBtn;
+      alignElement.id = "alignElement";
 
-      textareaMenu.prepend(alignIconBtn);
+      let formatAlignText =
+        alignState === "left" ? alignRightText : alignLeftText;
+      let formatAlignPathEl =
+        alignState === "left" ? formatAlignRightPathEl : formatAlignLeftPathEl;
 
-      alignIconBtn.addEventListener("mouseover", () => {
-        alignIconBtn!.style.backgroundColor = "#424242";
-      });
+      alignElement.innerHTML =
+        `
+      <div class="relative">
+        <div class="relative">
+          <span class="flex">
+            <div class="flex">
+              <button
+                id="alignButton"
+                role="button"
+                aria-label=` +
+        formatAlignText +
+        `
+                title=` +
+        formatAlignText +
+        `
+                class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700"
+              >
+                <svg
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label=""
+                  class="h-[18px] w-[18px]"
+                >
+                  ` +
+        formatAlignPathEl +
+        `
+                  />
+                </svg>
+              </button>
+            </div>
+          </span>
+        </div>
+      </div>
+    `;
 
-      alignIconBtn.addEventListener("mouseout", () => {
-        alignIconBtn!.style.backgroundColor = "transparent";
-      });
+      textareaMenu.prepend(alignElement);
 
-      alignIconBtn.addEventListener("click", async () => {
-        await toggleAlignment(alignIconBtn as AlignIconBtn);
+      alignElement.addEventListener("click", async (event: MouseEvent) => {
+        await toggleAlignment(alignElement as AlignIconBtn, event);
       });
     }
 
@@ -145,13 +195,20 @@
       promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
       promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
 
-      if (alignIconBtn) {
-        alignIconBtn.setAttribute(
-          "title",
-          alignState === "left" ? alignRightText : alignLeftText
-        );
-        alignIconBtn.innerHTML =
-        alignState === "left" ? formatAlignRightIcon : formatAlignLeftIcon;
+      if (alignElement) {
+        const alignButton = alignElement.querySelector(
+          "#alignButton"
+        ) as HTMLDivElement;
+        const svgIcon = alignElement.querySelector("svg") as SVGElement;
+
+        const newTitle = alignState === "left" ? alignRightText : alignLeftText;
+        const newSvgPath =
+          alignState === "left"
+            ? formatAlignRightPathEl
+            : formatAlignLeftPathEl;
+
+        alignButton.setAttribute("title", newTitle);
+        svgIcon.innerHTML = newSvgPath;
       }
 
       try {
@@ -162,6 +219,7 @@
     }
 
     async function handleInputEvent(e: Event) {
+      e.preventDefault();
       let contentElement: HTMLElement | null;
       if ((e.target as HTMLElement).tagName === "P") {
         contentElement = e.target as HTMLElement;
@@ -246,13 +304,6 @@
     //   childList: true,
     //   subtree: true,
     //   characterData: true,
-    // });
-
-    // document.addEventListener("keydown", async (e) => {
-    //   if (e.shiftKey && e.altKey && !e.repeat) {
-    //     console.log("Shift+Alt pressed");
-    //     await toggleAlignment();
-    //   }
     // });
   } catch (error) {
     console.error(error);
