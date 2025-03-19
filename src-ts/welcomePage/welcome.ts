@@ -28,9 +28,6 @@ document.getElementById("feedbackMessage")!.textContent = feedbackMessage;
 const goToChatGptButton = document.getElementById("goToChatGptButton")!;
 goToChatGptButton.textContent = GoToChatGptText;
 
-console.log("goToChatGptButton", goToChatGptButton);
-console.log("goToChatGptButton.textContent", goToChatGptButton.textContent);
-
 goToChatGptButton.addEventListener("click", () => {
   chrome.tabs.create({ url: "https://chatgpt.com/" });
 });
