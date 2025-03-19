@@ -14,6 +14,7 @@ const messageKeys = [
   "feature4",
   "improvement1",
   "improvement2",
+  "improvement3",
   "comingSoonTitle",
   "comingSoonMessage",
   "comingSoonFeature1",
