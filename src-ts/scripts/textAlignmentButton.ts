@@ -10,18 +10,6 @@
     style: CSSStyleDeclaration;
   }
 
-  const buttonStyles = {
-    width: "36px",
-    height: "36px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    border: "solid 1px #b4b4b450",
-    borderRadius: "50%",
-    backgroundColor: "transparent",
-  };
-
   const alignRightText: string = chrome.i18n.getMessage("alignRight");
   const alignLeftText: string = chrome.i18n.getMessage("alignLeft");
 
@@ -240,6 +228,8 @@
         }
       }
     }
+
+    promptTextarea.removeEventListener("input", handleInputEvent);
     promptTextarea.addEventListener("input", handleInputEvent);
 
     // const observer = new MutationObserver((mutations) => {
