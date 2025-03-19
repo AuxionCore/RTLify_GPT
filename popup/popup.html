@@ -1,29 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="auto" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="popup.css" />
-    <title>Rtlify_ChatGPT</title>
+    <title>Rtlify ChatGPT</title>
   </head>
   <body>
-    <button id="closePopup" class="close-popup">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        viewBox="0 -960 960 960"
-        width="24px"
-        fill="#000"
+    <header id="popupHeader" class="popup-header">
+      <button dir="ltr" id="closePopup" class="close-popup">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#000"
+        >
+          <path
+            d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"
+          />
+        </svg>
+      </button>
+      <h1
+        style="
+          font-size: 1.2rem;
+          width: 100%;
+          text-align: center;
+          margin: 0;
+          padding: 0;
+        "
       >
-        <path
-          d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"
-        />
-      </svg>
-    </button>
-    <div style="display: flex; justify-content: center; align-items: center; margin: 1rem 0">
-      <h1 style="font-size: 1.2rem; margin: 0; padding: 0">Rtlify ChatGPT</h1>
-    </div>
-    <footer id="popupFooter" class="popup-footer">
+        Rtlify ChatGPT
+      </h1>
+    </header>
+    <main id="popupMain" class="popup-main">
+      <div id="toastContainer" class="toast-container">
+        <div id="newReleaseToast" class="toast" role="alert">
+          <div class="toast-header">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#434343"
+              >
+                <path
+                  d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58-136 58Zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24 58 96Zm102-318Zm-42 142 226-226-56-58-170 170-86-84-56 56 142 142Z"
+                />
+              </svg>
+              <strong id="newReleaseToastTitle" class="me-auto"></strong>
+            </div>
+            <!-- <small class="text-body-secondary">11 mins ago</small> -->
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">
+            <p id="newReleaseToastMessage"></p>
+            <a id="newReleaseToastLink" href="#"></a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer dir="ltr" id="popupFooter" class="popup-footer">
       <div class="author-container">
         <p class="author">
           Made with
@@ -41,11 +84,11 @@
           by
           <a id="authorLink" href="https://github.com/Yedidya10">Yedidya</a>
         </p>
-        <a href="#" id="buyMeACoffee"
+        <a href="#" style="margin: 0; padding: 0" id="buyMeACoffee"
           ><img
             src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
             alt="Buy Me A Coffee"
-            style="height: 30px !important"
+            style="width: 120px !important"
         /></a>
       </div>
       <div class="version-container">
@@ -68,6 +111,6 @@
         </div>
       </div>
     </footer>
-    <script src="popup.js"></script>
+    <script type="module" src="./popup.js"></script>
   </body>
 </html>

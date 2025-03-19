@@ -5,8 +5,7 @@
 }
 
 body {
-  direction: __MSG_ @@bidi_dir__;
-  min-width: 400px;
+  min-width: 330px;
   width: 100%;
   max-width: 800px;
   font-family: "Open Sans", sans-serif;
@@ -71,6 +70,10 @@ p {
   margin: 0;
 }
 
+.popup-header {
+  height: 50px;
+}
+
 .close-popup {
   width: 32px;
   height: 32px;
@@ -85,6 +88,98 @@ p {
   padding: 5px;
   cursor: pointer;
 }
+
+.popup-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.toast-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.toast {
+  color: #333;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  font-family: "Arial", sans-serif;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  margin: 10px 0;
+  transform: translateY(0);
+}
+
+.toast .toast-header {
+  background: #e0e0e0;
+  color: #444;
+  padding: 8px 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.toast .toast-header div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast .toast-header svg {
+  width: 20px;
+  height: 20px;
+  fill: #555;
+}
+
+.toast .btn-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.2s ease;
+}
+
+.toast .btn-close:hover {
+  color: #555;
+}
+
+.toast .toast-body {
+  padding: 15px;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+#newReleaseToastLink {
+  display: inline-block;
+  margin-top: 8px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+#newReleaseToastLink:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
 .popup-footer {
   display: flex;
   justify-content: space-between;

@@ -6,9 +6,8 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
   }
 
   if (reason === "update") {
-    chrome.tabs.create({
-      url: "whatsNewPage/whatsNew.html",
-    });
+    await chrome.storage.sync.set({ showWhatsNewToast: true });
+    await chrome.action.openPopup();
   }
 });
 
