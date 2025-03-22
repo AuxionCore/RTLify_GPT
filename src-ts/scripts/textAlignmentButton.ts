@@ -206,9 +206,12 @@
       }
     }
 
+    let firstCharDetected = false;
+
     async function handleInputEvent(e: Event) {
       e.preventDefault();
       let contentElement: HTMLElement | null;
+
       if ((e.target as HTMLElement).tagName === "P") {
         contentElement = e.target as HTMLElement;
       } else {
@@ -216,21 +219,64 @@
       }
 
       if (contentElement) {
-        const text = contentElement.innerText;
-        if (text.trim().length > 0) {
-          const firstChar = text.trim().charAt(0);
-          const detectedDirection = detectDirectionFromChar(firstChar);
-          if (detectedDirection === "rtl") {
-            await setAlignment("right");
-          } else if (detectedDirection === "ltr") {
-            await setAlignment("left");
+        const text = contentElement.innerText.trim();
+
+        if (text.length === 0) {
+          firstCharDetected = false;
+          return;
+        }
+
+        if (firstCharDetected) return;
+
+        for (let char of text) {
+          const detectedDirection = detectDirectionFromChar(char);
+
+          if (detectedDirection) {
+            await setAlignment(detectedDirection === "rtl" ? "right" : "left");
+            firstCharDetected = true;
+            break;
           }
         }
       }
     }
 
-    promptTextarea.removeEventListener("input", handleInputEvent);
+    function handlePasteEvent(e: ClipboardEvent) {
+      if (
+        promptTextarea.textContent?.trim() ===
+        e.clipboardData?.getData("text/plain").trim()
+      ) {
+        setTimeout(() => handleInputEvent(e), 0);
+      } else {
+        return;
+      }
+    }
+
+    function handleCutEvent(e: ClipboardEvent) {
+      const isPromptTextareaEmpty = promptTextarea.textContent?.trim() === "";
+      if (isPromptTextareaEmpty) {
+        console.log("isPromptTextareaEmpty:", isPromptTextareaEmpty);
+        setTimeout(() => handleInputEvent(e), 0);
+      } else {
+        return;
+      }
+    }
+
+    function handleDeleteKeyEvent(e: KeyboardEvent) {
+      if (e.key === "Backspace" || e.key === "Delete") {
+        const isPromptTextareaEmpty = promptTextarea.textContent?.trim() === "";
+        if (isPromptTextareaEmpty) {
+          console.log("isPromptTextareaEmpty:", isPromptTextareaEmpty);
+          setTimeout(() => handleInputEvent(e), 0);
+        } else {
+          return;
+        }
+      }
+    }
+
     promptTextarea.addEventListener("input", handleInputEvent);
+    promptTextarea.addEventListener("paste", handlePasteEvent);
+    promptTextarea.addEventListener("cut", handleCutEvent);
+    promptTextarea.addEventListener("keydown", handleDeleteKeyEvent);
 
     // const observer = new MutationObserver((mutations) => {
     //   let hasChanged = false;
