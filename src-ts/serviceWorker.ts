@@ -7,7 +7,6 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
 
   if (reason === "update") {
     await chrome.storage.sync.set({ showWhatsNewToast: true });
-    await chrome.action.openPopup();
   }
 });
 

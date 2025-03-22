@@ -5,6 +5,7 @@
     newReleaseToastTitle: "newReleaseToastTitle",
     newReleaseToastMessage: "newReleaseToastMessage",
     newReleaseToastLink: "newReleaseToastLink",
+    closeToastButton: "closeToastButton",
     authorLink: "authorLink",
     buyMeACoffee: "buyMeACoffee",
     version: "version",
@@ -30,7 +31,9 @@
 
   async function setWhatsNewToast() {
     const newReleaseToast = document.getElementById(elements.newReleaseToast)!;
-    newReleaseToast.classList.add("show");
+    const closeToastButton = document.getElementById(
+      elements.closeToastButton
+    )!;
     const newReleaseToastTitle = document.getElementById(
       elements.newReleaseToastTitle
     )!;
@@ -45,11 +48,16 @@
     newReleaseToastMessage.textContent = extensionWasUpdated;
     newReleaseToastLink.textContent = whatsNewLinkText;
     newReleaseToastLink.setAttribute("title", whatsNewLinkText);
+
+    newReleaseToast.classList.add("show");
     newReleaseToastLink.addEventListener("click", () =>
       openTab("whatsNewPage/whatsNew.html")
     );
 
-    await chrome.storage.sync.set({ showWhatsNewToast: false });
+    closeToastButton.addEventListener("click", async () => {
+      newReleaseToast.classList.remove("show");
+      await chrome.storage.sync.set({ showWhatsNewToast: false });
+    });
   }
 
   function setClosePopupButton() {
