@@ -82,16 +82,12 @@
     "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
   },
   "improvement1": {
-    "message": "תיקון חוסר תמיכה בצבע מצב בהיר בכפתור היישור",
-    "description": "Fix lack of support for light mode color in the align button"
+    "message": "תיקון מצב בו הקלדת טקסט משנה יישור גם לאחר לחיצה על כפתור \"יישור טקסט\" לכיוון ההפוך",
+   "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
   },
   "improvement2": {
-    "message": "הצגת התראה על מה חדש בחלון הקופץ כאשר התוסף מתעדכן במקום כרטיסייה חדשה",
-    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
-  },
-  "improvement3": {
-    "message": "תיקון קישורים לא פעילים בחלון קופץ",
-    "description": "Fixing inactive links on the Popup page"
+    "message": "ביטול פתיחת חלון קופץ אוטומטית בכל עדכון של התוסף",
+    "description": "Disable automatic pop-up window opening on every extension update"
   },
   "comingSoonTitle": {
     "message": "בקרוב",

@@ -87,7 +87,7 @@
   },
   "improvement2": {
     "message": "Disable automatic pop-up window opening on every extension update",
-    "description": "DDisable automatic pop-up window opening on every extension update"
+    "description": "Disable automatic pop-up window opening on every extension update"
   },
   "comingSoonTitle": {
     "message": "Coming soon",
