@@ -254,7 +254,6 @@
     function handleCutEvent(e: ClipboardEvent) {
       const isPromptTextareaEmpty = promptTextarea.textContent?.trim() === "";
       if (isPromptTextareaEmpty) {
-        console.log("isPromptTextareaEmpty:", isPromptTextareaEmpty);
         setTimeout(() => handleInputEvent(e), 0);
       } else {
         return;
@@ -265,7 +264,6 @@
       if (e.key === "Backspace" || e.key === "Delete") {
         const isPromptTextareaEmpty = promptTextarea.textContent?.trim() === "";
         if (isPromptTextareaEmpty) {
-          console.log("isPromptTextareaEmpty:", isPromptTextareaEmpty);
           setTimeout(() => handleInputEvent(e), 0);
         } else {
           return;
@@ -287,15 +285,13 @@
     //       mutation.type === "characterData"
     //     ) {
     //       const paragraphs = promptTextarea.querySelectorAll("p");
-    //       console.log("paragraphs:", paragraphs);
 
     //       paragraphs.forEach((contentElement) => {
     //         const text = contentElement.innerText.trim();
     //         if (text.length > 0) {
-    //           console.log("text:", text);
+
     //           const firstChar = text.charAt(0);
     //           const detectedDirection = detectDirectionFromChar(firstChar);
-    //           console.log("detectedDirection:", detectedDirection);
 
     //           const newDirection = detectedDirection;
     //           const newAlign = detectedDirection === "rtl" ? "right" : "left";
@@ -306,8 +302,6 @@
     //             contentElement.style.textAlign !== newAlign
     //           ) {
     //             // Set the new direction and alignment
-    //             console.log(contentElement.style.direction, newDirection);
-    //             console.log(contentElement.style.textAlign, newAlign);
     //             contentElement.setAttribute("style", `direction: ${newDirection}; text-align: ${newAlign};`);
     //             contentElement.style.textAlign = newAlign;
 
