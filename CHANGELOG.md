@@ -5,19 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Added
+
+## [1.2.0] - 2025-03-23
+
+- Feature: Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once.
+
+### Fixed
+
+- Fixed a situation where typing text changes alignment even after clicking the "Text Alignment" button to the opposite direction.
+
+### Changed
+
+- Disable automatic pop-up window opening on every extension update.
+
+## [1.1.1] - 2025-03-20
+
+### Added
+
+- Feature: Saving a user preference for repeated use.
+
+### Fixed
+
+- Fixing inactive links on the Popup page.
+
+### Changed
+
+- Display alert of what's new in the popup when extension is updated instead of a new tab.
+
 ## [1.1.0] - 2025-03-14
 
 ### Added
 
-- Feature 1: Align text direction in chat box to first letter in conversation
+- Feature 1: Align text direction in chat box to first letter in conversation.
 - Feature 2: Saving a user preference for repeated use.
-- Adding pages for extension installations and updates
-- Installing and using vite
+- Adding pages for extension installations and updates.
+- Installing and using vite.
 
 ### Changed
 
-- Dynamically display extension version in popup
-- Implement ts support
+- Dynamically display extension version in popup.
+- Implement ts support.
 
 ## [1.0.1] - 2025-03-08
 
@@ -28,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Displaying multiple "Text Alignment" buttons when landing on the main chat page.
-- Update feedback link in popup.js to correct extension URL
+- Update feedback link in popup.js to correct extension URL.
 
 ### Removed
 
