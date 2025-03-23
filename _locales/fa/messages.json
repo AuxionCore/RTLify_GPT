@@ -77,17 +77,17 @@
     "message": "ذخیره ترجیح کاربر برای استفاده تکراری",
     "description": "Saving a user preference for repeated use"
   },
+  "feature5": {
+    "message": "تطبیق خودکار حتی بعد از برش یا چسباندن متن، و همچنین پشتیبانی از حذف کل متن به یکباره",
+    "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
+  },
   "improvement1": {
-    "message": "رفع عدم پشتیبانی از رنگ حالت روشن در دکمه تراز",
-    "description": "Fix lack of support for light mode color in the align button"
+    "message": "رفع موقعیتی که تایپ کردن متن باعث تغییر تراز شود حتی بعد از کلیک بر روی دکمه \"تراز متن\" به جهت مخالف",
+    "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
   },
   "improvement2": {
-    "message": "نمایش هشدار در پنجره جدید به جای تب جدید هنگام به روزرسانی افزونه",
-    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
-  },
-  "improvement3": {
-    "message": "رفع پیوندهای غیرفعال در صفحه پاپ‌آپ",
-    "description": "Fixing inactive links on the Popup page"
+    "message": "غیرفعال کردن باز شدن خودکار پنجره بازشو در هر به‌روزرسانی افزونه",
+    "description": "Disable automatic pop-up window opening on every extension update"
   },
   "comingSoonTitle": {
     "message": "به زودی",

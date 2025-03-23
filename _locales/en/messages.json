@@ -77,17 +77,17 @@
     "message": "Saving a user preference for repeated use",
     "description": "Saving a user preference for repeated use"
   },
+  "feature5": {
+    "message": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once",
+    "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
+  },
   "improvement1": {
-    "message": "Fixing lack of support for light mode color in the align button",
-    "description": "Fix lack of support for light mode color in the align button"
+    "message": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction",
+    "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
   },
   "improvement2": {
-    "message": "Display alert of what's new in the popup when extension is updated instead of a new tab",
-    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
-  },
-  "improvement3": {
-    "message": "Fixing inactive links on the Popup page",
-    "description": "Fixing inactive links on the Popup page"
+    "message": "Disable automatic pop-up window opening on every extension update",
+    "description": "DDisable automatic pop-up window opening on every extension update"
   },
   "comingSoonTitle": {
     "message": "Coming soon",

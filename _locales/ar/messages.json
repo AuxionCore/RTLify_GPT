@@ -77,17 +77,17 @@
     "message": "تمت إضافة دعم لوضع النص الفاتح في زر المحاذاة",
     "description": "Fix lack of support for light mode color in the align button"
   },
+  "feature5": {
+    "message": "تمت إضافة دعم للمحاذاة التلقائية حتى بعد قص أو لصق النص، بالإضافة إلى دعم حذف كل النص دفعة واحدة",
+    "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
+  },
   "improvement1": {
-    "message": "عرض تنبيه بما الجديد في النافذة المنبثقة عند تحديث الإضافة بدلاً من علامة تبويب جديدة",
-    "description": "Display alert of what's new in the popup when extension is updated instead of a new tab"
+    "message": "تم إصلاح الموقف الذي يتسبب في تغيير محاذاة النص المكتوب حتى بعد النقر على زر \"محاذاة النص\" في الاتجاه المعاكس",
+    "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
   },
   "improvement2": {
-    "message": "تحسينات في الأداء وإصلاح الأخطاء",
-    "description": "Performance improvements and bug fixes"
-  },
-  "improvement3": {
-    "message": "إصلاح الروابط الغير نشطة على صفحة النافذة المنبثقة",
-    "description": "Fixing inactive links on the Popup page"
+    "message": "تمت إضافة خيار لتعطيل فتح النافذة المنبثقة تلقائيًا عند كل تحديث للإضافة",
+    "description": "Disable automatic pop-up window opening on every extension update"
   },
   "comingSoonTitle": {
     "message": "قريبًا",

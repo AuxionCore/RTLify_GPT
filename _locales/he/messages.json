@@ -77,6 +77,10 @@
     "message": "שמירת העדפת משתמש לשימוש חוזר",
     "description": "Saving a user preference for repeated use"
   },
+  "feature5": {
+    "message": "יישום יישור אוטומטי אף לאחר גזירה או הדבקת טקסט, כמו גם תמיכה במחיקת כל הטקסט בפעם אחת",
+    "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
+  },
   "improvement1": {
     "message": "תיקון חוסר תמיכה בצבע מצב בהיר בכפתור היישור",
     "description": "Fix lack of support for light mode color in the align button"
