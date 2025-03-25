@@ -28,15 +28,16 @@
 />`;
 
   try {
-    function getComposerBackgroundElement(): Promise<HTMLElement> {
-      return new Promise<HTMLElement>((resolve) => {
+    // Get the form element with the data-type="unified-composer" attribute
+    function getMainFormElement(): Promise<HTMLElement> {
+      return new Promise<HTMLFormElement>((resolve) => {
         const interval = setInterval(() => {
-          const composerBackgroundElement = document.getElementById(
-            "composer-background"
+          const formElement = document.querySelector(
+            "form[data-type='unified-composer']"
           );
-          if (composerBackgroundElement) {
+          if (formElement) {
             clearInterval(interval);
-            resolve(composerBackgroundElement as HTMLElement);
+            resolve(formElement as HTMLFormElement);
           }
         }, 500);
       });
@@ -59,16 +60,16 @@
     }
 
     let alignState = await getAlignState();
-    const composerBackgroundElement = await getComposerBackgroundElement();
-    const promptTextarea = composerBackgroundElement.querySelector(
+    const mainFormElement = await getMainFormElement();
+    const promptTextarea = mainFormElement.querySelector(
       "#prompt-textarea"
     ) as HTMLTextAreaElement;
 
     promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
     promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
 
-    const textareaMenu = composerBackgroundElement.querySelector(
-      ".justify-between .text-token-text-primary"
+    const textareaMenu = mainFormElement.querySelector(
+      '.bg-primary-surface-primary > div > .flex, .bg-primary-surface-primary > div > .items-center, .bg-primary-surface-primary > div > .gap-2, .bg-primary-surface-primary > div > .max-xs\\:gap-1'
     );
 
     let alignElement: AlignIconBtn | null = null;
@@ -92,6 +93,9 @@
       const alignButton = alignElement.querySelector(
         "#alignButton"
       ) as HTMLDivElement;
+
+      console.log(alignButton);
+
       const svgIcon = alignElement.querySelector("svg") as SVGElement;
 
       alignState = alignState === "left" ? "right" : "left";
@@ -100,6 +104,7 @@
         alignState === "left" ? formatAlignRightPathEl : formatAlignLeftPathEl;
 
       alignButton.setAttribute("title", newTitle);
+      alignButton.setAttribute("aria-label", newTitle);
       svgIcon.innerHTML = newSvgPathEl;
 
       promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
@@ -123,41 +128,32 @@
 
       alignElement.innerHTML =
         `
-      <div class="relative">
-        <div class="relative">
-          <span class="flex">
-            <div class="flex">
-              <button
-                id="alignButton"
-                role="button"
-                aria-label=` +
-        formatAlignText +
-        `
-                title=` +
-        formatAlignText +
-        `
-                class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700"
-              >
-                <svg
-                  height="20px"
-                  viewBox="0 -960 960 960"
-                  width="20px"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-label=""
-                  class="h-[18px] w-[18px]"
-                >
-                  ` +
-        formatAlignPathEl +
-        `
-                  />
-                </svg>
-              </button>
-            </div>
-          </span>
-        </div>
+
+    <span class="" data-state="closed">
+      <div
+        class="inline-flex h-9 rounded-full border text-[13px] font-medium radix-state-open:bg-black/10 text-token-text-secondary border-token-border-light focus-visible:outline-black can-hover:hover:bg-token-main-surface-secondary dark:focus-visible:outline-white dark:can-hover:hover:bg-gray-700">
+        <button
+          id="alignButton"
+          aria-label="${formatAlignText}" 
+          title="${formatAlignText}" 
+          class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700"
+        >
+          <svg 
+            width="24" 
+            height="24"
+            viewBox="0 -960 960 960" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="" 
+            class="h-[18px] w-[18px]"
+          >
+            ${formatAlignPathEl}
+          </svg>
+        </button>
       </div>
-    `;
+    </span>
+
+`;
 
       textareaMenu.prepend(alignElement);
 
@@ -196,6 +192,7 @@
             : formatAlignLeftPathEl;
 
         alignButton.setAttribute("title", newTitle);
+        alignButton.setAttribute("aria-label", newTitle);
         svgIcon.innerHTML = newSvgPath;
       }
 
