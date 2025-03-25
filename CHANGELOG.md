@@ -5,9 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### Added
+## [1.2.1] - 2025-03-26
+
+### Fixed
+
+- fix: changing selectors to display an align button according to the new style on the site
 
 ## [1.2.0] - 2025-03-23
+
+### Added
 
 - Feature: Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once.
 
