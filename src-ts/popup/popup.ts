@@ -1,11 +1,15 @@
 (async function () {
   const elements = {
     closePopup: "closePopup",
+    errorToast: "errorToast",
+    errorToastTitle: "errorToastTitle",
+    errorToastMessage: "errorToastMessage",
+    closeErrorToastButton: "closeErrorToastButton",
     newReleaseToast: "newReleaseToast",
     newReleaseToastTitle: "newReleaseToastTitle",
     newReleaseToastMessage: "newReleaseToastMessage",
     newReleaseToastLink: "newReleaseToastLink",
-    closeToastButton: "closeToastButton",
+    closeNewReleaseToastButton: "closeNewReleaseToastButton",
     authorLink: "authorLink",
     buyMeACoffee: "buyMeACoffee",
     version: "version",
@@ -19,12 +23,17 @@
     `🎉`,
   ]);
   const whatsNewLinkText = chrome.i18n.getMessage("whatsNewLinkText");
-  const storageData = await chrome.storage.sync.get("showWhatsNewToast");
+  const storageData = await chrome.storage.sync.get([
+    "showWhatsNewToast",
+    "showErrorToast",
+  ]);
   const showWhatsNewToast = storageData.showWhatsNewToast;
+  const showErrorToast = storageData.showErrorToast;
 
   async function setupPopup() {
     setClosePopupButton();
     setEventListeners();
+    if (showErrorToast) await setErrorToast();
     if (showWhatsNewToast) await setWhatsNewToast();
     setVersion();
   }
@@ -32,7 +41,7 @@
   async function setWhatsNewToast() {
     const newReleaseToast = document.getElementById(elements.newReleaseToast)!;
     const closeToastButton = document.getElementById(
-      elements.closeToastButton
+      elements.closeNewReleaseToastButton
     )!;
     const newReleaseToastTitle = document.getElementById(
       elements.newReleaseToastTitle
@@ -56,7 +65,30 @@
 
     closeToastButton.addEventListener("click", async () => {
       newReleaseToast.classList.remove("show");
-      await chrome.storage.sync.set({ showWhatsNewToast: false });
+      await chrome.runtime.sendMessage({
+        action: "closeToast",
+        type: "whatsNew",
+      });
+    });
+  }
+
+  async function setErrorToast() {
+    const errorToast = document.getElementById(elements.errorToast)!;
+    const closeToastButton = document.getElementById(elements.closeErrorToastButton)!;
+    const errorToastTitle = document.getElementById(elements.errorToastTitle)!;
+    const errorToastMessage = document.getElementById(
+      elements.errorToastMessage
+    )!;
+    const storageData = await chrome.storage.sync.get("errorToastMessage");
+    const errorToastMessageText = storageData.errorToastMessage;
+
+    errorToastTitle.textContent = chrome.i18n.getMessage("errorToastTitle") || "Error Alert";
+    errorToastMessage.textContent = errorToastMessageText;
+
+    errorToast.classList.add("show");
+    closeToastButton.addEventListener("click", async () => {
+      errorToast.classList.remove("show");
+      await chrome.runtime.sendMessage({ action: "closeToast", type: "error" });
     });
   }
 
