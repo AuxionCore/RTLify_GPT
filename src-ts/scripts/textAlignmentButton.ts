@@ -29,15 +29,23 @@
 
   try {
     // Get the form element with the data-type="unified-composer" attribute
-    function getMainFormElement(): Promise<HTMLElement> {
-      return new Promise<HTMLFormElement>((resolve) => {
+    function getMainFormElement(timeout = 30000): Promise<HTMLFormElement> {
+      return new Promise<HTMLFormElement>((resolve, reject) => {
+        const startTime = Date.now();
+
         const interval = setInterval(() => {
           const formElement = document.querySelector(
             "form[data-type='unified-composer']"
           );
+
           if (formElement) {
             clearInterval(interval);
             resolve(formElement as HTMLFormElement);
+          }
+
+          if (Date.now() - startTime >= timeout) {
+            clearInterval(interval);
+            reject(new Error("Timeout: Form element not found within 30 seconds"));
           }
         }, 500);
       });
@@ -93,8 +101,6 @@
       const alignButton = alignElement.querySelector(
         "#alignButton"
       ) as HTMLDivElement;
-
-      console.log(alignButton);
 
       const svgIcon = alignElement.querySelector("svg") as SVGElement;
 
@@ -332,7 +338,17 @@
     //   subtree: true,
     //   characterData: true,
     // });
+    await chrome.runtime.sendMessage({
+      action: "showToast",
+      type: "error",
+      body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
+    });
   } catch (error) {
     console.error(error);
+    await chrome.runtime.sendMessage({
+      action: "showToast",
+      type: "error",
+      body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
+    });
   }
 })();
