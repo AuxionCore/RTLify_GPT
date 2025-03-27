@@ -338,17 +338,20 @@
     //   subtree: true,
     //   characterData: true,
     // });
-    await chrome.runtime.sendMessage({
-      action: "showToast",
-      type: "error",
-      body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
-    });
   } catch (error) {
     console.error(error);
-    await chrome.runtime.sendMessage({
-      action: "showToast",
-      type: "error",
-      body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
-    });
+    if (error === "Timeout: Form element not found within 30 seconds") {
+      await chrome.runtime.sendMessage({
+        action: "showToast",
+        type: "error",
+        body: "An error occurred when trying to apply the text alignment feature, probably because of a update in the ChatGPT interface. We apologize for the inconvenience and are working to resolve the issue.",
+      });
+    } else {
+      await chrome.runtime.sendMessage({
+        action: "showToast",
+        type: "error",
+        body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
+      });
+    }
   }
 })();
