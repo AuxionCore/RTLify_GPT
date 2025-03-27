@@ -5,11 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-03-XX
+
+### Added
+
+- Implement error toast functionality with badge updates and styling adjustments.
+- Add key to manifest for enhanced security and identification.
+
+### Fixed
+
+- Add timeout handling and error messaging for form element retrieval in text alignment feature.
+- Ensure popup opens after setting error toast message in service worker
+
+
 ## [1.2.1] - 2025-03-26
 
 ### Fixed
 
-- fix: changing selectors to display an align button according to the new style on the site
+- Fix: Changing selectors to display an align button according to the new style on the site
 
 ## [1.2.0] - 2025-03-23
 
