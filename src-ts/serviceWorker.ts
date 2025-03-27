@@ -59,7 +59,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
       chrome.storage.sync.set({ errorToastMessage: message.body });
     }
 
-    chrome.action.openPopup();
+    await chrome.action.openPopup();
   }
 
   if (message.action === "closeToast") {
