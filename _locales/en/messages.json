@@ -41,6 +41,18 @@
       }
     }
   },
+  "feedbackTitle": {
+    "message": "Feedback",
+    "description": "Feedback title"
+  },
+  "bagReportTitle": {
+    "message": "Report a bug",
+    "description": "Report a bug title"
+  },
+  "rateUsTitle": {
+    "message": "Please rate us on the Chrome Web Store",
+    "description": "Rate us title"
+  },
   "whatsNewTitle": {
     "message": "What's new in this version",
     "description": "What's new title"
@@ -100,10 +112,6 @@
   "comingSoonFeature1": {
     "message": "Improving the display of mathematical text more accurately",
     "description": "Improving the display of mathematical text more accurately"
-  },
-  "feedbackTitle": {
-    "message": "Feedback",
-    "description": "Feedback title"
   },
   "feedbackMessage": {
     "message": "We would love to hear your feedback!",

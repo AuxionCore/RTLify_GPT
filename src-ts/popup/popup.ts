@@ -14,6 +14,8 @@
     buyMeACoffee: "buyMeACoffee",
     version: "version",
     feedbackLink: "feedbackLink",
+    rateUsLink: "rateUsLink",
+    rateUsLinkText: "rateUsLinkText",
   };
 
   const newReleaseTitle = chrome.i18n.getMessage("newReleaseTitle");
@@ -33,9 +35,11 @@
   async function setupPopup() {
     setClosePopupButton();
     setEventListeners();
+    setFeedbackLink();
+    setVersion();
+    setRateUsLinkText();
     if (showErrorToast) await setErrorToast();
     if (showWhatsNewToast) await setWhatsNewToast();
-    setVersion();
   }
 
   async function setWhatsNewToast() {
@@ -102,6 +106,7 @@
   }
 
   function setEventListeners() {
+    const extensionId = chrome.runtime.id;
     const links = [
       { id: elements.authorLink, url: "https://github.com/Yedidya10" },
       {
@@ -109,8 +114,16 @@
         url: "https://www.buymeacoffee.com/yedidya",
       },
       {
+        id: elements.version,
+        url: `chrome-extension://${extensionId}/whatsNewPage/whatsNew.html`,
+      },
+      {
         id: elements.feedbackLink,
-        url: "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support",
+        url: `https://chromewebstore.google.com/detail/${extensionId}/support`,
+      },
+      {
+        id: elements.rateUsLink,
+        url: `https://chromewebstore.google.com/detail/${extensionId}/reviews`,
       },
     ];
 
@@ -120,9 +133,22 @@
     });
   }
 
+  function setFeedbackLink() {
+    const feedbackLink = document.getElementById(elements.feedbackLink)!;
+    const feedbackText = chrome.i18n.getMessage("feedbackTitle") || "Feedback";
+    const bagReportText = chrome.i18n.getMessage("bugReportTitle") || "Report a Bug";
+    feedbackLink.textContent = `${feedbackText} / ${bagReportText}`;
+  }
+
   function setVersion() {
     const versionElement = document.getElementById(elements.version)!;
     versionElement.textContent = `v${versionNumber}`;
+  }
+
+  function setRateUsLinkText() {
+    const rateUsLink = document.getElementById(elements.rateUsLink)!;
+    const rateUsText = chrome.i18n.getMessage("rateUsTitle") || "Rate Us";
+    rateUsLink.textContent = `⭐ ${rateUsText}`;
   }
 
   function openTab(url: string): void {
