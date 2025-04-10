@@ -15,22 +15,32 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   try {
     // If the user navigates to a ChatGPT conversation, inject the mathTextAlignment and textAlignmentButton scripts
-    if (changeInfo.url && tab.url && tab.url.includes("chatgpt.com")) {
-      if (tab.url.includes("chatgpt.com/c/")) {
-        await chrome.scripting.executeScript({
-          target: { tabId: tabId },
-          files: [
-            "scripts/mathTextAlignment.js",
-            "scripts/textAlignmentButton.js",
-          ],
-        });
+    if (changeInfo.url && tab.url) {
+      if (tab.url.includes("chatgpt.com")) {
+        if (tab.url.includes("chatgpt.com/c/")) {
+          await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: [
+              "scripts/mathTextAlignment.js",
+              "scripts/textAlignmentButton.js",
+            ],
+          });
+        }
+
+        // If the user navigates to the main ChatGPT page, inject the textAlignmentButton script
+        if (!tab.url.includes("chatgpt.com/c/")) {
+          await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ["scripts/textAlignmentButton.js"],
+          });
+        }
       }
 
-      // If the user navigates to the main ChatGPT page, inject the textAlignmentButton script
-      if (!tab.url.includes("chatgpt.com/c/")) {
+      // If the user navigates to the Claude page, inject the rtlTextAlignment script
+      if (tab.url.includes("claude.ai/chat")) {
         await chrome.scripting.executeScript({
           target: { tabId: tabId },
-          files: ["scripts/textAlignmentButton.js"],
+          files: ["scripts/claude/rtlTextAlignment.js"],
         });
       }
     }
