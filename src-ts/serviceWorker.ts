@@ -15,8 +15,8 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   try {
     // If the user navigates to a ChatGPT conversation, inject the mathTextAlignment and textAlignmentButton scripts
-    if (changeInfo.url) {
-      if (tab.url && tab.url.includes("chatgpt.com/c/")) {
+    if (changeInfo.url && tab.url && tab.url.includes("chatgpt.com")) {
+      if (tab.url.includes("chatgpt.com/c/")) {
         await chrome.scripting.executeScript({
           target: { tabId: tabId },
           files: [
@@ -27,11 +27,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       }
 
       // If the user navigates to the main ChatGPT page, inject the textAlignmentButton script
-      if (
-        tab.url &&
-        tab.url.includes("chatgpt.com") &&
-        !tab.url.includes("chatgpt.com/c/")
-      ) {
+      if (!tab.url.includes("chatgpt.com/c/")) {
         await chrome.scripting.executeScript({
           target: { tabId: tabId },
           files: ["scripts/textAlignmentButton.js"],
