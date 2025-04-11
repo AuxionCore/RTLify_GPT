@@ -19,6 +19,10 @@
     "message": "برو به ChatGPT",
     "description": "Go to ChatGPT button text"
   },
+  "GoToClaudeAi": {
+    "message": "برو به Claude.ai",
+    "description": "Go to Claude.ai button text"
+  },
   "newReleaseTitle": {
     "message": "نسخه جدید منتشر شد",
     "description": "New release title"

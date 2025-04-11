@@ -19,6 +19,10 @@
     "message": "Go to ChatGPT",
     "description": "Go to ChatGPT website"
   },
+  "GoToClaudeAi": {
+    "message": "Go to Claude.ai",
+    "description": "Go to Claude.ai website"
+  },
   "newReleaseTitle": {
     "message": "New release available",
     "description": "New release title"

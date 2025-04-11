@@ -19,6 +19,10 @@
     "message": "انتقل إلى موقع ChatGPT",
     "description": "Go to ChatGPT website button text"
   },
+  "GoToClaudeAi": {
+    "message": "انتقل إلى موقع Claude",
+    "description": "Go to Claude website button text"
+  },
   "newReleaseTitle": {
     "message": "إصدار جديد متاح",
     "description": "New release title"

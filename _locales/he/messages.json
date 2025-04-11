@@ -19,6 +19,10 @@
     "message": "עבור ל-ChatGPT",
     "description": "Go to ChatGPT button text"
   },
+  "GoToClaudeAi": {
+    "message": "עבור ל-Claude.ai",
+    "description": "Go to Claude.ai button text"
+  },
   "newReleaseTitle": {
     "message": "גרסה חדשה שוחררה",
     "description": "New release title"
