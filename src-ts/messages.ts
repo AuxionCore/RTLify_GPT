@@ -13,6 +13,7 @@ const messageKeys = [
   "feature3Comment",
   "feature4",
   "feature5",
+  "feature6",
   "improvement1",
   "improvement2",
   "comingSoonTitle",
