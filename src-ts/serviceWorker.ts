@@ -1,4 +1,4 @@
-chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
   if (reason === "install") {
     chrome.tabs.create({
       url: "welcomePage/welcome.html",
@@ -9,6 +9,10 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
     await chrome.storage.sync.set({ showWhatsNewToast: true });
     chrome.action.setBadgeText({ text: "1" });
     chrome.action.setBadgeBackgroundColor({ color: "#008000" });
+  }
+
+  if (reason === "update" && previousVersion === "1.2.1") {
+    await chrome.action.openPopup();
   }
 });
 
