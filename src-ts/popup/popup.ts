@@ -8,6 +8,7 @@
     newReleaseToast: "newReleaseToast",
     newReleaseToastTitle: "newReleaseToastTitle",
     newReleaseToastMessage: "newReleaseToastMessage",
+    specialMessageForV2: "specialMessageForV2",
     newReleaseToastLink: "newReleaseToastLink",
     closeNewReleaseToastButton: "closeNewReleaseToastButton",
     authorLink: "authorLink",
@@ -24,6 +25,7 @@
     versionNumber,
     `🎉`,
   ]);
+  const version2Text = chrome.i18n.getMessage("feature6");
   const whatsNewLinkText = chrome.i18n.getMessage("whatsNewLinkText");
   const storageData = await chrome.storage.sync.get([
     "showWhatsNewToast",
@@ -56,9 +58,13 @@
     const newReleaseToastLink = document.getElementById(
       elements.newReleaseToastLink
     )!;
+    const specialMessageForV2 = document.getElementById(
+      elements.specialMessageForV2
+    )!;
 
     newReleaseToastTitle.textContent = newReleaseTitle;
     newReleaseToastMessage.textContent = extensionWasUpdated;
+    specialMessageForV2.textContent = version2Text;
     newReleaseToastLink.textContent = whatsNewLinkText;
     newReleaseToastLink.setAttribute("title", whatsNewLinkText);
 
@@ -78,7 +84,9 @@
 
   async function setErrorToast() {
     const errorToast = document.getElementById(elements.errorToast)!;
-    const closeToastButton = document.getElementById(elements.closeErrorToastButton)!;
+    const closeToastButton = document.getElementById(
+      elements.closeErrorToastButton
+    )!;
     const errorToastTitle = document.getElementById(elements.errorToastTitle)!;
     const errorToastMessage = document.getElementById(
       elements.errorToastMessage
@@ -86,7 +94,8 @@
     const storageData = await chrome.storage.sync.get("errorToastMessage");
     const errorToastMessageText = storageData.errorToastMessage;
 
-    errorToastTitle.textContent = chrome.i18n.getMessage("errorToastTitle") || "Error Alert";
+    errorToastTitle.textContent =
+      chrome.i18n.getMessage("errorToastTitle") || "Error Alert";
     errorToastMessage.textContent = errorToastMessageText;
 
     errorToast.classList.add("show");
@@ -136,7 +145,8 @@
   function setFeedbackLink() {
     const feedbackLink = document.getElementById(elements.feedbackLink)!;
     const feedbackText = chrome.i18n.getMessage("feedbackTitle") || "Feedback";
-    const bagReportText = chrome.i18n.getMessage("bugReportTitle") || "Report a Bug";
+    const bagReportText =
+      chrome.i18n.getMessage("bugReportTitle") || "Report a Bug";
     feedbackLink.textContent = `${feedbackText} / ${bagReportText}`;
   }
 
