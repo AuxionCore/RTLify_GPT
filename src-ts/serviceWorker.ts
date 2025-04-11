@@ -21,8 +21,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
           await chrome.scripting.executeScript({
             target: { tabId: tabId },
             files: [
-              "scripts/mathTextAlignment.js",
-              "scripts/textAlignmentButton.js",
+              "scripts/chatgpt/mathTextAlignment.js",
+              "scripts/chatgpt/textAlignmentButton.js",
             ],
           });
         }
@@ -31,7 +31,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
         if (!tab.url.includes("chatgpt.com/c/")) {
           await chrome.scripting.executeScript({
             target: { tabId: tabId },
-            files: ["scripts/textAlignmentButton.js"],
+            files: ["scripts/chatgpt/textAlignmentButton.js"],
           });
         }
       }
