@@ -41,6 +41,18 @@
       }
     }
   },
+  "feedbackTitle": {
+    "message": "משוב",
+    "description": "Feedback title"
+  },
+  "bugReportTitle": {
+    "message": "דיווח על באג",
+    "description": "Report a bug title"
+  },
+  "rateUsTitle": {
+    "message": "דרגו אותנו בחנות האינטרנט של Chrome",
+    "description": "Rate us title"
+  },
   "whatsNewTitle": {
     "message": "מה חדש בגרסה זו",
     "description": "What's new title"
@@ -100,10 +112,6 @@
   "comingSoonFeature1": {
     "message": "שיפור הצגת טקסט מתמטי באופן מדוייק יותר",
     "description": "Improving the display of mathematical text more accurately"
-  },
-  "feedbackTitle": {
-    "message": "משוב",
-    "description": "Feedback title"
   },
   "feedbackMessage": {
     "message": "אנחנו מעריכים מאוד את המשוב שלך. אם יש לך הערות, שאלות או הצעות, אנא צרו איתנו קשר.",

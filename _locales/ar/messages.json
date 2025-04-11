@@ -41,6 +41,18 @@
       }
     }
   },
+  "feedbackTitle": {
+    "message": "ملاحظات",
+    "description": "Feedback title"
+  },
+  "bugReportTitle": {
+    "message": "الإبلاغ عن خطأ",
+    "description": "Report a bug title"
+  },
+  "rateUsTitle": {
+    "message": "يرجى تقييمنا على متجر Chrome الإلكتروني",
+    "description": "Rate us title"
+  },
   "whatsNewTitle": {
     "message": "ما الجديد في هذا الإصدار",
     "description": "What's new title"
@@ -100,10 +112,6 @@
   "comingSoonFeature1": {
     "message": "تحسين عرض النصوص الرياضية بشكل أكثر دقة",
     "description": "Improving the display of mathematical text more accurately"
-  },
-  "feedbackTitle": {
-    "message": "ملاحظات",
-    "description": "Feedback title"
   },
   "feedbackMessage": {
     "message": "إذا كان لديك أي ملاحظات أو اقتراحات، فلا تتردد في إرسالها إلينا.",

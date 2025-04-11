@@ -179,11 +179,13 @@ p {
 }
 
 .popup-footer {
+  border-block-start: 1px solid #eaeaea;
+}
+
+.popup-footer-container {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  padding-block-start: 10px;
-  border-block-start: 1px solid #eaeaea;
 }
 
 .author-container {
@@ -231,4 +233,19 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.rate-us {
+  /* width: max-content; */
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 2px 10px;
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #0078d4;
+  background-color: #f7f7f7;
+  cursor: pointer;
 }

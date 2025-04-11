@@ -29,18 +29,22 @@
 
   try {
     // Get the form element with the data-type="unified-composer" attribute
-    function getMainFormElement(timeout = 30000): Promise<HTMLFormElement> {
-      return new Promise<HTMLFormElement>((resolve, reject) => {
+    function getFormElements(timeout = 30000): Promise<{ formElement: HTMLFormElement; promptTextarea: HTMLTextAreaElement }> {
+      return new Promise<{ formElement: HTMLFormElement; promptTextarea: HTMLTextAreaElement }>((resolve, reject) => {
         const startTime = Date.now();
 
         const interval = setInterval(() => {
           const formElement = document.querySelector(
             "form[data-type='unified-composer']"
-          );
+          ) as HTMLFormElement;
 
           if (formElement) {
+            const promptTextarea = formElement.querySelector(
+              "#prompt-textarea"
+            ) as HTMLTextAreaElement;
+
             clearInterval(interval);
-            resolve(formElement as HTMLFormElement);
+            resolve({ formElement, promptTextarea });
           }
 
           if (Date.now() - startTime >= timeout) {
@@ -70,10 +74,9 @@
     }
 
     let alignState = await getAlignState();
-    const mainFormElement = await getMainFormElement();
-    const promptTextarea = mainFormElement.querySelector(
-      "#prompt-textarea"
-    ) as HTMLTextAreaElement;
+    const mainFormElements = await getFormElements();
+    const mainFormElement = mainFormElements.formElement;
+    const promptTextarea = mainFormElements.promptTextarea;
 
     promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
     promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
@@ -135,32 +138,30 @@
         alignState === "left" ? formatAlignRightPathEl : formatAlignLeftPathEl;
 
       alignElement.innerHTML = `
-
-    <span class="" data-state="closed">
-      <div
-        class="inline-flex h-9 rounded-full border text-[13px] font-medium radix-state-open:bg-black/10 text-token-text-secondary border-token-border-light focus-visible:outline-black can-hover:hover:bg-token-main-surface-secondary dark:focus-visible:outline-white dark:can-hover:hover:bg-gray-700">
-        <button
-          id="alignButton"
-          aria-label="${formatAlignText}" 
-          title="${formatAlignText}" 
-          class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700"
-        >
-          <svg 
-            width="24" 
-            height="24"
-            viewBox="0 -960 960 960" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="" 
-            class="h-[18px] w-[18px]"
-          >
-            ${formatAlignPathEl}
-          </svg>
-        </button>
-      </div>
-    </span>
-
-`;
+        <span class="" data-state="closed">
+          <div
+            class="inline-flex h-9 rounded-full border text-[13px] font-medium radix-state-open:bg-black/10 text-token-text-secondary border-token-border-light focus-visible:outline-black can-hover:hover:bg-token-main-surface-secondary dark:focus-visible:outline-white dark:can-hover:hover:bg-gray-700">
+            <button
+              id="alignButton"
+              aria-label="${formatAlignText}" 
+              title="${formatAlignText}" 
+              class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700"
+            >
+              <svg 
+                width="24" 
+                height="24"
+                viewBox="0 -960 960 960" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="" 
+                class="h-[18px] w-[18px]"
+              >
+                ${formatAlignPathEl}
+              </svg>
+            </button>
+          </div>
+        </span>
+      `;
 
       textareaMenu.prepend(alignElement);
 
