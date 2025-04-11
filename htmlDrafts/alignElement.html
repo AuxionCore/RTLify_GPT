@@ -1,14 +1,51 @@
+<!-- Draft: alignElement for ChatGPT -->
 `
 <span class="" data-state="closed">
   <div
-    class="inline-flex h-9 rounded-full border text-[13px] font-medium radix-state-open:bg-black/10 text-token-text-secondary border-token-border-light focus-visible:outline-black can-hover:hover:bg-token-main-surface-secondary dark:focus-visible:outline-white dark:can-hover:hover:bg-gray-700">
-    <button aria-label="${formatAlignText}" title="${formatAlignText}" id="alignButton"
-      class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700">
-      <svg width="24" height="24" viewBox="0 -960 960 960" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label=""
-        class="h-[18px] w-[18px]">
+    class="inline-flex h-9 rounded-full border text-[13px] font-medium radix-state-open:bg-black/10 text-token-text-secondary border-token-border-light focus-visible:outline-black can-hover:hover:bg-token-main-surface-secondary dark:focus-visible:outline-white dark:can-hover:hover:bg-gray-700"
+  >
+    <button
+      aria-label="${formatAlignText}"
+      title="${formatAlignText}"
+      id="alignButton"
+      class="flex items-center justify-center h-9 rounded-full border border-token-border-light text-token-text-secondary w-9 can-hover:hover:bg-token-main-surface-secondary dark:can-hover:hover:bg-gray-700"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 -960 960 960"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label=""
+        class="h-[18px] w-[18px]"
+      >
         ${formatAlignPathEl}
       </svg>
     </button>
   </div>
 </span>
 `;
+
+<!-- Draft: align svg for Claude -->
+`
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="currentColor"
+  viewBox="0 -960 960 960"
+>
+  ${formatAlignPathEl}
+</svg>
+`;
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  height="20px"
+  viewBox="0 -960 960 960"
+  width="20px"
+  fill="#434343"
+>
+  <path
+    d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"
+  />
+</svg>
