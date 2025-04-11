@@ -1,18 +1,18 @@
 {
   "extensionName": {
-    "message": "Rtlify ChatGPT - התאמת ChatGPT לשפה העברית",
+    "message": "Rtlify GPT - התאמת GPT לשפה העברית",
     "description": "שם התוסף"
   },
   "extensionDescription": {
-    "message": "התאם את ChatGPT לשפה המועדפת עליך",
+    "message": "התאם את GPT לשפה המועדפת עליך",
     "description": "תיאור התוסף"
   },
   "welcomeTitle": {
-    "message": "ברוכים הבאים לתוסף להתאמת ChatGPT לשפה העברית",
+    "message": "ברוכים הבאים לתוסף להתאמת GPT לשפה העברית",
     "description": "כותרת ברוכים הבאים"
   },
   "welcomeMessage": {
-    "message": "תודה שהתקנת את התוסף להתאמת ChatGPT לשפה העברית. עכשיו תוכל ליהנות משימוש ב-ChatGPT בשפה שאתה מעדיף.",
+    "message": "תודה שהתקנת את התוסף להתאמת GPT לשפה העברית. עכשיו תוכל ליהנות משימוש ב-GPT בשפה שאתה מעדיף.",
     "description": "Message of the welcome popup"
   },
   "GoToChatGpt": {
@@ -58,7 +58,7 @@
     "description": "What's new title"
   },
   "whatsNewMessage": {
-    "message": "אנו מעריכים את השימוש שלך בתוסף להתאמת ChatGPT לשפה העברית. כאן תוכל למצוא את השיפורים והתכונות החדשות בגרסה האחרונה.",
+    "message": "אנו מעריכים את השימוש שלך בתוסף להתאמת GPT לשפה העברית. כאן תוכל למצוא את השיפורים והתכונות החדשות בגרסה האחרונה.",
     "description": "What's new message"
   },
   "featuresTitle": {
@@ -93,9 +93,13 @@
     "message": "יישום יישור אוטומטי אף לאחר גזירה או הדבקת טקסט, כמו גם תמיכה במחיקת כל הטקסט בפעם אחת",
     "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
   },
+  "feature6": {
+    "message": "הוספת תמיכה מלאה באתר claude.ai",
+    "description": "Added support for claude.ai site"
+  },
   "improvement1": {
     "message": "תיקון מצב בו הקלדת טקסט משנה יישור גם לאחר לחיצה על כפתור \"יישור טקסט\" לכיוון ההפוך",
-   "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
+    "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
   },
   "improvement2": {
     "message": "ביטול פתיחת חלון קופץ אוטומטית בכל עדכון של התוסף",
@@ -106,12 +110,12 @@
     "description": "Coming soon title"
   },
   "comingSoonMessage": {
-    "message": "כאן תוכל למצוא עדכונים חדשים ותכונות חדשות בגרסה הבאה של ChatGPT.",
+    "message": "כאן תוכל למצוא עדכונים חדשים ותכונות חדשות בגרסה הבאה של התוסף.",
     "description": "Message of what's coming soon"
   },
   "comingSoonFeature1": {
-    "message": "שיפור הצגת טקסט מתמטי באופן מדוייק יותר",
-    "description": "Improving the display of mathematical text more accurately"
+    "message": "",
+    "description": ""
   },
   "feedbackMessage": {
     "message": "אנחנו מעריכים מאוד את המשוב שלך. אם יש לך הערות, שאלות או הצעות, אנא צרו איתנו קשר.",

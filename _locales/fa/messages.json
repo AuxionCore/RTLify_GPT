@@ -1,18 +1,18 @@
 {
   "extensionName": {
-    "message": "Rtlify ChatGPT - سازگاری ChatGPT با زبان فارسی",
+    "message": "Rtlify GPT - سازگاری GPT با زبان فارسی",
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "سازگاری ChatGPT با زبان فارسی",
+    "message": "سازگاری GPT با زبان فارسی",
     "description": "Description of the extension"
   },
   "welcomeTitle": {
-    "message": "به افزونه تطبیق ChatGPT با زبان فارسی خوش آمدید",
+    "message": "به افزونه تطبیق GPT با زبان فارسی خوش آمدید",
     "description": "Title of the welcome popup"
   },
   "welcomeMessage": {
-    "message": "از نصب افزونه برای تطبیق ChatGPT با زبان فارسی سپاسگزاریم. اکنون می توانید از استفاده از ChatGPT به زبانی که ترجیح می دهید لذت ببرید.",
+    "message": "از نصب افزونه برای تطبیق GPT با زبان فارسی سپاسگزاریم. اکنون می توانید از استفاده از GPT به زبانی که ترجیح می دهید لذت ببرید.",
     "description": "Message of the welcome popup"
   },
   "GoToChatGpt": {
@@ -58,7 +58,7 @@
     "description": "What's new title"
   },
   "whatsNewMessage": {
-    "message": "از استفاده شما از افزونه تطبیق ChatGPT با زبان فارسی سپاسگزاریم. در اینجا می توانید بهبودها و ویژگی های جدید در آخرین نسخه را ببینید.",
+    "message": "از استفاده شما از افزونه تطبیق GPT با زبان فارسی سپاسگزاریم. در اینجا می توانید بهبودها و ویژگی های جدید در آخرین نسخه را ببینید.",
     "description": "What's new message"
   },
   "featuresTitle": {
@@ -93,6 +93,10 @@
     "message": "تطبیق خودکار حتی بعد از برش یا چسباندن متن، و همچنین پشتیبانی از حذف کل متن به یکباره",
     "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
   },
+  "feature6": {
+    "message": "پشتیبانی کامل از وب‌سایت claude.ai اضافه شد",
+    "description": "Added support for claude.ai site"
+  },
   "improvement1": {
     "message": "رفع موقعیتی که تایپ کردن متن باعث تغییر تراز شود حتی بعد از کلیک بر روی دکمه \"تراز متن\" به جهت مخالف",
     "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
@@ -106,12 +110,12 @@
     "description": "Coming soon title"
   },
   "comingSoonMessage": {
-    "message": "اینجا می‌توانید به‌روزرسانی‌ها و ویژگی‌های جدید نسخه بعدی ChatGPT را ببینید.",
+    "message": "اینجا می‌توانید به‌روزرسانی‌ها و ویژگی‌های جدید نسخه بعدی GPT را ببینید.",
     "description": "Message of what's coming soon"
   },
   "comingSoonFeature1": {
-    "message": "بهبود نمایش دقیق‌تر متن‌های ریاضی",
-    "description": "Improving the display of mathematical text more accurately"
+    "message": "",
+    "description": ""
   },
   "feedbackMessage": {
     "message": "اگر هر گونه بازخورد یا پیشنهادی دارید، لطفاً با ما تماس بگیرید.",

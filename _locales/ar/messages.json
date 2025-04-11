@@ -1,18 +1,18 @@
 {
   "extensionName": {
-    "message": "Rtlify ChatGPT - تكييف ChatGPT للغة العربية",
+    "message": "Rtlify GPT - تكييف GPT للغة العربية",
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "اضبط ChatGPT على لغتك المفضلة",
+    "message": "اضبط GPT على لغتك المفضلة",
     "description": "Description of the extension"
   },
   "welcomeTitle": {
-    "message": "مرحبًا بك في البرنامج الإضافي لتكييف ChatGPT مع اللغة العربية",
+    "message": "مرحبًا بك في البرنامج الإضافي لتكييف GPT مع اللغة العربية",
     "description": "Title of the welcome popup"
   },
   "welcomeMessage": {
-    "message": "شكرًا لك على تثبيت البرنامج الإضافي لتكييف ChatGPT مع اللغة العربية. يمكنك الآن الاستمتاع باستخدام ChatGPT باللغة التي تفضلها.",
+    "message": "شكرًا لك على تثبيت البرنامج الإضافي لتكييف GPT مع اللغة العربية. يمكنك الآن الاستمتاع باستخدام GPT باللغة التي تفضلها.",
     "description": "Message of the welcome page"
   },
   "GoToChatGpt": {
@@ -58,7 +58,7 @@
     "description": "What's new title"
   },
   "whatsNewMessage": {
-    "message": "نقدر استخدامك للبرنامج الإضافي لتكييف ChatGPT مع اللغة العربية. يمكنك هنا العثور على التحسينات والميزات الجديدة في الإصدار الأخير.",
+    "message": "نقدر استخدامك للبرنامج الإضافي لتكييف GPT مع اللغة العربية. يمكنك هنا العثور على التحسينات والميزات الجديدة في الإصدار الأخير.",
     "description": "What's new message"
   },
   "featuresTitle": {
@@ -93,6 +93,10 @@
     "message": "تمت إضافة دعم للمحاذاة التلقائية حتى بعد قص أو لصق النص، بالإضافة إلى دعم حذف كل النص دفعة واحدة",
     "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
   },
+  "feature6": {
+    "message": "تمت إضافة دعم كامل لموقع claude.ai",
+    "description": "Added support for claude.ai site"
+  },
   "improvement1": {
     "message": "تم إصلاح الموقف الذي يتسبب في تغيير محاذاة النص المكتوب حتى بعد النقر على زر \"محاذاة النص\" في الاتجاه المعاكس",
     "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
@@ -106,12 +110,12 @@
     "description": "Coming soon title"
   },
   "comingSoonMessage": {
-    "message": "ستجد هنا تحديثات وميزات جديدة في الإصدار القادم من ChatGPT.",
+    "message": "ستجد هنا تحديثات وميزات جديدة في الإصدار القادم من GPT.",
     "description": "Message of what's coming soon"
   },
   "comingSoonFeature1": {
-    "message": "تحسين عرض النصوص الرياضية بشكل أكثر دقة",
-    "description": "Improving the display of mathematical text more accurately"
+    "message": "",
+    "description": ""
   },
   "feedbackMessage": {
     "message": "إذا كان لديك أي ملاحظات أو اقتراحات، فلا تتردد في إرسالها إلينا.",

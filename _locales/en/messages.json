@@ -1,18 +1,18 @@
 {
   "extensionName": {
-    "message": "Rtlify ChatGPT - ChatGPT RTL Support",
+    "message": "Rtlify GPT - GPT RTL Support",
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "Align ChatGPT to right-to-left languages",
+    "message": "Align GPT to right-to-left languages",
     "description": "Description of the extension"
   },
   "welcomeTitle": {
-    "message": "Welcome to Rtlify ChatGPT",
+    "message": "Welcome to Rtlify GPT",
     "description": "Title of the welcome popup"
   },
   "welcomeMessage": {
-    "message": "This extension helps you align chatGPT to right-to-left languages.",
+    "message": "This extension helps you align GPT to right-to-left languages.",
     "description": "Message of the welcome popup"
   },
   "GoToChatGpt": {
@@ -58,7 +58,7 @@
     "description": "What's new title"
   },
   "whatsNewMessage": {
-    "message": "Thank you for using Rtlify ChatGPT. Here you can find the improvements and new features in the latest version",
+    "message": "Thank you for using Rtlify GPT. Here you can find the improvements and new features in the latest version",
     "description": "What's new message"
   },
   "featuresTitle": {
@@ -93,6 +93,10 @@
     "message": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once",
     "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
   },
+  "feature6": {
+    "message": "Added full support for the claude.ai website",
+    "description": "Added support for claude.ai site"
+  },
   "improvement1": {
     "message": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction",
     "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
@@ -106,12 +110,12 @@
     "description": "Coming soon title"
   },
   "comingSoonMessage": {
-    "message": "Here you will find new updates and features in the next version of ChatGPT.",
+    "message": "Here you will find new updates and features in the next version of Rtlify GPT",
     "description": "Message of what's coming soon"
   },
   "comingSoonFeature1": {
-    "message": "Improving the display of mathematical text more accurately",
-    "description": "Improving the display of mathematical text more accurately"
+    "message": "",
+    "description": ""
   },
   "feedbackMessage": {
     "message": "We would love to hear your feedback!",
