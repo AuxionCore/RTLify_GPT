@@ -6,5 +6,7 @@ whatsNew.js
 welcome.js
 popup.js
 textAlignmentButton.js
+langTextAlignment.js
 mathTextAlignment.js
 serviceWorker.js
+rtlTextAlignment.js
