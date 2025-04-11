@@ -37,11 +37,24 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       }
 
       // If the user navigates to the Claude page, inject the rtlTextAlignment script
-      if (tab.url.includes("claude.ai/chat")) {
-        await chrome.scripting.executeScript({
-          target: { tabId: tabId },
-          files: ["scripts/claude/rtlTextAlignment.js"],
-        });
+      if (tab.url.includes("claude.ai")) {
+        if (tab.url.includes("claude.ai/chat")) {
+          await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: [
+              "scripts/claude/langTextAlignment.js",
+              "scripts/claude/mathTextAlignment.js",
+              "scripts/claude/textAlignmentButton.js",
+            ],
+          });
+        }
+
+        if (tab.url.includes("claude.ai/new")) {
+          await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ["scripts/claude/textAlignmentButton.js"],
+          });
+        }
       }
     }
   } catch (error) {
