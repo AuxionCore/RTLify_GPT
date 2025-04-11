@@ -45,7 +45,9 @@
 
           if (Date.now() - startTime >= timeout) {
             clearInterval(interval);
-            reject(new Error("Timeout: Form element not found within 30 seconds"));
+            reject(
+              new Error("Timeout: Form element not found within 30 seconds")
+            );
           }
         }, 500);
       });
@@ -77,7 +79,7 @@
     promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
 
     const textareaMenu = mainFormElement.querySelector(
-      '.bg-primary-surface-primary > div > .flex, .bg-primary-surface-primary > div > .items-center, .bg-primary-surface-primary > div > .gap-2, .bg-primary-surface-primary > div > .max-xs\\:gap-1'
+      ".bg-primary-surface-primary > div > .flex, .bg-primary-surface-primary > div > .items-center, .bg-primary-surface-primary > div > .gap-2, .bg-primary-surface-primary > div > .max-xs\\:gap-1"
     );
 
     let alignElement: AlignIconBtn | null = null;
@@ -132,8 +134,7 @@
       let formatAlignPathEl =
         alignState === "left" ? formatAlignRightPathEl : formatAlignLeftPathEl;
 
-      alignElement.innerHTML =
-        `
+      alignElement.innerHTML = `
 
     <span class="" data-state="closed">
       <div
