@@ -352,7 +352,7 @@
       await chrome.runtime.sendMessage({
         action: "showToast",
         type: "error",
-        body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
+        body: `An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue: ${error}`,
       });
     }
   }
