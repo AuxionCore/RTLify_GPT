@@ -3,7 +3,7 @@ function addAlignButton(
   grandchild: HTMLElement
 ) {
   // Chack if the button already exists
-  const existingButton = streamingElement.querySelector("align-mini-button");
+  const existingButton = streamingElement.querySelector(".align-mini-button");
   if (existingButton) {
     return; // If it exists, do nothing
   }
