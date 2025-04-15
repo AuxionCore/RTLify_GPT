@@ -120,7 +120,7 @@
       { id: elements.authorLink, url: "https://github.com/Yedidya10" },
       {
         id: elements.buyMeACoffee,
-        url: "https://www.buymeacoffee.com/yedidya",
+        url: "https://ko-fi.com/yedidyadev",
       },
       {
         id: elements.version,
