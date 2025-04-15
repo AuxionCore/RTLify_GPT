@@ -3,7 +3,7 @@ function addAlignButton(
   grandchild: HTMLElement
 ) {
   // Chack if the button already exists
-  const existingButton = document.getElementById("alignMiniButton");
+  const existingButton = streamingElement.querySelector("align-mini-button");
   if (existingButton) {
     return; // If it exists, do nothing
   }
@@ -33,7 +33,6 @@ function addAlignButton(
       : alignRightText;
 
   const alignMiniButton = document.createElement("button");
-  alignMiniButton.id = "alignMiniButton";
   alignMiniButton.setAttribute("aria-label", formatAlignText);
   alignMiniButton.setAttribute("title", formatAlignText);
   alignMiniButton.classList.add(
@@ -49,7 +48,8 @@ function addAlignButton(
     "active:scale-95",
     "select-none",
     "hover:bg-bg-300",
-    "py-1.5"
+    "py-1.5",
+    "align-mini-button"
   );
 
   alignMiniButton.innerHTML = `
@@ -145,6 +145,7 @@ async function handleLangTextAlignment(el: HTMLDivElement) {
   const streamingElement = el.querySelector(
     "[data-is-streaming]"
   ) as HTMLDivElement;
+
   const rtlLanguageCodes = ["iw", "he", "ar", "fa"];
 
   let allTexts: string[] = [];
@@ -158,21 +159,49 @@ async function handleLangTextAlignment(el: HTMLDivElement) {
     try {
       const lang = await detectLanguage(combinedText);
       if (streamingElement) {
+          console.log("Streaming element:", streamingElement);
         if (lang && rtlLanguageCodes.includes(lang)) {
-          await applyRTLStyle(el);
           await applyRTLStyle(streamingElement.children[0] as HTMLDivElement);
         }
 
         // Display RTL switch button in case the element is not correctly aligned
         const secondChild = streamingElement.children[1] as HTMLElement;
         const grandchild = secondChild.children[0] as HTMLElement;
+        console.log("Grandchild element:", grandchild.children[0]);
 
         addAlignButton(streamingElement, grandchild.children[0] as HTMLElement);
+      } else {
+        if (lang && rtlLanguageCodes.includes(lang)) {
+          await applyRTLStyle(el);
+        }
       }
     } catch (error) {
       console.error("Error detecting language:", error);
     }
   }
+}
+
+function observeStreamingAttribute(el: HTMLElement, parentEl: HTMLElement) {
+  const attrObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "data-is-streaming"
+      ) {
+        const val = el.getAttribute("data-is-streaming");
+
+        if (val === "false") {
+          attrObserver.disconnect();
+          handleLangTextAlignment(parentEl as HTMLDivElement);
+        }
+      }
+    });
+  });
+
+  attrObserver.observe(el, {
+    attributes: true,
+    attributeFilter: ["data-is-streaming"],
+  });
 }
 
 (async function () {
@@ -181,28 +210,48 @@ async function handleLangTextAlignment(el: HTMLDivElement) {
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
           if (node.nodeType === 1) {
-            if (
-              node instanceof Element &&
-              node.hasAttribute("data-test-render-count")
-            ) {
-              if (node instanceof HTMLDivElement) {
-                handleLangTextAlignment(node as HTMLDivElement);
-              }
+            const element = node as HTMLDivElement;
+            const dataTestRenderCount = element.hasAttribute(
+              "data-test-render-count"
+            )
+              ? element
+              : null;
+            const dataIsStreaming = element.hasAttribute("data-is-streaming")
+              ? element
+              : null;
+
+            if (dataTestRenderCount) {
+              handleLangTextAlignment(dataTestRenderCount);
             }
 
-            // חיפוש בתוך אלמנטים חדשים שנוספו
-            const innerMatches =
-              node instanceof Element
-                ? node.querySelectorAll("[data-test-render-count]")
-                : null;
-            innerMatches?.forEach((el) =>
-              handleLangTextAlignment(el as HTMLDivElement)
+            const innerMatches = element.querySelectorAll(
+              "[data-test-render-count]"
             );
+            innerMatches.forEach((el) => {
+              handleLangTextAlignment(el as HTMLDivElement);
+            });
 
-            // אם האלמנט הוא גם דינמי יכול להיות צורך לחכות לפני שנחפש אותו
-            if (node instanceof HTMLDivElement) {
+            if (dataIsStreaming) {
+              console.log("Streaming element added:", dataIsStreaming);
+              observeStreamingAttribute(
+                dataIsStreaming as HTMLElement,
+                dataTestRenderCount as HTMLElement
+              );
+            }
+
+            const streamingInner = element.querySelectorAll(
+              "[data-is-streaming]"
+            );
+            streamingInner.forEach((streamEl) => {
+              observeStreamingAttribute(
+                streamEl as HTMLElement,
+                dataTestRenderCount as HTMLElement
+              );
+            });
+
+            if (element instanceof HTMLDivElement) {
               requestAnimationFrame(() => {
-                const moreMatches = node.querySelectorAll(
+                const moreMatches = element.querySelectorAll(
                   "[data-test-render-count]"
                 );
                 moreMatches.forEach((el) =>
