@@ -29,8 +29,14 @@
 
   try {
     // Get the form element with the data-type="unified-composer" attribute
-    function getFormElements(timeout = 30000): Promise<{ formElement: HTMLFormElement; promptTextarea: HTMLTextAreaElement }> {
-      return new Promise<{ formElement: HTMLFormElement; promptTextarea: HTMLTextAreaElement }>((resolve, reject) => {
+    function getFormElements(timeout = 15000): Promise<{
+      formElement: HTMLFormElement;
+      promptTextarea: HTMLTextAreaElement;
+    }> {
+      return new Promise<{
+        formElement: HTMLFormElement;
+        promptTextarea: HTMLTextAreaElement;
+      }>((resolve, reject) => {
         const startTime = Date.now();
 
         const interval = setInterval(() => {
@@ -184,6 +190,7 @@
 
     async function setAlignment(newAlign: "left" | "right") {
       alignState = newAlign;
+
       promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
       promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
 
@@ -347,12 +354,6 @@
         action: "showToast",
         type: "error",
         body: "An error occurred when trying to apply the text alignment feature, probably because of a update in the ChatGPT interface. We apologize for the inconvenience and are working to resolve the issue.",
-      });
-    } else {
-      await chrome.runtime.sendMessage({
-        action: "showToast",
-        type: "error",
-        body: `An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue: ${error}`,
       });
     }
   }
