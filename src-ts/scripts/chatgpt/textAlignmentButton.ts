@@ -287,66 +287,6 @@
     promptTextarea.addEventListener("paste", handlePasteEvent);
     promptTextarea.addEventListener("cut", handleCutEvent);
     promptTextarea.addEventListener("keydown", handleDeleteKeyEvent);
-
-    // const observer = new MutationObserver((mutations) => {
-    //   let hasChanged = false;
-
-    //   mutations.forEach(async (mutation) => {
-    //     if (
-    //       mutation.type === "childList" ||
-    //       mutation.type === "characterData"
-    //     ) {
-    //       const paragraphs = promptTextarea.querySelectorAll("p");
-
-    //       paragraphs.forEach((contentElement) => {
-    //         const text = contentElement.innerText.trim();
-    //         if (text.length > 0) {
-
-    //           const firstChar = text.charAt(0);
-    //           const detectedDirection = detectDirectionFromChar(firstChar);
-
-    //           const newDirection = detectedDirection;
-    //           const newAlign = detectedDirection === "rtl" ? "right" : "left";
-
-    //           // Check if the direction or alignment has changed
-    //           if (
-    //             contentElement.style.direction !== newDirection ||
-    //             contentElement.style.textAlign !== newAlign
-    //           ) {
-    //             // Set the new direction and alignment
-    //             contentElement.setAttribute("style", `direction: ${newDirection}; text-align: ${newAlign};`);
-    //             contentElement.style.textAlign = newAlign;
-
-    //             //
-    //             hasChanged = true;
-    //           }
-    //         }
-    //       });
-
-    //       // Prevent infinite loop
-    //       if (hasChanged) {
-    //         hasChanged = false;
-    //         observer.disconnect();
-    //         setTimeout(
-    //           () =>
-    //             observer.observe(promptTextarea, {
-    //               childList: true,
-    //               subtree: true,
-    //               characterData: true,
-    //             }),
-    //           0
-    //         );
-    //       }
-    //     }
-    //   });
-    // });
-
-    // // הפעלת המעקב
-    // observer.observe(promptTextarea, {
-    //   childList: true,
-    //   subtree: true,
-    //   characterData: true,
-    // });
   } catch (error) {
     console.error(error);
     if (error === "Timeout: Form element not found within 30 seconds") {
