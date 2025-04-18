@@ -46,8 +46,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
           await chrome.scripting.executeScript({
             target: { tabId: tabId },
             files: [
-              "scripts/claude/langTextAlignment.js",
-              "scripts/claude/mathTextAlignment.js",
+              "scripts/claude/textAlignment.js",
               "scripts/claude/textAlignmentButton.js",
             ],
           });
@@ -69,15 +68,17 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (message.action === "showToast") {
     if (message.type === "error") {
-      const badgeText = await chrome.action.getBadgeText({});
-      const badgeNumber = parseInt(badgeText);
+      // TODO: fix this
+      //   const badgeText = await chrome.action.getBadgeText({});
+      //   const badgeNumber = parseInt(badgeText);
 
-      if (isNaN(badgeNumber)) {
-        chrome.action.setBadgeText({ text: "1" });
-      } else {
-        chrome.action.setBadgeText({ text: (badgeNumber + 1).toString() });
-      }
-      chrome.action.setBadgeBackgroundColor({ color: "#FF0000" });
+      //   if (isNaN(badgeNumber)) {
+      //     chrome.action.setBadgeText({ text: "1" });
+      //   } else {
+      //     chrome.action.setBadgeText({ text: (badgeNumber + 1).toString() });
+      //   }
+      //   chrome.action.setBadgeBackgroundColor({ color: "#FF0000" });
+
       chrome.storage.sync.set({ showErrorToast: true });
       chrome.storage.sync.set({ errorToastMessage: message.body });
     }
@@ -88,27 +89,31 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (message.action === "closeToast") {
     if (message.type === "error") {
       chrome.storage.sync.set({ showErrorToast: false });
-      const badgeText = await chrome.action.getBadgeText({});
-      const badgeNumber = parseInt(badgeText);
 
-      if (badgeNumber === 1) {
-        chrome.action.setBadgeText({ text: "" });
-      } else {
-        chrome.action.setBadgeText({ text: (badgeNumber - 1).toString() });
-        chrome.action.setBadgeBackgroundColor({ color: "#008000" });
-      }
+      // TODO: fix this
+      // const badgeText = await chrome.action.getBadgeText({});
+      // const badgeNumber = parseInt(badgeText);
+
+      // if (badgeNumber === 1) {
+      //   chrome.action.setBadgeText({ text: "" });
+      // } else {
+      //   chrome.action.setBadgeText({ text: (badgeNumber - 1).toString() });
+      //   chrome.action.setBadgeBackgroundColor({ color: "#008000" });
+      // }
     }
 
     if (message.type === "whatsNew") {
       chrome.storage.sync.set({ showWhatsNewToast: false });
-      const badgeText = await chrome.action.getBadgeText({});
-      const badgeNumber = parseInt(badgeText);
 
-      if (badgeNumber === 1) {
-        chrome.action.setBadgeText({ text: "" });
-      } else {
-        chrome.action.setBadgeText({ text: (badgeNumber - 1).toString() });
-      }
+      // TODO: fix this
+      // const badgeText = await chrome.action.getBadgeText({});
+      // const badgeNumber = parseInt(badgeText);
+
+      // if (badgeNumber === 1) {
+      //   chrome.action.setBadgeText({ text: "" });
+      // } else {
+      //   chrome.action.setBadgeText({ text: (badgeNumber - 1).toString() });
+      // }
     }
   }
 });
