@@ -7,8 +7,10 @@ chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
 
   if (reason === "update") {
     await chrome.storage.sync.set({ showWhatsNewToast: true });
-    chrome.action.setBadgeText({ text: "1" });
-    chrome.action.setBadgeBackgroundColor({ color: "#008000" });
+
+    // TODO: fix this
+    // chrome.action.setBadgeText({ text: "1" });
+    // chrome.action.setBadgeBackgroundColor({ color: "#008000" });
   }
 
   if (reason === "update" && previousVersion === "1.2.1") {
