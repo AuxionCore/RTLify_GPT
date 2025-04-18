@@ -51,7 +51,6 @@
     {
       "matches": ["https://chatgpt.com/c/*"],
       "js": [
-        "scripts/chatgpt/mathTextAlignment.js",
         "scripts/chatgpt/textAlignmentButton.js"
       ]
     },
@@ -63,8 +62,7 @@
         "https://claude.ai/settings*"
       ],
       "js": [
-        "scripts/claude/langTextAlignment.js",
-        "scripts/claude/mathTextAlignment.js",
+        "scripts/claude/textAlignment.js",
         "scripts/claude/textAlignmentButton.js"
       ]
     },
