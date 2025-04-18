@@ -23,10 +23,8 @@ export default defineConfig(({ mode }) => ({
           "src-ts/scripts/chatgpt/mathTextAlignment.ts",
         "scripts/chatgpt/textAlignmentButton":
           "src-ts/scripts/chatgpt/textAlignmentButton.ts",
-        "scripts/claude/mathTextAlignment":
-          "src-ts/scripts/claude/mathTextAlignment.ts",
-        "scripts/claude/langTextAlignment":
-          "src-ts/scripts/claude/langTextAlignment.ts",
+        "scripts/claude/textAlignment":
+          "src-ts/scripts/claude/textAlignment.ts",
         "scripts/claude/textAlignmentButton":
           "src-ts/scripts/claude/textAlignmentButton.ts",
       },
