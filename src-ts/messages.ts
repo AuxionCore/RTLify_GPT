@@ -3,6 +3,7 @@ const messageKeys = [
   "welcomeHeading",
   "welcomeMessage",
   "GoToChatGpt",
+  "GoToClaudeAi",
   "whatsNewTitle",
   "whatsNewMessage",
   "featuresTitle",
