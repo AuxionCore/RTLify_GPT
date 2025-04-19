@@ -69,9 +69,18 @@
 
     let alignState = await getAlignState();
     const mainFormElement = await getMainFormElement();
+
+    if (!mainFormElement) {
+      console.error("Main form element not found: " + mainFormElement);
+    }
+
     const promptTextarea = mainFormElement.querySelector(
-      "[contenteditable=true]"
+      "[contenteditable]"
     ) as HTMLTextAreaElement;
+
+    if (!promptTextarea) {
+      console.error("Prompt textarea not found: " + promptTextarea);
+    }
 
     promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
     promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
@@ -345,12 +354,6 @@
         action: "showToast",
         type: "error",
         body: "An error occurred when trying to apply the text alignment feature, probably because of a update in the ChatGPT interface. We apologize for the inconvenience and are working to resolve the issue.",
-      });
-    } else {
-      await chrome.runtime.sendMessage({
-        action: "showToast",
-        type: "error",
-        body: "An error occurred when trying to apply the text alignment feature. We apologize for the inconvenience and are working to resolve the issue.",
       });
     }
   }
