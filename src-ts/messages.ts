@@ -15,7 +15,6 @@ const messageKeys = [
   "feature5",
   "feature6",
   "improvement1",
-  "improvement2",
   "comingSoonTitle",
   "comingSoonMessage",
   "comingSoonFeature1",
@@ -23,7 +22,6 @@ const messageKeys = [
   "feedbackMessage",
   "feedbackButtonText",
 ];
-
 const messages = messageKeys.reduce((acc, key) => {
   acc[key] = chrome.i18n.getMessage(key);
   return acc;
