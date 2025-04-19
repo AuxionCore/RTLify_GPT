@@ -102,12 +102,8 @@
     "description": "Added support for claude.ai site"
   },
   "improvement1": {
-    "message": "تم إصلاح الموقف الذي يتسبب في تغيير محاذاة النص المكتوب حتى بعد النقر على زر \"محاذاة النص\" في الاتجاه المعاكس",
-    "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
-  },
-  "improvement2": {
-    "message": "تمت إضافة خيار لتعطيل فتح النافذة المنبثقة تلقائيًا عند كل تحديث للإضافة",
-    "description": "Disable automatic pop-up window opening on every extension update"
+    "message": "تم تحسين أداء البرنامج الإضافي وإصلاح بعض الأخطاء",
+    "description": "Improved the extension's performance and fixed some bugs"
   },
   "comingSoonTitle": {
     "message": "قريبًا",

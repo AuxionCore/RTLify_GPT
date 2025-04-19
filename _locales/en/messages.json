@@ -102,12 +102,8 @@
     "description": "Added support for claude.ai site"
   },
   "improvement1": {
-    "message": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction",
-    "description": "Fixed a situation where typing text changes alignment even after clicking the \"Text Alignment\" button to the opposite direction"
-  },
-  "improvement2": {
-    "message": "Disable automatic pop-up window opening on every extension update",
-    "description": "Disable automatic pop-up window opening on every extension update"
+    "message": "Improved the extension's performance and fixed some bugs",
+    "description": "Improved the extension's performance and fixed some bugs"
   },
   "comingSoonTitle": {
     "message": "Coming soon",
