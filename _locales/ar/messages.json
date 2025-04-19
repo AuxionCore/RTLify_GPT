@@ -66,6 +66,10 @@
     "description": "What's new message"
   },
   "featuresTitle": {
+    "message": "الميزات",
+    "description": "Features title"
+  },
+  "newFeaturesTitle": {
     "message": "ميزات جديدة",
     "description": "New features title"
   },

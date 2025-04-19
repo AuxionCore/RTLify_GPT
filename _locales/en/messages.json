@@ -66,6 +66,10 @@
     "description": "What's new message"
   },
   "featuresTitle": {
+    "message": "Features",
+    "description": "Features title"
+  },
+  "newFeaturesTitle": {
     "message": "New features",
     "description": "New features title"
   },
