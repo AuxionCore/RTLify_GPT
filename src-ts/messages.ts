@@ -7,6 +7,7 @@ const messageKeys = [
   "whatsNewTitle",
   "whatsNewMessage",
   "featuresTitle",
+  "newFeaturesTitle",
   "improvementsTitle",
   "feature1",
   "feature2",
