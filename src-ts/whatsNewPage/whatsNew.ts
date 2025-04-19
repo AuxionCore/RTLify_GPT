@@ -2,7 +2,7 @@ import messages from "../messages";
 
 const whatsNewTitle = messages["whatsNewTitle"];
 const whatsNewMessage = messages["whatsNewMessage"];
-const featuresTitle = messages["featuresTitle"];
+const newFeaturesTitle = messages["newFeaturesTitle"];
 const improvementsTitle = messages["improvementsTitle"];
 const improvement1 = messages["improvement1"];
 const comingSoonTitle = messages["comingSoonTitle"];
@@ -14,7 +14,7 @@ const feedbackButtonText = messages["feedbackButtonText"];
 document.getElementById("title")!.textContent = whatsNewTitle;
 document.getElementById("heading")!.textContent = whatsNewTitle;
 document.getElementById("whatsNewMessage")!.textContent = whatsNewMessage;
-document.getElementById("featuresTitle")!.textContent = featuresTitle;
+document.getElementById("featuresTitle")!.textContent = newFeaturesTitle;
 document.getElementById("improvementsTitle")!.textContent = improvementsTitle;
 document.getElementById("improvement1")!.textContent = improvement1;
 document.getElementById("comingSoonTitle")!.textContent = comingSoonTitle;
