@@ -2,11 +2,4 @@ node_modules
 .vscode
 
 dist
-whatsNew.js
-welcome.js
-popup.js
-textAlignmentButton.js
-textAlignment.js
-mathTextAlignment.js
-serviceWorker.js
-messages.js
+js_src
