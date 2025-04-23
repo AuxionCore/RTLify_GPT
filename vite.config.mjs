@@ -19,13 +19,14 @@ export default defineConfig(({ mode }) => ({
         whatsNew: "whatsNewPage/whatsNew.html",
         popup: "popup/popup.html",
         serviceWorker: "src-ts/serviceWorker.ts",
-        "scripts/chatgpt/mathTextAlignment":
+        "js_src/scripts/chatgpt/mathTextAlignment":
           "src-ts/scripts/chatgpt/mathTextAlignment.ts",
-        "scripts/chatgpt/textAlignmentButton":
+        "js_src/scripts/chatgpt/textAlignmentButton":
           "src-ts/scripts/chatgpt/textAlignmentButton.ts",
-        "scripts/claude/textAlignment":
+        "js_src/scripts/claude/claudeChat": "src-ts/scripts/claude/claudeChat.ts",
+        "js_src/scripts/claude/textAlignment":
           "src-ts/scripts/claude/textAlignment.ts",
-        "scripts/claude/textAlignmentButton":
+        "js_src/scripts/claude/textAlignmentButton":
           "src-ts/scripts/claude/textAlignmentButton.ts",
       },
       output: {

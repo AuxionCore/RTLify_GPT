@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./",
+    "outDir": "./js_src/",
     "rootDir": "src-ts",
     "target": "ESNext",
     "module": "ESNext",

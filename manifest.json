@@ -35,7 +35,7 @@
     "64": "images/icons/Rtlify_ChatGPT.png",
     "128": "images/icons/Rtlify_ChatGPT.png"
   },
-  "content_scripts": [
+  "content_js_src/scripts": [
     {
       "matches": [
         "https://chatgpt.com/",
@@ -46,13 +46,11 @@
         "https://chatgpt.com/c/*",
         "https://chatgpt.com/gpts"
       ],
-      "js": ["scripts/chatgpt/textAlignmentButton.js"]
+      "js": ["js_src/scripts/chatgpt/textAlignmentButton.js"]
     },
     {
       "matches": ["https://chatgpt.com/c/*"],
-      "js": [
-        "scripts/chatgpt/textAlignmentButton.js"
-      ]
+      "js": ["js_src/scripts/chatgpt/textAlignmentButton.js"]
     },
     {
       "matches": ["https://claude.ai/chat/*"],
@@ -62,8 +60,8 @@
         "https://claude.ai/settings*"
       ],
       "js": [
-        "scripts/claude/textAlignment.js",
-        "scripts/claude/textAlignmentButton.js"
+        "js_src/scripts/claude/claudeChat.js",
+        "js_src/scripts/claude/textAlignmentButton.js"
       ]
     },
     {
@@ -73,7 +71,7 @@
         "https://claude.ai/upgrade",
         "https://claude.ai/settings*"
       ],
-      "js": ["scripts/claude/textAlignmentButton.js"]
+      "js": ["js_src/scripts/claude/textAlignmentButton.js"]
     }
   ]
 }
