@@ -1,3 +1,6 @@
+import handleLoadedElements from "./scripts/claude/loadedElements";
+import observeDocument from "./scripts/claude/documentObserver";
+
 chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
   if (reason === "install") {
     chrome.tabs.create({
@@ -15,6 +18,14 @@ chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
 
   if (reason === "update" && previousVersion === "1.2.1") {
     await chrome.action.openPopup();
+  }
+});
+
+chrome.tabs.onCreated.addListener(async (tab) => {
+  try {
+    console.log("Tab created: ", tab);
+  } catch (error) {
+    console.error(error);
   }
 });
 
@@ -44,22 +55,26 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
       // If the user navigates to the Claude page, inject the rtlTextAlignment script
       if (tab.url.includes("claude.ai")) {
-        if (tab.url.includes("claude.ai/chat") || tab.url.includes("claude.ai/new")) {
+        console.log("Claude AI: ", tab.url, changeInfo);
+        if (tab.url.includes("claude.ai/chat")) {
           await chrome.scripting.executeScript({
             target: { tabId: tabId },
-            files: [
-              "scripts/claude/textAlignment.js",
-              "scripts/claude/textAlignmentButton.js",
-            ],
+            files: ["scripts/claude/textAlignmentButton.js"],
+            func: handleLoadedElements,
           });
         }
 
-        // if (tab.url.includes("claude.ai/new")) {
-        //   await chrome.scripting.executeScript({
-        //     target: { tabId: tabId },
-        //     files: ["scripts/claude/textAlignmentButton.js"],
-        //   });
-        // }
+        if (tab.url.includes("claude.ai/new")) {
+          // await chrome.scripting.executeScript({
+          //   target: { tabId: tabId },
+          //   func: observeDocument,
+          // });
+
+          await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ["scripts/claude/textAlignmentButton.js"],
+          });
+        }
       }
     }
   } catch (error) {
@@ -68,6 +83,22 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 });
 
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+  if (message.action === "runScript" && sender.tab && sender.tab.id) {
+    if (message.script === "documentObserver") {
+      await chrome.scripting.executeScript({
+        target: { tabId: sender.tab.id },
+        func: observeDocument,
+      });
+    }
+
+    if (message.script === "loadedElements") {
+      await chrome.scripting.executeScript({
+        target: { tabId: sender.tab.id },
+        func: handleLoadedElements,
+      });
+    }
+  }
+
   if (message.action === "showToast") {
     if (message.type === "error") {
       // TODO: fix this
