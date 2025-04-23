@@ -5,7 +5,12 @@ export default function handleLoadedElements() {
   const elements = document.querySelectorAll<HTMLElement>(
     "[data-test-render-count]"
   );
-  console.log("[claude] Found elements:", elements);
+
+  if (elements.length === 0) {
+    console.log("[claude] No elements found. Exiting.");
+    return;
+  }
+
   elements.forEach((el) => {
     const dataIsNotStreaming = el.querySelector(
       "[data-is-streaming='false']"
