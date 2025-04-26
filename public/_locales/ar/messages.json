@@ -1,0 +1,148 @@
+{
+  "extensionName": {
+    "message": "Rtlify GPT - تكييف GPT للغة العربية",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "اضبط GPT على لغتك المفضلة",
+    "description": "Description of the extension"
+  },
+  "welcomeTitle": {
+    "message": "مرحبًا بك في البرنامج الإضافي لتكييف GPT مع اللغة العربية",
+    "description": "Title of the welcome popup"
+  },
+  "welcomeMessage": {
+    "message": "شكرًا لك على تثبيت البرنامج الإضافي لتكييف GPT مع اللغة العربية. يمكنك الآن الاستمتاع باستخدام GPT باللغة التي تفضلها.",
+    "description": "Message of the welcome page"
+  },
+  "GoToChatGpt": {
+    "message": "انتقل إلى موقع ChatGPT",
+    "description": "Go to ChatGPT website button text"
+  },
+  "GoToClaudeAi": {
+    "message": "انتقل إلى موقع Claude",
+    "description": "Go to Claude website button text"
+  },
+  "newReleaseTitle": {
+    "message": "إصدار جديد متاح",
+    "description": "New release title"
+  },
+  "whatsNewLinkText": {
+    "message": "شاهد ما الجديد",
+    "description": "What's new link text"
+  },
+  "extensionWasUpdated": {
+    "message": "تم تحديث البرنامج الإضافي إلى الإصدار $VERSION_NUMBER$ $ICON$",
+    "description": "Extension was updated to version $VERSION_NUMBER$",
+    "placeholders": {
+      "VERSION_NUMBER": {
+        "content": "$1",
+        "description": "Version number placeholder"
+      },
+      "ICON": {
+        "content": "$2",
+        "description": "Icon placeholder"
+      }
+    }
+  },
+  "errorToastTitle": {
+    "message": "خطأ",
+    "description": "Error toast title"
+  },
+  "bugReportTitle": {
+    "message": "الإبلاغ عن خطأ",
+    "description": "Report a bug title"
+  },
+  "feedbackTitle": {
+    "message": "ملاحظات",
+    "description": "Feedback title"
+  },
+  "rateUsTitle": {
+    "message": "يرجى تقييمنا على متجر Chrome الإلكتروني",
+    "description": "Rate us title"
+  },
+  "whatsNewTitle": {
+    "message": "ما الجديد في هذا الإصدار",
+    "description": "What's new title"
+  },
+  "whatsNewMessage": {
+    "message": "نقدر استخدامك للبرنامج الإضافي لتكييف GPT مع اللغة العربية. يمكنك هنا العثور على التحسينات والميزات الجديدة في الإصدار الأخير.",
+    "description": "What's new message"
+  },
+  "featuresTitle": {
+    "message": "الميزات",
+    "description": "Features title"
+  },
+  "newFeaturesTitle": {
+    "message": "ميزات جديدة",
+    "description": "New features title"
+  },
+  "improvementsTitle": {
+    "message": "تحسينات وإصلاحات",
+    "description": "Improvements title"
+  },
+  "feature1": {
+    "message": "تمت إضافة زر لتغيير اتجاه النص في صندوق الدردشة",
+    "description": "Added a button to change text direction in the chat box"
+  },
+  "feature2": {
+    "message": "عرض اتجاه النصوص الرياضية من اليسار إلى اليمين في جميع الأوضاع لسهولة القراءة",
+    "description": "Display mathematical text direction from left to right in all modes for easy reading"
+  },
+  "feature3": {
+    "message": "محاذاة اتجاه النص في صندوق الدردشة حسب الحرف الأول في المحادثة",
+    "description": "Align text direction in the chat box according to the first letter in the conversation"
+  },
+  "feature3Comment": {
+    "message": "سيتم تعطيل هذه الميزة مؤقتًا بعد النقر على زر محاذاة اتجاه النص وسيتم تنشيطها مرة أخرى في كل مرة يتم فيها بدء محادثة جديدة",
+    "description": "This feature will be temporarily disabled after clicking the Text Alignment button and will be reactivated each time a new conversation is started"
+  },
+  "feature4": {
+    "message": "تمت إضافة دعم لوضع النص الفاتح في زر المحاذاة",
+    "description": "Fix lack of support for light mode color in the align button"
+  },
+  "feature5": {
+    "message": "تمت إضافة دعم للمحاذاة التلقائية حتى بعد قص أو لصق النص، بالإضافة إلى دعم حذف كل النص دفعة واحدة",
+    "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
+  },
+  "feature6": {
+    "message": "تمت إضافة دعم كامل لموقع claude.ai",
+    "description": "Added support for claude.ai site"
+  },
+  "improvement1": {
+    "message": "تم تحسين أداء البرنامج الإضافي وإصلاح بعض الأخطاء",
+    "description": "Improved the extension's performance and fixed some bugs"
+  },
+  "comingSoonTitle": {
+    "message": "قريبًا",
+    "description": "Coming soon title"
+  },
+  "comingSoonMessage": {
+    "message": "ستجد هنا تحديثات وميزات جديدة في الإصدار القادم من GPT.",
+    "description": "Message of what's coming soon"
+  },
+  "comingSoonFeature1": {
+    "message": "",
+    "description": ""
+  },
+  "feedbackMessage": {
+    "message": "إذا كان لديك أي ملاحظات أو اقتراحات، فلا تتردد في إرسالها إلينا.",
+    "description": "Feedback message"
+  },
+  "feedbackButtonText": {
+    "message": "أرسل ملاحظاتك",
+    "description": "Feedback button text"
+  },
+  "popupCloseButton": {
+    "message": "إغلاق",
+    "description": "Close button text"
+  },
+  "alignLeft": {
+    "message": "محاذاة إلى اليسار",
+    "description": "Align text to the left"
+  },
+  "alignRight": {
+    "message": "محاذاة إلى اليمين",
+    "description": "Align text to the right"
+  }
+}
