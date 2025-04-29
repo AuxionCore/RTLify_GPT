@@ -21,14 +21,6 @@ export default defineBackground(() => {
     }
   );
 
-  browser.tabs.onCreated.addListener(async (tab) => {
-    try {
-      console.log("Tab created: ", tab);
-    } catch (error) {
-      console.error(error);
-    }
-  });
-
   browser.runtime.onMessage.addListener(
     async (message, sender, sendResponse) => {
       if (message.action === "showToast") {

@@ -7,7 +7,6 @@ export default function handleLoadedElements() {
   );
 
   if (elements.length === 0) {
-    console.log("[claude] No elements found. Exiting.");
     return;
   }
 
@@ -22,6 +21,4 @@ export default function handleLoadedElements() {
       handleUserPromptsAlignment(el as HTMLDivElement);
     }
   });
-
-  console.log("[observer] Started observing DOM mutations.");
 }

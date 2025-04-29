@@ -148,7 +148,6 @@ async function popupScript() {
       links.forEach((link) => {
         const element = document.getElementById(link.id)!;
         element.addEventListener("click", async () => {
-          console.log(`Opening ${link.url}`);
           await openTab(link.url);
         });
       });

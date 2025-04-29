@@ -1,5 +1,3 @@
-
-
 function handleMathTextDirection(mathElement: HTMLElement) {
   mathElement.style.setProperty("unicode-bidi", "plaintext");
   mathElement.style.setProperty("direction", "ltr");
@@ -27,7 +25,6 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
       ".katex"
     ) as NodeListOf<HTMLElement>;
     if (mathElements.length > 0) {
-      console.log("Static math elements found:", mathElements);
       for (const mathElement of mathElements) {
         handleMathTextDirection(mathElement as HTMLDivElement);
       }
@@ -66,7 +63,6 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
           : Array.from(node.querySelectorAll("div.math.math-display"));
 
         for (const el of mathElements) {
-          console.log("Math element added:", el);
           handleMathTextDirection(el as HTMLDivElement);
         }
       }

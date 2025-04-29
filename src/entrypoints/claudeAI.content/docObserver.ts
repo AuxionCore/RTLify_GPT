@@ -9,28 +9,14 @@ export default function observeDocument() {
           const element = node as HTMLDivElement;
 
           if (element.hasAttribute("data-test-render-count")) {
-            console.log(
-              "[observer] MutationObserver detected a new message",
-              element
-            );
             waitForStreamingElement(
               element,
               (streamingElement) => {
                 const isStreaming =
                   streamingElement.getAttribute("data-is-streaming");
-                console.log(
-                  "[observer] Found streaming element. Streaming:",
-                  isStreaming
-                );
 
                 if (isStreaming === "false") {
-                  console.log(
-                    "[observer] Already finished streaming. Waiting for content..."
-                  );
                   waitForChildContent(streamingElement, async () => {
-                    console.log(
-                      "[childContentObserver] Content loaded. Aligning..."
-                    );
                     await handleGptResponseAlignment(
                       streamingElement as HTMLDivElement
                     );
@@ -46,21 +32,11 @@ export default function observeDocument() {
                           const target = attrMutation.target as HTMLDivElement;
                           const newValue =
                             target.getAttribute("data-is-streaming");
-                          console.log(
-                            "[streamingObserver] data-is-streaming changed to:",
-                            newValue
-                          );
 
                           if (newValue === "false") {
-                            console.log(
-                              "[streamingObserver] Streaming finished. Waiting for content..."
-                            );
                             streamingObserver.disconnect();
 
                             waitForChildContent(target, async () => {
-                              console.log(
-                                "[childContentObserver] Content loaded. Aligning..."
-                              );
                               await handleGptResponseAlignment(target);
                             });
                           }
@@ -76,10 +52,6 @@ export default function observeDocument() {
                 }
               },
               () => {
-                // fallback אם בכלל לא נוסף streamingElement
-                console.log(
-                  "[observer] No streaming element found. Handling user prompt instead."
-                );
                 handleUserPromptsAlignment(element);
               }
             );
