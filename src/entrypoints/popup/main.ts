@@ -74,7 +74,7 @@ async function popupScript() {
       newReleaseToast.classList.add("show");
       newReleaseToastLink.addEventListener(
         "click",
-        async () => await openTab("whatsNew.html")
+        async () => await openTab("whatsNewPage.html")
       );
 
       closeToastButton.addEventListener("click", async () => {

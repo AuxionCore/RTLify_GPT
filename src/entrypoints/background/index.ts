@@ -1,11 +1,11 @@
 export default defineBackground(() => {
   browser.runtime.onInstalled.addListener(
     async ({ reason, previousVersion }) => {
-      // if (reason === "install") {
-      //   browser.tabs.create({
-      //     url: "welcomePage/welcome.html",
-      //   });
-      // }
+      if (reason === "install") {
+        browser.tabs.create({
+          url: "welcomePage.html",
+        });
+      }
 
       if (reason === "update") {
         await browser.storage.sync.set({ showWhatsNewToast: true });

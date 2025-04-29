@@ -1,4 +1,6 @@
+import "./style.css";
 import messages from "@/components/messages";
+import getUILanguageDirection from "@/components/getUILanguageDirection";
 
 const welcomeTitle = messages["welcomeTitle"];
 const welcomeMessage = messages["welcomeMessage"];
@@ -16,38 +18,73 @@ const feedbackTitle = messages["feedbackTitle"];
 const feedbackMessage = messages["feedbackMessage"];
 const feedbackButtonText = messages["feedbackButtonText"];
 
-document.getElementById("title")!.textContent = welcomeTitle;
-document.getElementById("heading")!.textContent = welcomeTitle;
-document.getElementById("welcomeMessage")!.textContent = welcomeMessage;
-document.getElementById("featuresTitle")!.textContent = featuresTitle;
-document.getElementById("feature1")!.textContent = feature1;
-document.getElementById("feature2")!.textContent = feature2;
-document.getElementById("feature3")!.textContent = feature3;
-document.getElementById("feature3Comment")!.textContent = feature3Comment;
-document.getElementById("feature4")!.textContent = feature4;
-document.getElementById("feature5")!.textContent = feature5;
-document.getElementById("feature6")!.textContent = feature6;
-document.getElementById("feedbackTitle")!.textContent = feedbackTitle;
-document.getElementById("feedbackMessage")!.textContent = feedbackMessage;
+const html = document.querySelector("html");
+if (html) {
+  const lang = browser.i18n.getUILanguage();
+  html.setAttribute("lang", lang);
+  html.setAttribute("dir", getUILanguageDirection(lang));
+}
 
-const goToChatGptButton = document.getElementById("goToChatGptButton")!;
-const goToClaudeAiButton = document.getElementById("goToClaudeAiButton")!;
+const mainElement = document.querySelector("main");
+
+if (mainElement) {
+  mainElement.innerHTML = `
+    <section class="heading-section">
+      <h1 >${welcomeTitle}</h1>
+      <p >${welcomeMessage}</p>
+      <div class="buttons">
+      </div>
+    </section>
+    <section class="features-section">
+      <h2 >${featuresTitle}</h2>
+      <ul class="features">
+        <li >${feature1}</li>
+        <li >${feature2}</li>
+        <li >${feature4}</li>
+        <li >${feature5}</li>
+        <li >${feature3}</li>
+        <p class="feature3Comment">${feature3Comment}</p>
+      </ul>
+    </section>
+    <section class="feedback">
+      <h2>${feedbackTitle}</h2>
+      <p>${feedbackMessage}</p>
+    </section>
+  `;
+}
+
+const goToChatGptButton = document.createElement("button");
 goToChatGptButton.textContent = GoToChatGptText;
+const goToClaudeAiButton = document.createElement("button");
 goToClaudeAiButton.textContent = GoToClaudeAiText;
-
-goToChatGptButton.addEventListener("click", () => {
-  browser.tabs.create({ url: "https://chatgpt.com/" });
-});
-
-goToClaudeAiButton.addEventListener("click", () => {
-  browser.tabs.create({ url: "https://claude.ai/" });
-});
-
-const feedbackButton = document.getElementById("feedbackButton")!;
+const feedbackButton = document.createElement("button");
 feedbackButton.textContent = feedbackButtonText;
 
-feedbackButton.addEventListener("click", () => {
-  browser.tabs.create({
-    url: "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support",
-  });
+goToChatGptButton.addEventListener("click", async () => {
+  await openTab("https://chatgpt.com/");
 });
+
+goToClaudeAiButton.addEventListener("click", async () => {
+  await openTab("https://claude.ai/");
+});
+
+feedbackButton.addEventListener("click", async () => {
+  await openTab(
+    "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support"
+  );
+});
+
+const buttonsContainer = document.querySelector(".buttons");
+if (buttonsContainer) {
+  buttonsContainer.appendChild(goToChatGptButton);
+  buttonsContainer.appendChild(goToClaudeAiButton);
+}
+
+const feedbackSection = document.querySelector(".feedback");
+if (feedbackSection) {
+  feedbackSection.appendChild(feedbackButton);
+}
+
+async function openTab(url: string): Promise<void> {
+  await browser.tabs.create({ url });
+}
