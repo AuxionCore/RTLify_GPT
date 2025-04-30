@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0-beta.1] - Unreleased
 
+### Added
+
+- Added support for the grok.com website.
+
+### Changed
+
+- Updated the extension with the wxt framework for better performance and maintainability.
+
+### Fixed
+
+- Fixed a bug where the text alignment sometimes did not work correctly on the claude.ai website.
+
 ## [2.0.1] - 2025-04-20
 
 ### Fixed
