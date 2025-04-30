@@ -5,6 +5,7 @@ import getUILanguageDirection from "@/components/getUILanguageDirection";
 const whatsNewTitle = messages["whatsNewTitle"];
 const whatsNewMessage = messages["whatsNewMessage"];
 const newFeaturesTitle = messages["newFeaturesTitle"];
+const feature6 = messages["feature6"];
 const improvementsTitle = messages["improvementsTitle"];
 const improvement1 = messages["improvement1"];
 const comingSoonTitle = messages["comingSoonTitle"];
@@ -28,12 +29,12 @@ if (mainElement) {
       <p >${whatsNewMessage}</p>
     </section>
     <section class="features-improvements-section">
-      <!-- <div class="features">
+      <div class="features">
         <h2>${newFeaturesTitle}</h2>
         <ul class="features-list">
-          <li></li>
+          <li>${feature6}</li>
         </ul>
-      </div> -->
+      </div> 
       <div class="improvements">
         <h2 >${improvementsTitle}</h2>
         <ul class="improvements-list">
