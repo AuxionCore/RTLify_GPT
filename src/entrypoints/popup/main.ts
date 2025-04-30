@@ -135,7 +135,11 @@ async function popupScript() {
         },
         {
           id: elements.versionLink,
-          url: `whatsNew.html`,
+          url: import.meta.env.CHROME
+            ? `whatsNewPage.html`
+            : import.meta.env.FIREFOX
+            ? `https://addons.mozilla.org/en-US/firefox/addon/rtlify-gpt/versions/`
+            : "whatsNewPage.html",
         },
       ];
 
@@ -152,11 +156,19 @@ async function popupScript() {
       const links = [
         {
           id: elements.feedbackLink,
-          url: `https://chromewebstore.google.com/detail/${extensionId}/support`,
+          url: import.meta.env.CHROME
+            ? `https://chromewebstore.google.com/detail/${extensionId}/support`
+            : import.meta.env.FIREFOX
+            ? `https://addons.mozilla.org/en-US/firefox/addon/rtlify-gpt/`
+            : "",
         },
         {
           id: elements.rateUsLink,
-          url: `https://chromewebstore.google.com/detail/${extensionId}/reviews`,
+          url: import.meta.env.CHROME
+            ? `https://chromewebstore.google.com/detail/${extensionId}/reviews`
+            : import.meta.env.FIREFOX
+            ? `https://addons.mozilla.org/en-US/firefox/addon/rtlify-gpt/`
+            : "",
         },
       ];
 
