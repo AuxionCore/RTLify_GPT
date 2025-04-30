@@ -57,8 +57,6 @@ const goToChatGptButton = document.createElement("button");
 goToChatGptButton.textContent = GoToChatGptText;
 const goToClaudeAiButton = document.createElement("button");
 goToClaudeAiButton.textContent = GoToClaudeAiText;
-const feedbackButton = document.createElement("button");
-feedbackButton.textContent = feedbackButtonText;
 
 goToChatGptButton.addEventListener("click", async () => {
   await openTab("https://chatgpt.com/");
@@ -68,21 +66,26 @@ goToClaudeAiButton.addEventListener("click", async () => {
   await openTab("https://claude.ai/");
 });
 
-feedbackButton.addEventListener("click", async () => {
-  await openTab(
-    "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support"
-  );
-});
+if (import.meta.env.CHROME) {
+  const feedbackButton = document.createElement("button");
+  feedbackButton.textContent = feedbackButtonText;
+
+  feedbackButton.addEventListener("click", async () => {
+    await openTab(
+      "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support"
+    );
+  });
+
+  const feedbackSection = document.querySelector(".feedback");
+  if (feedbackSection) {
+    feedbackSection.appendChild(feedbackButton);
+  }
+}
 
 const buttonsContainer = document.querySelector(".buttons");
 if (buttonsContainer) {
   buttonsContainer.appendChild(goToChatGptButton);
   buttonsContainer.appendChild(goToClaudeAiButton);
-}
-
-const feedbackSection = document.querySelector(".feedback");
-if (feedbackSection) {
-  feedbackSection.appendChild(feedbackButton);
 }
 
 async function openTab(url: string): Promise<void> {

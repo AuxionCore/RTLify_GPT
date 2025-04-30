@@ -37,10 +37,13 @@ async function popupScript() {
 
     async function setupPopup() {
       setClosePopupButton();
-      setEventListeners();
-      setFeedbackLink();
+      setGeneralEventListeners();
+      if (import.meta.env.CHROME) {
+        setBrowserSpecificEventListeners();
+        setFeedbackLink();
+        setRateUsLinkText();
+      }
       setVersion();
-      setRateUsLinkText();
       if (showErrorToast) await setErrorToast();
       if (showWhatsNewToast) await setWhatsNewToast();
     }
@@ -123,8 +126,7 @@ async function popupScript() {
       closePopup.addEventListener("click", () => window.close());
     }
 
-    function setEventListeners() {
-      const extensionId = browser.runtime.id;
+    function setGeneralEventListeners() {
       const links = [
         { id: elements.authorLink, url: "https://github.com/Yedidya10" },
         {
@@ -133,8 +135,21 @@ async function popupScript() {
         },
         {
           id: elements.versionLink,
-          url: `browser-extension://${extensionId}/whatsNewPage/whatsNew.html`,
+          url: `whatsNew.html`,
         },
+      ];
+
+      links.forEach((link) => {
+        const element = document.getElementById(link.id)!;
+        element.addEventListener("click", async () => {
+          await openTab(link.url);
+        });
+      });
+    }
+
+    function setBrowserSpecificEventListeners() {
+      const extensionId = browser.runtime.id;
+      const links = [
         {
           id: elements.feedbackLink,
           url: `https://chromewebstore.google.com/detail/${extensionId}/support`,

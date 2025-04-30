@@ -54,18 +54,20 @@ if (mainElement) {
   `;
 }
 
-const feedbackButton = document.createElement("button");
-feedbackButton.textContent = feedbackButtonText;
+if (import.meta.env.CHROME) {
+  const feedbackButton = document.createElement("button");
+  feedbackButton.textContent = feedbackButtonText;
 
-feedbackButton.addEventListener("click", async () => {
-  await openTab(
-    "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support"
-  );
-});
+  feedbackButton.addEventListener("click", async () => {
+    await openTab(
+      "https://chromewebstore.google.com/detail/clhjaenclpjlpjickcmhebbhghjffhah/support"
+    );
+  });
 
-const feedbackSection = document.querySelector(".feedback");
-if (feedbackSection) {
-  feedbackSection.appendChild(feedbackButton);
+  const feedbackSection = document.querySelector(".feedback");
+  if (feedbackSection) {
+    feedbackSection.appendChild(feedbackButton);
+  }
 }
 
 async function openTab(url: string): Promise<void> {
