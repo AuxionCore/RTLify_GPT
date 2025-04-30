@@ -1,23 +1,55 @@
-# RTLify GPT
+# 🚀 RTLify GPT – Seamless RTL Experience for GPT Platforms
 
-**RTLify GPT** is a browser extension designed to enhance the display of right-to-left (RTL) languages, such as Hebrew and Arabic, on GPT-based platforms like ChatGPT. It ensures proper text alignment and formatting, particularly when combining RTL text with mathematical text or expressions, providing a seamless and readable experience.
+**RTLify GPT** is a browser extension that brings perfect right-to-left (RTL) language support—such as Hebrew and Arabic—to GPT-based platforms like ChatGPT. Say goodbye to broken formatting, reversed text, and messy math equations. This extension ensures that RTL content displays cleanly and correctly, even when mixed with mathematical expressions or English text.
 
-## Features
+---
 
-- **Automatic RTL Detection**: Automatically detects RTL language input and adjusts text direction accordingly.
-- **Proper Alignment**: Ensures correct alignment of RTL text in chat interfaces.
-- **Math Expression Support**: Maintains the integrity of mathematical expressions within RTL text.
+## ✨ Key Features
 
-## Installation
+✅ **Automatic RTL Detection**  
+Smartly detects when you're writing in an RTL language and adjusts direction accordingly.
 
-1. **In Chrome**: Go to the Chrome Web Store and search for "RTLify GPT". Click "Add to Chrome" to install the extension.
-2. **In Firefox**: Go to the Firefox Add-ons page and search for "RTLify GPT". Click "Add to Firefox" to install the extension.
-<!-- 3. **In Edge**: Go to the Edge Add-ons page and search for "RTLify GPT". Click "Get" to install the extension. -->
+✅ **Proper Text Alignment**  
+Ensures text appears neatly aligned in chat interfaces, even with mixed LTR/RTL content.
 
-## Contributing
+✅ **Math Expression Support**  
+Maintains the correct structure and readability of mathematical expressions (LaTeX, MathJax) inside RTL sentences.
 
-We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) for more information.
+---
 
-## License
+## 🧩 Installation
 
-This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE.md) file for details.
+### 🔹 Google Chrome
+
+1. Visit the Chrome Web Store.
+2. Search for **RTLify GPT**.
+3. Click **"Add to Chrome"**.
+
+### 🔹 Mozilla Firefox
+
+1. Visit the Firefox Add-ons site.
+2. Search for **RTLify GPT**.
+3. Click **"Add to Firefox"**.
+
+<!--
+### 🔹 Microsoft Edge
+(Coming Soon) – Edge support is on the way!
+-->
+
+---
+
+## 👨‍💻 Contributing
+
+We welcome contributions from developers, testers, writers, and anyone passionate about better RTL support.  
+Check out our [contributing guidelines](CONTRIBUTING.md) for how to get involved.
+
+---
+
+## 📄 License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE.md).
+
+---
+
+Enjoy a smoother GPT experience in your native language!  
+🔗 [Visit the RTLify GPT Website](http://rtlify-gpt.auxion.space)
