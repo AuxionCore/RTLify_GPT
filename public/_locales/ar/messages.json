@@ -106,8 +106,8 @@
     "description": "Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once"
   },
   "feature6": {
-    "message": "تمت إضافة دعم كامل لموقع claude.ai",
-    "description": "Added support for claude.ai site"
+    "message": "تمت إضافة الدعم الكامل لموقع grok.com",
+    "description": "Added full support for the grok.com website"
   },
   "improvement1": {
     "message": "تم تحسين أداء البرنامج الإضافي وإصلاح بعض الأخطاء",
