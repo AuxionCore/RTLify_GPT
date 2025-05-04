@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinFlux - Pin Important Chat Messages</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #fff8e1, #ffecb3);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 100px;
+      }
+
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .carousel {
+        display: flex;
+        gap: 100px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-inline: 80px;
+        padding-block: 40px;
+        width: 100%;
+      }
+
+      .slide {
+        width: 750px;
+        height: 450px;
+        background: linear-gradient(135deg, #fff8e1, #ffecb3);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        padding: 30px;
+        text-align: center;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 0.8rem;
+      }
+
+      img {
+        border: 3px solid #5ac8fa;
+      }
+
+      .screenshot {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .screenshotX {
+        width: 100%;
+        max-width: 370px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .screenshot:hover {
+        transform: scale(1.03);
+      }
+
+      .image-stack {
+        position: relative;
+        width: 500px;
+        height: 320px;
+        margin: 40px auto 0;
+      }
+
+      .image-stack img {
+        position: absolute;
+        width: 300px;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .image-stack img:nth-of-type(1) {
+        top: 0;
+        left: -50;
+        transform: rotate(-4deg);
+        z-index: 3;
+      }
+      .image-stack img:nth-of-type(2) {
+        top: 20px;
+        left: 90px;
+        transform: rotate(-1deg);
+        z-index: 2;
+      }
+      .image-stack img:nth-of-type(3) {
+        top: 40px;
+        left: 240px;
+        transform: rotate(3deg);
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <!-- Slide 1 -->
+      <div class="slide">
+        <h1>Rtlify GPT</h1>
+        <p>
+          הצטרף לחוויה חכמה ומותאמת אישית בעברית באתרים כמו ChatGPT, Claude.ai
+          ו-Grok
+        </p>
+        <div class="image-stack">
+          <img src="https://i.imgur.com/C0zgFWQ.png" alt="Pin button example" />
+          <img src="https://i.imgur.com/um9W9G5.png" alt="Pin button example" />
+          <img src="https://i.imgur.com/LaJPVTl.png" alt="Pin button example" />
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h1>זיהוי טקסט ליישור אוטומטי</h1>
+        <p>
+          מזהה בצורה חכמה את השפה שאתה מתחיל לכתוב ומתאים את כיוון הכתיבה באופן
+          אוטומטי
+        </p>
+        <img
+          src="https://i.imgur.com/LaJPVTl.png"
+          alt="Local storage illustration"
+          class="screenshot"
+        />
+      </div>
+      <div class="slide">
+        <h1>כפתור יישור לשינוי כיוון הטקסט</h1>
+        <p>בחר אם לכתוב מימין לשמאל או משמאל לימין בלחיצת כפתור</p>
+        <img
+          src="https://i.imgur.com/C0zgFWQ.png"
+          alt="Chrome sync feature"
+          class="screenshot"
+        />
+      </div>
+      <div class="slide">
+        <h1>תמיכה בביטויים מתמטיים</h1>
+        <p>
+          שומר על מבנה נכון וקריאות של ביטויים מתמטיים (LaTeX) בתוך משפטים בשפה
+          העברית
+        </p>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            padding: 10px;
+          "
+        >
+          <div>
+            <h3 style="margin: 0.5rem 0">לפני</h3>
+            <img
+              src="https://i.imgur.com/B1lleoZ.png"
+              alt="Before Pinning"
+              class="screenshot"
+            />
+          </div>
+          <div>
+            <h3 style="margin: 0.5rem 0">אחרי</h3>
+            <img
+              src="https://i.imgur.com/um9W9G5.png"
+              alt="After Pinning"
+              class="screenshot"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <h1>סנכרון בין מכשירים</h1>
+        <p>
+          סנכרון אוטומטי של ההגדרות עם חשבון Chrome, כך שתמיד תחווה את האתר
+          בצורה המועדפת עליך
+        </p>
+        <img
+          src="https://i.imgur.com/eOigpIu.png"
+          alt="Chrome sync feature"
+          class="screenshotX"
+        />
+      </div>
+    </div>
+    <div class="carousel">
+      <!-- Slide 1 -->
+      <div class="slide">
+        <h1>Rtlify GPT</h1>
+        <p>
+          Seamless RTL Experience for GPT Platforms
+        </p>
+        <div class="image-stack">
+          <img src="https://i.imgur.com/C0zgFWQ.png" alt="Pin button example" />
+          <img src="https://i.imgur.com/um9W9G5.png" alt="Pin button example" />
+          <img src="https://i.imgur.com/LaJPVTl.png" alt="Pin button example" />
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <h1>זיהוי טקסט ליישור אוטומטי</h1>
+        <p>
+          מזהה בצורה חכמה את השפה שאתה מתחיל לכתוב ומתאים את כיוון הכתיבה באופן
+          אוטומטי
+        </p>
+        <img
+          src="https://i.imgur.com/LaJPVTl.png"
+          alt="Local storage illustration"
+          class="screenshot"
+        />
+      </div>
+      <div class="slide">
+        <h1>כפתור יישור לשינוי כיוון הטקסט</h1>
+        <p>בחר אם לכתוב מימין לשמאל או משמאל לימין בלחיצת כפתור</p>
+        <img
+          src="https://i.imgur.com/C0zgFWQ.png"
+          alt="Chrome sync feature"
+          class="screenshot"
+        />
+      </div>
+      <div class="slide">
+        <h1>תמיכה בביטויים מתמטיים</h1>
+        <p>
+          שומר על מבנה נכון וקריאות של ביטויים מתמטיים (LaTeX) בתוך משפטים בשפה
+          העברית
+        </p>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            padding: 10px;
+          "
+        >
+          <div>
+            <h3 style="margin: 0.5rem 0">לפני</h3>
+            <img
+              src="https://i.imgur.com/B1lleoZ.png"
+              alt="Before Pinning"
+              class="screenshot"
+            />
+          </div>
+          <div>
+            <h3 style="margin: 0.5rem 0">אחרי</h3>
+            <img
+              src="https://i.imgur.com/um9W9G5.png"
+              alt="After Pinning"
+              class="screenshot"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <h1>סנכרון בין מכשירים</h1>
+        <p>
+          סנכרון אוטומטי של ההגדרות עם חשבון Chrome, כך שתמיד תחווה את האתר
+          בצורה המועדפת עליך
+        </p>
+        <img
+          src="https://i.imgur.com/eOigpIu.png"
+          alt="Chrome sync feature"
+          class="screenshotX"
+        />
+      </div>
+    </div>
+  </body>
+</html>
