@@ -1,18 +1,23 @@
 import displayAlignmentButton from "./textAlignmentButton";
 import mathTextAlignment from "./mathTextAlignment";
 
-const urlChatPattern = new MatchPattern("https://grok.com/chat/**");
-const urlMainPattern = new MatchPattern("https://grok.com/");
+const urlPatternStrings = [
+  "https://grok.com/",
+  "https://grok.com/chat/*",
+  "https://grok.com/workspace/*",
+];
+
+const urlMatchPatterns = urlPatternStrings.map((p) => new MatchPattern(p));
 
 export default defineContentScript({
-  matches: ["https://grok.com/", "https://grok.com/chat/*"],
+  matches: urlPatternStrings,
   excludeMatches: ["https://grok.com/?_s=*"],
   async main(ctx) {
     mathTextAlignment();
     await displayAlignmentButton();
 
     ctx.addEventListener(window, "wxt:locationchange", async ({ newUrl }) => {
-      if (urlChatPattern.includes(newUrl) || urlMainPattern.includes(newUrl)) {
+      if (urlMatchPatterns.some((pattern) => pattern.includes(newUrl))) {
         await displayAlignmentButton();
       }
     });
