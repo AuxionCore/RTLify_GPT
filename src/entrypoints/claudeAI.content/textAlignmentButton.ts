@@ -29,16 +29,30 @@ export default async function displayAlignmentButton() {
 
   try {
     // Get the form element with the data-type="unified-composer" attribute
-    function getMainFormElement(timeout = 30000): Promise<HTMLFieldSetElement> {
-      return new Promise<HTMLFieldSetElement>((resolve, reject) => {
+    function getFormElements(timeout = 30000): Promise<{
+      fieldsetElement: HTMLFieldSetElement;
+      promptTextarea: HTMLTextAreaElement;
+    }> {
+      return new Promise<{
+        fieldsetElement: HTMLFieldSetElement;
+        promptTextarea: HTMLTextAreaElement;
+      }>((resolve, reject) => {
         const startTime = Date.now();
 
         const interval = setInterval(() => {
-          const formElement = document.querySelector("fieldset");
+          const fieldsetElement = document.querySelector("fieldset");
 
-          if (formElement) {
-            clearInterval(interval);
-            resolve(formElement as HTMLFieldSetElement);
+          if (fieldsetElement) {
+            const promptTextarea = fieldsetElement.querySelector(
+              "[contenteditable]"
+            ) as HTMLTextAreaElement;
+            if (promptTextarea) {
+              clearInterval(interval);
+              resolve({
+                fieldsetElement: fieldsetElement as HTMLFieldSetElement,
+                promptTextarea: promptTextarea as HTMLTextAreaElement,
+              });
+            }
           }
 
           if (Date.now() - startTime >= timeout) {
@@ -68,24 +82,19 @@ export default async function displayAlignmentButton() {
     }
 
     let alignState = await getAlignState();
-    const mainFormElement = await getMainFormElement();
+    const { fieldsetElement, promptTextarea } = await getFormElements();
 
-    if (!mainFormElement) {
-      console.error("Main form element not found: " + mainFormElement);
-    }
-
-    const promptTextarea = mainFormElement.querySelector(
-      "[contenteditable]"
-    ) as HTMLTextAreaElement;
-
-    if (!promptTextarea) {
-      console.error("Prompt textarea not found: " + promptTextarea);
+    if (!promptTextarea || !fieldsetElement) {
+      console.error(
+        "form Element not found: " + promptTextarea,
+        fieldsetElement
+      );
     }
 
     promptTextarea.style.direction = alignState === "left" ? "ltr" : "rtl";
     promptTextarea.style.textAlign = alignState === "left" ? "left" : "right";
 
-    const textareaMenu = mainFormElement.querySelector(
+    const textareaMenu = fieldsetElement.querySelector(
       ".relative.flex-1.flex.items-center.gap-2.shrink.min-w-0"
     );
 
