@@ -186,7 +186,7 @@ async function popupScript() {
         browser.i18n.getMessage("feedbackTitle") || "Feedback";
       const bagReportText =
         browser.i18n.getMessage("bugReportTitle") || "Report a Bug";
-      feedbackLink.textContent = `${feedbackText} / ${bagReportText}`;
+      feedbackLink.title = `${feedbackText} / ${bagReportText}`;
     }
 
     function setVersion() {
@@ -197,7 +197,7 @@ async function popupScript() {
     function setRateUsLinkText() {
       const rateUsLink = document.getElementById(elements.rateUsLink)!;
       const rateUsText = browser.i18n.getMessage("rateUsTitle") || "Rate Us";
-      rateUsLink.textContent = `⭐ ${rateUsText}`;
+      rateUsLink.title = rateUsText;
     }
 
     async function openTab(url: string): Promise<void> {
