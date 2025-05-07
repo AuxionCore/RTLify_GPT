@@ -6,6 +6,10 @@ export default defineConfig({
   zip: {
     excludeSources: ["playwright-report/**", "e2e/**", "test-results/**"],
   },
+  webExt: {
+    disabled: true,
+  },
+  debug: true,
   manifest: ({ browser, manifestVersion, mode, command }) => {
     const isFirefox = browser === "firefox";
     const isChrome = browser === "chrome";
