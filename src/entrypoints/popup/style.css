@@ -100,7 +100,6 @@ p {
   inset-block-start: 10px;
   inset-inline-start: 10px;
   border-radius: 50%;
-  background-color: #f1f1f1;
   padding: 5px;
   cursor: pointer;
 }
@@ -259,6 +258,12 @@ p {
   width: 32px;
 }
 
+.theme-rate-icon:hover,
+.theme-feedback-icon:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -269,6 +274,16 @@ p {
   }
   button {
     background-color: #f9f9f9;
+  }
+
+  .close-popup {
+    background-color: #f9f9f9;
+  }
+
+  .close-popup-icon,
+  .close-toast-icon,
+  .new-release-toast-icon {
+    fill: #333;
   }
 
   .popup-footer {
@@ -309,6 +324,16 @@ p {
     background-color: #333333;
   }
 
+  .close-popup {
+    background-color: #444;
+  }
+
+  .close-popup-icon,
+  .close-toast-icon,
+  .new-release-toast-icon {
+    fill: #e0e0e0;
+  }
+
   .toast {
     background-color: #1f1f1f;
     color: #e0e0e0;
@@ -317,6 +342,7 @@ p {
   .toast-header {
     background-color: #2a2a2a;
     color: #e0e0e0;
+    border-bottom: 1px solid #444;
   }
 
   .toast-header_error {
