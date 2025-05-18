@@ -196,8 +196,14 @@ async function popupScript() {
 
     function setRateUsLinkText() {
       const rateUsLink = document.getElementById(elements.rateUsLink)!;
-      const rateUsText = browser.i18n.getMessage("rateUsTitle") || "Rate Us";
-      rateUsLink.title = rateUsText;
+      const rateUsTitle = browser.i18n.getMessage("rateUsTitle", [
+        import.meta.env.CHROME
+          ? "Chrome"
+          : import.meta.env.FIREFOX
+          ? "Firefox"
+          : "Browser",
+      ]);
+      rateUsLink.title = rateUsTitle;
     }
 
     async function openTab(url: string): Promise<void> {
