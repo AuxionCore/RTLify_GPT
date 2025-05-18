@@ -58,8 +58,14 @@
     "description": "Feedback title"
   },
   "rateUsTitle": {
-    "message": "Please rate us on the Chrome Web Store",
-    "description": "Rate us title"
+    "message": "Please rate us on the $BROWSER_NAME$ store",
+    "description": "Rate us title",
+    "placeholders": {
+      "BROWSER_NAME": {
+        "content": "$1",
+        "description": "Browser name placeholder"
+      }
+    }
   },
   "whatsNewTitle": {
     "message": "What's new in this version",
