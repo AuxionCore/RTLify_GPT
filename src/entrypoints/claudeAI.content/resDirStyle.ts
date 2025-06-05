@@ -52,7 +52,6 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
     const hasInnerTags = Array.from(el.childNodes).some(
       (node) => node.nodeType === Node.ELEMENT_NODE
     );
-    console.log("Math element found:", el);
 
     if (!hasInnerTags) {
       let html = el.innerHTML;
