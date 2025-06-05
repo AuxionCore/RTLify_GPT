@@ -20,6 +20,7 @@ export default defineContentScript({
       if (existsChatPattern.includes(newUrl)) {
         handleLoadedElements();
         await displayAlignmentButton();
+        // observeDocument();
       }
 
       if (newChatPattern.includes(newUrl)) {
