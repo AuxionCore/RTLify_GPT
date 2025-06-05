@@ -42,57 +42,69 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
     "p.whitespace-pre-wrap.break-words, li.whitespace-normal.break-words, div.math.math-display, h3, h4"
   );
 
-  // An example of a math expression: (1/cos)
-  const mathRegex = /\((\d+\/[a-zA-Z]+)\)/g;
+  // Expressions to match math fractions within parentheses
+  const mathFractionRegex = /\((\d+\/[a-zA-Z]+)\)/g;
+
+  // Expressions to match negative numbers within parentheses
+  const negativeNumberRegex = /(−|\-)\d+(\.\d+)?/g
 
   for (const el of elementsContainingMath) {
-    console.log("Math element found:", el);
-    const html = el.innerHTML;
-
-  if (mathRegex.test(html)) {
-    el.innerHTML = html.replace(
-      mathRegex,
-      '<span style="direction:ltr; unicode-bidi:isolate">($1)</span>'
+    const hasInnerTags = Array.from(el.childNodes).some(
+      (node) => node.nodeType === Node.ELEMENT_NODE
     );
+    console.log("Math element found:", el);
 
-    el.style.lineHeight = "2";
-    el.style.marginBlock = "2px";
-  }
-  };
+    if (!hasInnerTags) {
+      let html = el.innerHTML;
 
-  // Set the text direction for all dynamic paragraphs
-  for (const el of elementsContainingMath) {
-    const mathElements = el.querySelectorAll(
-      ".katex"
-    ) as NodeListOf<HTMLElement>;
-    if (mathElements.length > 0) {
-      for (const mathElement of mathElements) {
-        handleMathTextDirection(mathElement as HTMLDivElement);
+      const replacedHtml = html
+        .replace(
+          mathFractionRegex,
+          '<span style="direction:ltr; unicode-bidi:isolate">($1)</span>'
+        )
+        .replace(
+          negativeNumberRegex,
+          (match) => `<span style="direction:ltr; unicode-bidi:isolate">${match}</span>`
+        );
+      if (html !== replacedHtml) {
+        el.innerHTML = replacedHtml;
       }
-    }
-
-    // Katex elements lode in the DOM after the math elements are added
-    const observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        for (const node of mutation.addedNodes) {
-          if (node.nodeType !== Node.ELEMENT_NODE) continue;
-          const mathElements = el.querySelectorAll(
-            ".katex"
-          ) as NodeListOf<HTMLElement>;
-          if (mathElements.length > 0) {
-            for (const mathElement of mathElements) {
-              handleMathTextDirection(mathElement as HTMLDivElement);
-            }
-            // observer.disconnect(); // Stop observing once the math elements are found
-          }
+      el.style.lineHeight = "2";
+      el.style.marginBlock = "2px";
+    } else {
+      // Set the text direction for all dynamic paragraphs
+      const mathElements = el.querySelectorAll(
+        ".katex"
+      ) as NodeListOf<HTMLElement>;
+      if (mathElements.length > 0) {
+        for (const mathElement of mathElements) {
+          handleMathTextDirection(mathElement as HTMLDivElement);
         }
       }
-    });
 
-    observer.observe(el, {
-      childList: true,
-      subtree: true,
-    });
+      // Katex elements lode in the DOM after the math elements are added
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          for (const node of mutation.addedNodes) {
+            if (node.nodeType !== Node.ELEMENT_NODE) continue;
+            const mathElements = el.querySelectorAll(
+              ".katex"
+            ) as NodeListOf<HTMLElement>;
+            if (mathElements.length > 0) {
+              for (const mathElement of mathElements) {
+                handleMathTextDirection(mathElement as HTMLDivElement);
+              }
+              // observer.disconnect(); // Stop observing once the math elements are found
+            }
+          }
+        }
+      });
+
+      observer.observe(el, {
+        childList: true,
+        subtree: true,
+      });
+    }
   }
 
   const observer = new MutationObserver((mutations) => {
