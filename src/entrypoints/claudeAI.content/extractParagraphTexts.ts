@@ -1,16 +1,33 @@
+export type TextBlock = {
+  el: HTMLElement;
+  tag: string;
+  text: string;
+};
 
-export default function extractParagraphTexts(container: HTMLElement) {
-  const paragraphs = container.querySelectorAll<HTMLParagraphElement>(
-    "p.whitespace-pre-wrap.break-words"
-  );
+export default function extractParagraphTexts(
+  container: HTMLElement
+): TextBlock[] {
+  const blocks: TextBlock[] = [];
 
-  const texts: string[] = [];
+  const paragraphs = container.querySelectorAll<HTMLParagraphElement>("p, li, ul, ol, h1, h2, h3, h4, h5, h6");
+
   paragraphs.forEach((p) => {
-    const text = p.textContent?.trim();
-    if (text) {
-      texts.push(text);
-    }
+    const lines = p.innerHTML.split(/<br\s*\/?>/i);
+
+    lines.forEach((lineHtml) => {
+      const temp = document.createElement("div");
+      temp.innerHTML = lineHtml;
+      const text = temp.textContent?.trim();
+
+      if (text && text.length > 0) {
+        blocks.push({
+          el: p,
+          tag: "p",
+          text,
+        });
+      }
+    });
   });
 
-  return texts;
+  return blocks;
 }
