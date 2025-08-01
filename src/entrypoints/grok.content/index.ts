@@ -1,17 +1,13 @@
 import displayAlignmentButton from "./textAlignmentButton";
 import mathTextAlignment from "./mathTextAlignment";
+import { URL_PATTERNS, EXCLUDED_PATTERNS } from "../../constants";
 
-const urlPatternStrings = [
-  "https://grok.com/",
-  "https://grok.com/chat/*",
-  "https://grok.com/workspace/*",
-];
-
+const urlPatternStrings = URL_PATTERNS.GROK;
 const urlMatchPatterns = urlPatternStrings.map((p) => new MatchPattern(p));
 
 export default defineContentScript({
   matches: urlPatternStrings,
-  excludeMatches: ["https://grok.com/?_s=*"],
+  excludeMatches: EXCLUDED_PATTERNS.GROK,
   async main(ctx) {
     mathTextAlignment();
     await displayAlignmentButton();

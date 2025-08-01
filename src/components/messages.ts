@@ -26,7 +26,7 @@ const messageKeys = [
 ];
 
 const messages = messageKeys.reduce((acc, key) => {
-  acc[key] = browser.i18n.getMessage(key);
+  acc[key] = browser.i18n.getMessage(key as any);
   return acc;
 }, {} as Record<string, string>);
 

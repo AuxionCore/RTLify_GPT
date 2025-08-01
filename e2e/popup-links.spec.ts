@@ -23,7 +23,7 @@ test("Popup links open when clicked", async ({ page, extensionId }) => {
   const buyMeACoffeePage = page.context().pages()[0];
   expect(buyMeACoffeePage.url()).toContain("ko-fi.com/yedidyadev"); // Check if the URL contains the buyMeACoffee link
   await buyMeACoffeePage.close(); // Close the buyMeACoffee page
-return
+
   await page.bringToFront(); // Bring the popup back to the front
 
   // Check if the feedback link is present and clickable

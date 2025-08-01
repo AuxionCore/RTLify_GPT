@@ -1,18 +1,13 @@
 import displayAlignmentButton from "./textAlignmentButton";
 import mathTextAlignment from "./mathTextAlignment";
+import { URL_PATTERNS, EXCLUDED_PATTERNS } from "../../constants";
 
-const urlPatternStrings = [
-  "https://chatgpt.com/*",
-  "https://chatgpt.com/?model=auto*",
-  "https://chatgpt.com/?temporary-chat=true",
-  "https://chatgpt.com/c/*",
-];
-
+const urlPatternStrings = URL_PATTERNS.CHATGPT;
 const urlMatchPatterns = urlPatternStrings.map((p) => new MatchPattern(p));
 
 export default defineContentScript({
   matches: urlPatternStrings,
-  excludeMatches: ["https://chatgpt.com/gpts"],
+  excludeMatches: EXCLUDED_PATTERNS.CHATGPT,
   async main(ctx) {
     mathTextAlignment();
     await displayAlignmentButton();

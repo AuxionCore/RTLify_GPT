@@ -1,17 +1,5 @@
+import { RTL_LANGUAGES } from '../constants';
+
 export default function getUILanguageDirection(lang: string): "ltr" | "rtl" {
-  const rtlLanguages = [
-    "ar",
-    "he",
-    "iw",
-    "fa",
-    "ur",
-    "yi",
-    "jrb",
-    "jpr",
-    "dv",
-    "ps",
-    "sd",
-    "ug",
-  ];
-  return rtlLanguages.includes(lang) ? "rtl" : "ltr";
+  return RTL_LANGUAGES.includes(lang as any) ? "rtl" : "ltr";
 }
