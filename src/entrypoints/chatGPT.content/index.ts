@@ -1,4 +1,4 @@
-import displayAlignmentButton from "./textAlignmentButton";
+import displayAlignmentButton from "./textAlignmentButtonRefactored";
 import mathTextAlignment from "./mathTextAlignment";
 import { URL_PATTERNS, EXCLUDED_PATTERNS } from "../../constants";
 
