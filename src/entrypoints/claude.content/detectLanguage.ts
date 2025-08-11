@@ -1,3 +1,5 @@
+import { debugError } from "../../utils/debugLogger";
+
 type LanguageDetection = {
   language: string;
   percentage: number;
@@ -54,7 +56,7 @@ export default async function detectRTLLanguage(
 
     return [true, topMatch];
   } catch (error) {
-    console.error("Error during language detection:", error);
+    debugError("Error during language detection:", error);
     return [false, null];
   }
 }
