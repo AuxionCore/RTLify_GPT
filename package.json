@@ -2,7 +2,7 @@
   "name": "RTLify_GPT",
   "description": "A browser extension that supports RTL languages in GPT web applications.",
   "private": true,
-  "version": "3.0.0",
+  "version": "3.1.0",
   "type": "module",
   "github": {
     "owner": "Yedidya10",
