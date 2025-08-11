@@ -3,6 +3,7 @@ import {
   applyRTLStyleToGptResponse,
 } from "./resDirStyle";
 import { debugLog } from "../../utils/debugLogger";
+import { extractGptResponsesText } from "./extractTexts";
 
 export default function addAlignButton(
   streamingElement: HTMLDivElement,
@@ -76,11 +77,12 @@ export default function addAlignButton(
   grandchild.prepend(alignMiniButton);
 
   alignMiniButton.addEventListener("click", () => {
-    const contentElement = streamingElement.children[0] as HTMLDivElement;
+    const contentElement = streamingElement.children[0].firstChild?.firstChild as HTMLDivElement;
+    const textElements = extractGptResponsesText(contentElement)
     const currentDirection = getComputedStyle(contentElement).getPropertyValue("direction") || contentElement.style.direction || "ltr";
 
     debugLog("Align button clicked. Current direction:", currentDirection);
-    debugLog("contentElement:", contentElement);
+    debugLog("textElements:", textElements);
     debugLog("streamingElement:", streamingElement);
 
     if (currentDirection === "rtl") {
