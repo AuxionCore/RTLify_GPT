@@ -7,12 +7,12 @@
 const isDebugMode = () => {
   // Try to detect if we're in development context
   try {
+    console.log(import.meta.env.DEV)
     // Check various development indicators
     return (
       typeof globalThis !== 'undefined' && 
       (
         // Development environment checks
-        process?.env?.NODE_ENV === 'development' ||
         import.meta?.env?.DEV ||
         // Browser extension specific checks
         window?.location?.protocol === 'chrome-extension:' ||
