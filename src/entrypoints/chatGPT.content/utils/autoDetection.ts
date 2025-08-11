@@ -2,6 +2,7 @@
 
 import { findTextarea } from './domHelpers';
 import { autoDetectAlignment } from './textDirection';
+import { debugLog } from '../../../utils/debugLogger';
 
 /**
  * Handler for text input to trigger auto-detection
@@ -12,7 +13,7 @@ export function createTextInputHandler(
 ) {
   return function handleTextInput(event: Event) {
     const textarea = event.target as HTMLTextAreaElement;
-    console.log("RTLify: Text input detected, value:", textarea.value);
+    debugLog("RTLify: Text input detected, value:", textarea.value);
     autoDetectAlignment(textarea, alignState, updateButtonCallback);
   };
 }
@@ -44,12 +45,12 @@ export function setupAutoDetection(
       textarea.addEventListener("input", handler as EventListener);
       textarea.setAttribute('data-rtlify-listener', 'true');
       
-      console.log("RTLify: Auto-detection setup complete on textarea:", textarea.id || textarea.className);
+      debugLog("RTLify: Auto-detection setup complete on textarea:", textarea.id || textarea.className);
     } else {
-      console.log("RTLify: Auto-detection already setup on this textarea");
+      debugLog("RTLify: Auto-detection already setup on this textarea");
     }
   } else {
-    console.log("RTLify: Could not find textarea for auto-detection setup");
+    debugLog("RTLify: Could not find textarea for auto-detection setup");
   }
 }
 
@@ -67,7 +68,7 @@ export function createAutoDetectionMonitor(
       // Check if textarea has the input listener
       const hasListener = textarea.getAttribute('data-rtlify-listener') === 'true';
       if (!hasListener) {
-        console.log("RTLify: Re-setting up auto-detection on existing textarea");
+        debugLog("RTLify: Re-setting up auto-detection on existing textarea");
         setupAutoDetection(alignState, updateButtonCallback);
       }
     }

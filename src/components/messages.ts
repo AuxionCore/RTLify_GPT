@@ -1,3 +1,5 @@
+import { debugWarn, debugError } from '../utils/debugLogger';
+
 const messageKeys = [
   "welcomeTitle",
   "welcomeHeading", 
@@ -74,7 +76,7 @@ const messageKeys = [
 const messages = messageKeys.reduce((acc, key) => {
   const message = browser.i18n.getMessage(key as any);
   if (!message) {
-    console.warn(`Missing translation for key: ${key}`);
+    debugWarn(`Missing translation for key: ${key}`);
     acc[key] = `[${key}]`; // Fallback to show the key name
   } else {
     acc[key] = message;
@@ -94,7 +96,7 @@ export function validateTranslations(): string[] {
   });
   
   if (missingKeys.length > 0) {
-    console.error("Missing translations detected:", missingKeys);
+    debugError("Missing translations detected:", missingKeys);
     // In development, throw an error to fail the build
     if (import.meta.env.DEV) {
       throw new Error(`Missing translations: ${missingKeys.join(', ')}`);

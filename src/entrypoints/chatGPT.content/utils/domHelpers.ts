@@ -1,4 +1,6 @@
-// DOM helper functions for ChatGPT content script
+// DOM manipulation utilities and helpers
+
+import { debugLog, debugError } from '../../../utils/debugLogger';
 
 export interface TextareaMenu extends HTMLElement {
   appendChild<T extends Node>(newChild: T): T;
@@ -117,9 +119,9 @@ export function findTextareaMenu(): TextareaMenu | null {
 
   // Debug logging
   if (textareaMenu) {
-    console.log("RTLify: Found textareaMenu:", textareaMenu.className);
+    debugLog("RTLify: Found textareaMenu:", textareaMenu.className);
   } else {
-    console.log("RTLify: No textareaMenu found");
+    debugLog("RTLify: No textareaMenu found");
   }
 
   return textareaMenu;
@@ -149,10 +151,10 @@ export function findTextarea(): HTMLTextAreaElement | null {
  * Error handling function
  */
 export function showError(message: string) {
-  console.error("TextAlignment Error:", message);
+  debugError("TextAlignment Error:", message);
   browser.runtime.sendMessage({
     action: "showToast",
     type: "error",
     body: message,
-  }).catch(console.error);
+  }).catch(debugError);
 }

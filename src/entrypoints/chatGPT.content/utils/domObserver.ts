@@ -4,6 +4,7 @@ import { findTextareaMenu, findTextarea } from './domHelpers';
 import { addAlignButton, updateButtonState } from './alignmentButton';
 import { applyRTLAlignment, applyLTRAlignment } from './textDirection';
 import { setupAutoDetection } from './autoDetection';
+import { debugLog } from '../../../utils/debugLogger';
 
 /**
  * Function to ensure button exists
@@ -77,13 +78,13 @@ export function createDOMObserver(
             if (node.nodeType === Node.ELEMENT_NODE) {
               const element = node as Element;
               if (element.tagName === 'TEXTAREA' || element.querySelector('textarea')) {
-                console.log("RTLify: New textarea detected in DOM");
+                debugLog("RTLify: New textarea detected in DOM");
                 hasNewTextarea = true;
                 shouldCheck = true;
               }
               // Check if composer footer was added (indicates new chat interface)
               if (element.matches && element.matches('[data-testid="composer-footer-actions"]')) {
-                console.log("RTLify: New composer footer detected");
+                debugLog("RTLify: New composer footer detected");
                 shouldCheck = true;
               }
             }
@@ -95,7 +96,7 @@ export function createDOMObserver(
     if (shouldCheck) {
       // Use a small delay to let DOM settle
       setTimeout(() => {
-        console.log("RTLify: DOM change detected, re-initializing...");
+        debugLog("RTLify: DOM change detected, re-initializing...");
         ensureButtonExists(alignState, alignRightText, alignLeftText, updateButtonCallback);
         
         // Only re-apply alignment and setup auto-detection if there's a new textarea

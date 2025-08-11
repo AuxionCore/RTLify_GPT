@@ -1,5 +1,7 @@
 // Text direction detection and auto-alignment logic
 
+import { debugLog } from '../../../utils/debugLogger';
+
 /**
  * Function to detect if text is RTL (Hebrew, Arabic, Persian)
  */
@@ -12,7 +14,7 @@ export function isRTLText(text: string): boolean {
   const persianPattern = /[\u06A0-\u06FF]/;
   
   const isRTL = hebrewPattern.test(text) || arabicPattern.test(text) || persianPattern.test(text);
-  console.log("RTLify: isRTLText check for:", text, "result:", isRTL);
+  debugLog("RTLify: isRTLText check for:", text, "result:", isRTL);
   
   return isRTL;
 }
@@ -56,33 +58,33 @@ export function autoDetectAlignment(
   updateButtonCallback: () => void
 ) {
   const text = textarea.value.trim();
-  console.log("RTLify: Auto-detect called with text:", text, "length:", text.length);
+  debugLog("RTLify: Auto-detect called with text:", text, "length:", text.length);
   
   if (text.length > 0) {
     const shouldBeRTL = isRTLText(text);
     const currentlyRTL = alignState.current === "right";
     
-    console.log("RTLify: Text analysis - shouldBeRTL:", shouldBeRTL, "currentlyRTL:", currentlyRTL);
+    debugLog("RTLify: Text analysis - shouldBeRTL:", shouldBeRTL, "currentlyRTL:", currentlyRTL);
     
     if (shouldBeRTL && !currentlyRTL) {
       // Auto-switch to RTL
-      console.log("RTLify: Auto-switching to RTL alignment");
+      debugLog("RTLify: Auto-switching to RTL alignment");
       alignState.current = "right";
       applyRTLAlignment(textarea);
       updateButtonCallback();
       browser.storage.sync.set({ alignState: alignState.current });
-      console.log("RTLify: Auto-detected RTL text, switched to right alignment");
+      debugLog("RTLify: Auto-detected RTL text, switched to right alignment");
     } else if (!shouldBeRTL && currentlyRTL && text.length > 0) {
       // Auto-switch to LTR only if there's actual LTR text
       const hasLTRText = /[a-zA-Z]/.test(text);
-      console.log("RTLify: Checking for LTR text, hasLTRText:", hasLTRText);
+      debugLog("RTLify: Checking for LTR text, hasLTRText:", hasLTRText);
       if (hasLTRText) {
-        console.log("RTLify: Auto-switching to LTR alignment");
+        debugLog("RTLify: Auto-switching to LTR alignment");
         alignState.current = "left";
         applyLTRAlignment(textarea);
         updateButtonCallback();
         browser.storage.sync.set({ alignState: alignState.current });
-        console.log("RTLify: Auto-detected LTR text, switched to left alignment");
+        debugLog("RTLify: Auto-detected LTR text, switched to left alignment");
       }
     }
   }

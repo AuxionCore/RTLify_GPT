@@ -6,6 +6,7 @@ import { applyRTLAlignment, applyLTRAlignment } from './utils/textDirection';
 import { updateButtonState } from './utils/alignmentButton';
 import { setupAutoDetection, createAutoDetectionMonitor } from './utils/autoDetection';
 import { ensureButtonExists, createDOMObserver } from './utils/domObserver';
+import { debugError, debugLog } from '../../utils/debugLogger';
 
 async function displayAlignmentButton() {
   // Get localized text
@@ -29,7 +30,7 @@ async function displayAlignmentButton() {
         alignState.current = result.alignState;
       }
     } catch (error) {
-      console.error("Error getting stored alignment state:", error);
+      debugError("Error getting stored alignment state:", error);
     }
 
     // Get form elements
@@ -43,7 +44,7 @@ async function displayAlignmentButton() {
       applyLTRAlignment(promptTextarea);
     }
 
-    console.log("RTLify: Initial alignment applied:", alignState.current);
+    debugLog("RTLify: Initial alignment applied:", alignState.current);
 
     // Set up auto-detection immediately on the initial textarea
     setupAutoDetection(alignState, updateButtonCallback);
@@ -69,7 +70,7 @@ async function displayAlignmentButton() {
       clearInterval(autoDetectionInterval);
     };
   } catch (error) {
-    console.error(error);
+    debugError(error);
     if (error === "Timeout: Form element not found within timeout period") {
       await browser.runtime.sendMessage({
         action: "showToast",

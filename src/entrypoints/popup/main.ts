@@ -1,4 +1,5 @@
 import { getCurrentVersionChanges } from "@/data/changelog";
+import { debugError } from '@/utils/debugLogger';
 
 const elements = {
   closePopup: "closePopup",
@@ -232,7 +233,7 @@ async function popupScript() {
 
     await setupPopup();
   } catch (error) {
-    console.error("Error in popup script:", error);
+    debugError("Error in popup script:", error);
   }
 }
 popupScript();

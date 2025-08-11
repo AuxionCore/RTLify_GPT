@@ -2,13 +2,14 @@ import "./style.css";
 import messages, { validateTranslations } from "@/components/messages";
 import getUILanguageDirection from "@/components/getUILanguageDirection";
 import { changelog, formatDate } from "@/data/changelog";
+import { debugLog, debugError } from '@/utils/debugLogger';
 
 // Validate translations on page load
 try {
   validateTranslations();
-  console.log("All translations validated successfully");
+  debugLog("All translations validated successfully");
 } catch (error) {
-  console.error("Translation validation failed:", error);
+  debugError("Translation validation failed:", error);
 }
 
 // Get message texts
@@ -120,13 +121,13 @@ function getTranslatedChangelogItems(entry: any): any {
   const result = translationMap[entry.version] || {};
   
   // Debug: log what we're getting
-  console.log(`Version ${entry.version}:`, result);
+  debugLog(`Version ${entry.version}:`, result);
   
   // Filter out undefined values for each category
   Object.keys(result).forEach(key => {
     if (Array.isArray(result[key])) {
       result[key] = result[key].filter(item => item && item.trim() !== '' && item !== 'undefined');
-      console.log(`${key} items for ${entry.version}:`, result[key]);
+      debugLog(`${key} items for ${entry.version}:`, result[key]);
     }
   });
   

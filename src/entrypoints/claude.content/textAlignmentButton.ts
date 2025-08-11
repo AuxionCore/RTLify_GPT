@@ -1,3 +1,5 @@
+import { debugError } from '../../utils/debugLogger';
+
 export default async function displayAlignmentButton() {
   interface TextareaMenu extends HTMLElement {
     appendChild<T extends Node>(newChild: T): T;
@@ -76,7 +78,7 @@ export default async function displayAlignmentButton() {
           return "left";
         }
       } catch (error) {
-        console.error(error);
+        debugError(error);
         return "left";
       }
     }
@@ -85,7 +87,7 @@ export default async function displayAlignmentButton() {
     const { fieldsetElement, promptTextarea } = await getFormElements();
 
     if (!promptTextarea || !fieldsetElement) {
-      console.error(
+      debugError(
         "form Element not found: " + promptTextarea,
         fieldsetElement
       );
@@ -137,7 +139,7 @@ export default async function displayAlignmentButton() {
       try {
         await browser.storage.sync.set({ alignState: alignState });
       } catch (error) {
-        console.error(error);
+        debugError(error);
       }
     }
 
@@ -223,7 +225,7 @@ export default async function displayAlignmentButton() {
       try {
         await browser.storage.sync.set({ alignState: alignState });
       } catch (error) {
-        console.error(error);
+        debugError(error);
       }
     }
 
@@ -357,7 +359,7 @@ export default async function displayAlignmentButton() {
     //   characterData: true,
     // });
   } catch (error) {
-    console.error(error);
+    debugError(error);
     if (error === "Timeout: Form element not found within 30 seconds") {
       await browser.runtime.sendMessage({
         action: "showToast",

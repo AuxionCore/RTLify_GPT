@@ -3,6 +3,7 @@
 import { AlignIconBtn, TextareaMenu, findTextarea } from './domHelpers';
 import { applyRTLAlignment, applyLTRAlignment } from './textDirection';
 import { setupAutoDetection } from './autoDetection';
+import { debugLog, debugError } from '../../../utils/debugLogger';
 
 /**
  * SVG paths for alignment icons
@@ -58,7 +59,7 @@ export async function toggleAlignment(
     event.preventDefault();
     event.stopPropagation();
     
-    console.log("RTLify: Toggle started, current state:", alignState.current);
+    debugLog("RTLify: Toggle started, current state:", alignState.current);
     
     // Clear any active states or focus that might cause color changes
     alignElement.blur();
@@ -66,12 +67,12 @@ export async function toggleAlignment(
     const textarea = findTextarea();
     
     if (!textarea) {
-      console.error("RTLify: Textarea not found");
+      debugError("RTLify: Textarea not found");
       return;
     }
 
-    console.log("RTLify: Found textarea:", textarea);
-    console.log("RTLify: Current textarea styles before change:", {
+    debugLog("RTLify: Found textarea:", textarea);
+    debugLog("RTLify: Current textarea styles before change:", {
       direction: textarea.style.direction,
       textAlign: textarea.style.textAlign,
       dir: textarea.dir
@@ -79,7 +80,7 @@ export async function toggleAlignment(
 
     if (alignState.current === "left") {
       // Set RTL alignment
-      console.log("RTLify: Setting RTL alignment");
+      debugLog("RTLify: Setting RTL alignment");
       applyRTLAlignment(textarea);
       alignState.current = "right";
 
@@ -92,7 +93,7 @@ export async function toggleAlignment(
       alignElement.setAttribute("aria-label", alignLeftText);
     } else {
       // Set LTR alignment
-      console.log("RTLify: Setting LTR alignment");
+      debugLog("RTLify: Setting LTR alignment");
       applyLTRAlignment(textarea);
       alignState.current = "left";
 
@@ -105,8 +106,8 @@ export async function toggleAlignment(
       alignElement.setAttribute("aria-label", alignRightText);
     }
     
-    console.log("RTLify: New state:", alignState.current);
-    console.log("RTLify: Textarea styles after change:", {
+    debugLog("RTLify: New state:", alignState.current);
+    debugLog("RTLify: Textarea styles after change:", {
       direction: textarea.style.direction,
       textAlign: textarea.style.textAlign,
       dir: textarea.dir
@@ -123,12 +124,12 @@ export async function toggleAlignment(
     
     try {
       await browser.storage.sync.set({ alignState: alignState.current });
-      console.log("RTLify: State saved to storage");
+      debugLog("RTLify: State saved to storage");
     } catch (error) {
-      console.error("Storage error:", error);
+      debugError("Storage error:", error);
     }
   } catch (error) {
-    console.error("Error in toggleAlignment:", error);
+    debugError("Error in toggleAlignment:", error);
   }
 }
 
@@ -181,32 +182,32 @@ export function addAlignButton(
   if (textareaContainer) {
     // Add left margin to prevent overlap with our button
     (textareaContainer as HTMLElement).style.marginLeft = 'calc(5*var(--spacing) + 30px)';
-    console.log("RTLify: Added margin to textarea container");
+    debugLog("RTLify: Added margin to textarea container");
   }
 
   // Insert our container after the plus button container
   const plusButtonContainer = textareaMenu;
   if (plusButtonContainer && plusButtonContainer.parentNode) {
     plusButtonContainer.parentNode.insertBefore(alignButtonContainer, plusButtonContainer.nextSibling);
-    console.log("RTLify: Button container inserted after plus button container");
+    debugLog("RTLify: Button container inserted after plus button container");
   } else {
     // Fallback: find the parent container and append
     const parentContainer = document.querySelector('div.relative.flex.min-h-14.w-full.items-end');
     if (parentContainer) {
       parentContainer.appendChild(alignButtonContainer);
-      console.log("RTLify: Button container appended to parent");
+      debugLog("RTLify: Button container appended to parent");
     }
   }
 
   buttonElement.addEventListener("click", async (event: MouseEvent) => {
-    console.log("RTLify: Button clicked, current state:", alignState.current);
+    debugLog("RTLify: Button clicked, current state:", alignState.current);
     await toggleAlignment(buttonElement as AlignIconBtn, event, alignState, alignRightText, alignLeftText);
   });
   
   // Add auto-detection to the textarea
   setupAutoDetection(alignState, updateButtonCallback);
   
-  console.log("RTLify: Text alignment button added with state:", alignState.current);
+  debugLog("RTLify: Text alignment button added with state:", alignState.current);
   
   return buttonElement as AlignIconBtn;
 }

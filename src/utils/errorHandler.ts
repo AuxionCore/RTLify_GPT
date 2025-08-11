@@ -2,6 +2,8 @@
  * Centralized error handling utilities for RTLify GPT extension
  */
 
+import { debugError } from './debugLogger';
+
 export class RTLifyError extends Error {
   constructor(
     message: string,
@@ -24,7 +26,7 @@ export async function safeExecute<T>(
   try {
     return await fn();
   } catch (error) {
-    console.error(`[RTLify GPT] Error in ${context}:`, error);
+    debugError(`[RTLify GPT] Error in ${context}:`, error);
     
     // Send error to background script for optional user notification
     if (typeof browser !== 'undefined' && browser.runtime) {
@@ -35,7 +37,7 @@ export async function safeExecute<T>(
           body: `Error in ${context}: ${error instanceof Error ? error.message : 'Unknown error'}`
         });
       } catch (msgError) {
-        console.error('[RTLify GPT] Failed to send error message:', msgError);
+        debugError('[RTLify GPT] Failed to send error message:', msgError);
       }
     }
     
@@ -54,7 +56,7 @@ export function safeExecuteSync<T>(
   try {
     return fn();
   } catch (error) {
-    console.error(`[RTLify GPT] Error in ${context}:`, error);
+    debugError(`[RTLify GPT] Error in ${context}:`, error);
     return fallback;
   }
 }
