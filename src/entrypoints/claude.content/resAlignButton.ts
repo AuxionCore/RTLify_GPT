@@ -2,6 +2,7 @@ import {
   applyLTRStyleToGptResponse,
   applyRTLStyleToGptResponse,
 } from "./resDirStyle";
+import { debugLog } from "../../utils/debugLogger";
 
 export default function addAlignButton(
   streamingElement: HTMLDivElement,
@@ -24,18 +25,21 @@ export default function addAlignButton(
   d="M144-144v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Zm0-150v-72h480v72H144Zm0-150v-72h672v72H144Z"
 />`;
 
-  const formatAlignPathEl: string =
-    getComputedStyle(
-      streamingElement.children[0] as HTMLDivElement
-    ).getPropertyValue("direction") === "rtl"
-      ? formatAlignLeftPathEl
-      : formatAlignRightPathEl;
-  const formatAlignText: string =
-    getComputedStyle(
-      streamingElement.children[0] as HTMLDivElement
-    ).getPropertyValue("direction") === "rtl"
-      ? alignLeftText
-      : alignRightText;
+  // Check if any child elements already have RTL styling applied
+  const hasRTLElements = Array.from(streamingElement.querySelectorAll('*')).some(el => {
+    const computedDirection = getComputedStyle(el as HTMLElement).getPropertyValue("direction");
+    const inlineDirection = (el as HTMLElement).style.direction;
+    return computedDirection === "rtl" || inlineDirection === "rtl";
+  });
+
+  // If RTL elements exist, button should show "align left" (to switch back to LTR)
+  // If no RTL elements, button should show "align right" (to switch to RTL)
+  const formatAlignPathEl: string = hasRTLElements
+    ? formatAlignLeftPathEl
+    : formatAlignRightPathEl;
+  const formatAlignText: string = hasRTLElements
+    ? alignLeftText
+    : alignRightText;
 
   const alignMiniButton = document.createElement("button");
   alignMiniButton.setAttribute("aria-label", formatAlignText);
@@ -72,10 +76,16 @@ export default function addAlignButton(
   grandchild.prepend(alignMiniButton);
 
   alignMiniButton.addEventListener("click", () => {
-    const currentDirection = (streamingElement.children[0] as HTMLDivElement)
-      .style.direction;
+    const contentElement = streamingElement.children[0] as HTMLDivElement;
+    const currentDirection = getComputedStyle(contentElement).getPropertyValue("direction") || contentElement.style.direction || "ltr";
+
+    debugLog("Align button clicked. Current direction:", currentDirection);
+    debugLog("contentElement:", contentElement);
+    debugLog("streamingElement:", streamingElement);
 
     if (currentDirection === "rtl") {
+      // Currently RTL, switching to LTR
+      debugLog("Switching from RTL to LTR");
       alignMiniButton.setAttribute("aria-label", alignRightText);
       alignMiniButton.setAttribute("title", alignRightText);
       alignMiniButton.innerHTML = `
@@ -89,12 +99,10 @@ export default function addAlignButton(
         ${formatAlignRightPathEl}
       </svg>
     `;
-      applyLTRStyleToGptResponse(
-        streamingElement.children[0] as HTMLDivElement
-      );
-    }
-
-    if (currentDirection === "ltr") {
+      applyLTRStyleToGptResponse(contentElement);
+    } else {
+      // Currently LTR or default, switching to RTL
+      debugLog("Switching from LTR to RTL");
       alignMiniButton.setAttribute("aria-label", alignLeftText);
       alignMiniButton.setAttribute("title", alignLeftText);
       alignMiniButton.innerHTML = `
@@ -108,9 +116,7 @@ export default function addAlignButton(
         ${formatAlignLeftPathEl}
       </svg>
     `;
-      applyRTLStyleToGptResponse(
-        streamingElement.children[0] as HTMLDivElement
-      );
+      applyRTLStyleToGptResponse(contentElement);
     }
   });
 }

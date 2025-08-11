@@ -1,3 +1,5 @@
+import { debugLog } from "../../utils/debugLogger";
+
 function wrapMathExpressions(root: HTMLElement): void {
   const walker: TreeWalker = document.createTreeWalker(
     root,
@@ -38,7 +40,19 @@ function handleMathTextDirection(mathElement: HTMLElement) {
   });
 }
 
+// Store observers for cleanup
+const observerMap = new WeakMap<HTMLElement, MutationObserver>();
+
 export function applyRTLStyleToGptResponse(el: HTMLDivElement) {
+  debugLog("Applying RTL style to GPT response", el);
+  
+  // Clean up any existing observer
+  const existingObserver = observerMap.get(el);
+  if (existingObserver) {
+    existingObserver.disconnect();
+    observerMap.delete(el);
+  }
+
   el.style.setProperty("direction", "rtl");
 
   // Expressions to match math fractions within parentheses
@@ -80,20 +94,18 @@ export function applyRTLStyleToGptResponse(el: HTMLDivElement) {
       }
     }
 
-    // Katex elements lode in the DOM after the math elements are added
+    // Katex elements load in the DOM after the math elements are added
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         for (const node of mutation.addedNodes) {
           if (node.nodeType !== Node.ELEMENT_NODE) continue;
           const mathElements = el.querySelectorAll(
-            ".katex"
+            ".katex, div.math.math-display"
           ) as NodeListOf<HTMLElement>;
-          console.log("mathElements", mathElements);
           if (mathElements.length > 0) {
             for (const mathElement of mathElements) {
               handleMathTextDirection(mathElement as HTMLDivElement);
             }
-            // observer.disconnect(); // Stop observing once the math elements are found
           }
         }
       }
@@ -103,36 +115,69 @@ export function applyRTLStyleToGptResponse(el: HTMLDivElement) {
       childList: true,
       subtree: true,
     });
+
+    // Store the observer for later cleanup
+    observerMap.set(el, observer);
   }
-
-  const observer = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      for (const node of mutation.addedNodes) {
-        if (!(node instanceof HTMLElement)) continue;
-        const mathElements = node.matches?.("div.math.math-display")
-          ? [node]
-          : Array.from(node.querySelectorAll("div.math.math-display"));
-        for (const el of mathElements) {
-          handleMathTextDirection(el as HTMLDivElement);
-        }
-      }
-    }
-  });
-
-  observer.observe(el, {
-    childList: true,
-    subtree: true,
-  });
 }
 
 export function applyLTRStyleToGptResponse(gptResponseEl: HTMLDivElement) {
-  gptResponseEl.style.setProperty("direction", "ltr");
+  debugLog("Applying LTR style to GPT response (resetting)", gptResponseEl);
+  
+  // Clean up any existing observer
+  const existingObserver = observerMap.get(gptResponseEl);
+  if (existingObserver) {
+    existingObserver.disconnect();
+    observerMap.delete(gptResponseEl);
+  }
 
+  // Reset the main element direction and styles
+  gptResponseEl.style.removeProperty("direction");
+  gptResponseEl.style.removeProperty("line-height");
+  gptResponseEl.style.removeProperty("margin-block");
+
+  // Reset ALL child elements that might have RTL styles applied
+  const allChildElements = gptResponseEl.querySelectorAll("*") as NodeListOf<HTMLElement>;
+  allChildElements.forEach((el) => {
+    el.style.removeProperty("direction");
+    el.style.removeProperty("line-height");
+    el.style.removeProperty("margin-block");
+    el.style.removeProperty("unicode-bidi");
+    el.style.removeProperty("padding-inline-start");
+    el.style.removeProperty("white-space");
+  });
+
+  // Reset unicode-bidi for elements that might have been modified
   const elementsContainingMath = gptResponseEl.querySelectorAll<HTMLElement>(
     "p.whitespace-pre-wrap.break-words, li.whitespace-normal.break-words, div.math.math-display, h3, h4"
   );
 
   elementsContainingMath.forEach((el) => {
-    el.style.setProperty("unicode-bidi", "initial");
+    el.style.removeProperty("unicode-bidi");
   });
+
+  // Remove any LTR isolation spans that were added for math expressions
+  const isolatedSpans = gptResponseEl.querySelectorAll('span[style*="direction:ltr"][style*="unicode-bidi:isolate"]');
+  isolatedSpans.forEach((span) => {
+    const parent = span.parentNode;
+    if (parent) {
+      // Replace the span with its text content
+      const textNode = document.createTextNode(span.textContent || '');
+      parent.replaceChild(textNode, span);
+      
+      // Normalize the parent to merge adjacent text nodes
+      parent.normalize();
+    }
+  });
+
+  // Reset any math elements that were modified
+  const mathElements = gptResponseEl.querySelectorAll(".katex, div.math.math-display") as NodeListOf<HTMLElement>;
+  mathElements.forEach((mathElement) => {
+    mathElement.style.removeProperty("unicode-bidi");
+    mathElement.style.removeProperty("direction");
+    mathElement.style.removeProperty("padding-inline-start");
+    mathElement.style.removeProperty("white-space");
+  });
+
+  debugLog("Finished resetting LTR styles for all elements");
 }
