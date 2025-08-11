@@ -28,40 +28,49 @@ function wrapMathExpressions(root: HTMLElement): void {
 }
 
 function handleMathTextDirection(mathElement: HTMLElement) {
-  mathElement.style.setProperty("unicode-bidi", "plaintext");
-  mathElement.style.setProperty("direction", "ltr");
-  mathElement.style.setProperty("padding-inline-start", "5px");
-  mathElement.style.setProperty("white-space", "nowrap");
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      mathElement.style.setProperty("unicode-bidi", "plaintext");
+      mathElement.style.setProperty("direction", "ltr");
+      mathElement.style.setProperty("padding-inline-start", "5px");
+      mathElement.style.setProperty("white-space", "nowrap");
+    }, 100);
+  });
 }
 
-export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
-  gptResponseEl.style.setProperty("direction", "rtl");
+export function applyRTLStyleToGptResponse(el: HTMLDivElement) {
+  el.style.setProperty("direction", "rtl");
 
-  // Set the text direction for math content elements
-  const elementsContainingMath = gptResponseEl.querySelectorAll<HTMLElement>(
-    "p.whitespace-pre-wrap.break-words, li.whitespace-normal.break-words, div.math.math-display, h3, h4"
+  // Expressions to match math fractions within parentheses
+  const mathFractionRegex = /\((\d+\/[a-zA-Z]+)\)/g;
+
+  // Expressions to match negative numbers within parentheses
+  const negativeNumberRegex = /(−|\-)\d+(\.\d+)?/g;
+
+  const hasInnerTags = Array.from(el.childNodes).some(
+    (node) => node.nodeType === Node.ELEMENT_NODE
   );
 
-  // An example of a math expression: (1/cos)
-  const mathRegex = /\((\d+\/[a-zA-Z]+)\)/g;
+  if (!hasInnerTags) {
+    let html = el.innerHTML;
 
-  for (const el of elementsContainingMath) {
-    console.log("Math element found:", el);
-    const html = el.innerHTML;
-
-  if (mathRegex.test(html)) {
-    el.innerHTML = html.replace(
-      mathRegex,
-      '<span style="direction:ltr; unicode-bidi:isolate">($1)</span>'
-    );
-
+    const replacedHtml = html
+      .replace(
+        mathFractionRegex,
+        '<span style="direction:ltr; unicode-bidi:isolate">($1)</span>'
+      )
+      .replace(
+        negativeNumberRegex,
+        (match) =>
+          `<span style="direction:ltr; unicode-bidi:isolate">${match}</span>`
+      );
+    if (html !== replacedHtml) {
+      el.innerHTML = replacedHtml;
+    }
     el.style.lineHeight = "2";
     el.style.marginBlock = "2px";
-  }
-  };
-
-  // Set the text direction for all dynamic paragraphs
-  for (const el of elementsContainingMath) {
+  } else {
+    // Set the text direction for all dynamic paragraphs
     const mathElements = el.querySelectorAll(
       ".katex"
     ) as NodeListOf<HTMLElement>;
@@ -79,6 +88,7 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
           const mathElements = el.querySelectorAll(
             ".katex"
           ) as NodeListOf<HTMLElement>;
+          console.log("mathElements", mathElements);
           if (mathElements.length > 0) {
             for (const mathElement of mathElements) {
               handleMathTextDirection(mathElement as HTMLDivElement);
@@ -102,7 +112,6 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
         const mathElements = node.matches?.("div.math.math-display")
           ? [node]
           : Array.from(node.querySelectorAll("div.math.math-display"));
-
         for (const el of mathElements) {
           handleMathTextDirection(el as HTMLDivElement);
         }
@@ -110,7 +119,7 @@ export function applyRTLStyleToGptResponse(gptResponseEl: HTMLDivElement) {
     }
   });
 
-  observer.observe(gptResponseEl, {
+  observer.observe(el, {
     childList: true,
     subtree: true,
   });

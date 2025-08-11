@@ -1,4 +1,4 @@
-import extractParagraphTexts from "./extractParagraphTexts";
+import {extractUserPromptsText} from "./extractTexts";
 import detectLanguage from "./detectLanguage";
 
 async function applyRTLStyleToUserPrompts(el: HTMLDivElement) {
@@ -15,16 +15,16 @@ export default async function handleUserPromptsAlignment(
 
   let allTexts: string[] = [];
   for (const child of element.children) {
-    const texts = extractParagraphTexts(child as HTMLElement);
-    allTexts.push(...texts);
+    const texts = extractUserPromptsText(child as HTMLElement);
+    allTexts.push(...texts.map((text) => text.text.trim()));
   }
   const combinedText = allTexts.join(" ").trim();
 
   if (combinedText.length > 0) {
     try {
-      const lang = await detectLanguage(combinedText);
+      const [detected, langObj] = await detectLanguage(combinedText);
 
-      if (lang && rtlLanguageCodes.includes(lang)) {
+      if (detected && langObj && rtlLanguageCodes.includes(langObj.language)) {
         await applyRTLStyleToUserPrompts(element);
       }
     } catch (error) {
