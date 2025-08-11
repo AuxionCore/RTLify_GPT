@@ -1,8 +1,8 @@
 import { ContentScriptContext } from "#imports";
 const existsChatPattern = new MatchPattern("https://claude.ai/chat/*");
 const newChatPattern = new MatchPattern("https://claude.ai/new");
-import handleLoadedElements from "../claudeAI.content/loadedElements";
-import observeDocument from "../claudeAI.content/docObserver";
+import handleLoadedElements from "./loadedElements";
+import observeDocument from "./docObserver";
 import displayAlignmentButton from "./textAlignmentButton";
 
 export default defineContentScript({
@@ -18,7 +18,7 @@ export default defineContentScript({
 
     ctx.addEventListener(window, "wxt:locationchange", async ({ newUrl }) => {
       if (existsChatPattern.includes(newUrl)) {
-        handleLoadedElements();
+        // await handleLoadedElements();
         await displayAlignmentButton();
         // observeDocument();
       }

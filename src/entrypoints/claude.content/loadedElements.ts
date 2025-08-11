@@ -1,7 +1,7 @@
 import handleGptResponseAlignment from "./gptResAlignment";
 import handleUserPromptsAlignment from "./userPromptsAlignment";
 
-export default function handleLoadedElements() {
+export default async function handleLoadedElements() {
   const elements = document.querySelectorAll<HTMLElement>(
     "[data-test-render-count]"
   );
@@ -10,15 +10,15 @@ export default function handleLoadedElements() {
     return;
   }
 
-  elements.forEach((el) => {
+  for (const el of elements) {
     const dataIsNotStreaming = el.querySelector(
       "[data-is-streaming='false']"
     ) as HTMLDivElement;
 
     if (dataIsNotStreaming) {
-      handleGptResponseAlignment(dataIsNotStreaming as HTMLDivElement);
+      await handleGptResponseAlignment(dataIsNotStreaming as HTMLDivElement);
     } else {
-      handleUserPromptsAlignment(el as HTMLDivElement);
+      await handleUserPromptsAlignment(el as HTMLDivElement);
     }
-  });
+  }
 }
