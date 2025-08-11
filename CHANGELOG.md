@@ -5,114 +5,99 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.0.0] - 2025-06-05
+## [3.0.0] - 2025-08-11
 
-- fixed: Fixed a bug where the text alignment button was not appearing on the chatGPT website.
-- fixed: Fixed a bug where the text alignment button was sometimes not appearing on the claude.ai website.
-- fixed: Fixed a bug where some mathematical text was not being displayed correctly in RTL languages.
-- feature: Changed icon to a more modern design.
+### Added
+- Modern icon design
+
+### Fixed
+- Text alignment button not appearing on ChatGPT website
+- Text alignment button sometimes not appearing on Claude.ai website
+- Mathematical text display issues in RTL languages
 
 ## [3.0.0-beta.1] - 2025-05-03
 
 ### Added
-
-- Added support for the grok.com website.
+- Support for Grok.com website
 
 ### Changed
-
-- Updated the extension with the wxt framework for better performance and maintainability.
+- Updated extension with WXT framework for better performance and maintainability
 
 ### Fixed
-
-- Fixed a bug where the text alignment sometimes did not work correctly on the claude.ai website.
+- Text alignment issues on Claude.ai website
 
 ## [2.0.1] - 2025-04-20
 
 ### Fixed
-
-- Improvements and bug fixes in element alignment on the claude.ai website
+- Element alignment improvements and bug fixes on Claude.ai website
 
 ## [2.0.0] - 2025-04-11
 
 ### Added
-
-- Added full support for the claude.ai website.
-- Implement error toast functionality with badge updates and styling adjustments.
+- Full support for Claude.ai website
+- Error toast functionality with badge updates and styling adjustments
 
 ### Fixed
-
-- Add timeout handling and error messaging for form element retrieval in text alignment feature.
-- Ensure popup opens after setting error toast message in service worker
+- Timeout handling and error messaging for form element retrieval in text alignment feature
+- Popup opening after setting error toast message in service worker
 
 ## [1.2.1] - 2025-03-26
 
 ### Fixed
-
-- Fix: Changing selectors to display an align button according to the new style on the site
+- Updated selectors to display alignment button according to new site style
 
 ## [1.2.0] - 2025-03-23
 
 ### Added
-
-- Feature: Automatic alignment even after cutting or pasting text, as well as support for deleting all text at once.
-
-### Fixed
-
-- Fixed a situation where typing text changes alignment even after clicking the "Text Alignment" button to the opposite direction.
+- Automatic alignment after cutting or pasting text
+- Support for deleting all text at once
 
 ### Changed
+- Disabled automatic popup window opening on every extension update
 
-- Disable automatic pop-up window opening on every extension update.
+### Fixed
+- Text alignment changing while typing after clicking "Text Alignment" button
 
 ## [1.1.1] - 2025-03-20
 
 ### Added
-
-- Feature: Saving a user preference for repeated use.
-
-### Fixed
-
-- Fixing inactive links on the Popup page.
+- User preference saving for repeated use
 
 ### Changed
+- Display what's new alert in popup instead of new tab when extension is updated
 
-- Display alert of what's new in the popup when extension is updated instead of a new tab.
+### Fixed
+- Inactive links on popup page
 
 ## [1.1.0] - 2025-03-14
 
 ### Added
-
-- Feature 1: Align text direction in chat box to first letter in conversation.
-- Feature 2: Saving a user preference for repeated use.
-- Adding pages for extension installations and updates.
-- Installing and using vite.
+- Text direction alignment based on first letter in conversation
+- User preference saving for repeated use
+- Extension installation and update pages
+- Vite support
 
 ### Changed
-
-- Dynamically display extension version in popup.
-- Implement ts support.
+- Dynamic extension version display in popup
+- TypeScript support implementation
 
 ## [1.0.1] - 2025-03-08
 
 ### Changed
-
-- Separating the 2 feature functions on a content page into 2 separate content pages: contentA, contentB.
+- Separated feature functions into separate content pages
 
 ### Fixed
-
-- Displaying multiple "Text Alignment" buttons when landing on the main chat page.
-- Update feedback link in popup.js to correct extension URL.
+- Multiple "Text Alignment" buttons appearing on main chat page
+- Updated feedback link in popup to correct extension URL
 
 ### Removed
-
-- Urdu translation. Chrome extensions web store does not support this language.
+- Urdu translation (Chrome Web Store does not support this language)
 
 ## [1.0.0] - 2025-03-06
 
 ### Added
-
-- Feature 1: Text alignment button.
-- Feature 2: Align and display mathematical text from left to right even in RTL languages.
-- Arabic translation.
-- Persian translation.
-- Hebrew translation.
+- Text alignment button functionality
+- Mathematical text display from left to right in RTL languages
+- Arabic translation
+- Persian translation
+- Hebrew translation
