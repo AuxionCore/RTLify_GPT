@@ -166,8 +166,37 @@ export function addAlignButton(
     </svg>
   `;
 
-  // Insert at the very beginning of the container (leftmost position)
-  textareaMenu.insertBefore(buttonElement, textareaMenu.firstChild);
+  // Create a separate div with absolute positioning for our button
+  const alignButtonContainer = document.createElement("div");
+  alignButtonContainer.className = "absolute bottom-2.5";
+  alignButtonContainer.style.cssText = `
+    left: calc(2.5rem + 8px);
+    z-index: 10;
+  `;
+  
+  alignButtonContainer.appendChild(buttonElement);
+
+  // Add margin to textarea container to make room for our button
+  const textareaContainer = document.querySelector('textarea')?.parentElement
+  if (textareaContainer) {
+    // Add left margin to prevent overlap with our button
+    (textareaContainer as HTMLElement).style.marginLeft = 'calc(5*var(--spacing) + 30px)';
+    console.log("RTLify: Added margin to textarea container");
+  }
+
+  // Insert our container after the plus button container
+  const plusButtonContainer = textareaMenu;
+  if (plusButtonContainer && plusButtonContainer.parentNode) {
+    plusButtonContainer.parentNode.insertBefore(alignButtonContainer, plusButtonContainer.nextSibling);
+    console.log("RTLify: Button container inserted after plus button container");
+  } else {
+    // Fallback: find the parent container and append
+    const parentContainer = document.querySelector('div.relative.flex.min-h-14.w-full.items-end');
+    if (parentContainer) {
+      parentContainer.appendChild(alignButtonContainer);
+      console.log("RTLify: Button container appended to parent");
+    }
+  }
 
   buttonElement.addEventListener("click", async (event: MouseEvent) => {
     console.log("RTLify: Button clicked, current state:", alignState.current);

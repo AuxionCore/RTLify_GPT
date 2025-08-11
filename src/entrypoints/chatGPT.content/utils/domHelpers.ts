@@ -79,10 +79,31 @@ export function getFormElements(timeout = 15000): Promise<{
  * Find the container for the alignment button
  */
 export function findTextareaMenu(): TextareaMenu | null {
-  // Look for the composer footer actions container
+  // Look for the main parent container that holds all the buttons
   let textareaMenu = document.querySelector(
-    'div[data-testid="composer-footer-actions"]'
+    'div.relative.flex.min-h-14.w-full.items-end'
   ) as TextareaMenu;
+
+  if (!textareaMenu) {
+    // Look for the specific div with absolute positioning that contains the plus button
+    textareaMenu = document.querySelector(
+      'div.absolute.start-2\\.5.bottom-2\\.5'
+    ) as TextareaMenu;
+  }
+
+  if (!textareaMenu) {
+    // Alternative selector for the same element
+    textareaMenu = document.querySelector(
+      'div[class*="absolute"][class*="start-2.5"][class*="bottom-2.5"]'
+    ) as TextareaMenu;
+  }
+
+  if (!textareaMenu) {
+    // Look for the composer footer actions container (fallback)
+    textareaMenu = document.querySelector(
+      'div[data-testid="composer-footer-actions"]'
+    ) as TextareaMenu;
+  }
 
   if (!textareaMenu) {
     // Fallback to finding the form and creating the container
@@ -92,6 +113,13 @@ export function findTextareaMenu(): TextareaMenu | null {
         'div[data-testid="composer-footer-actions"]'
       ) as TextareaMenu;
     }
+  }
+
+  // Debug logging
+  if (textareaMenu) {
+    console.log("RTLify: Found textareaMenu:", textareaMenu.className);
+  } else {
+    console.log("RTLify: No textareaMenu found");
   }
 
   return textareaMenu;
