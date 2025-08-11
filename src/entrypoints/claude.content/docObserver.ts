@@ -1,6 +1,6 @@
 import handleGptResponseAlignment from "./gptResAlignment";
 import handleUserPromptsAlignment from "./userPromptsAlignment";
-import { debugLog } from "../../utils/debugLogger";
+import { debugLog, debugError } from "../../utils/debugLogger";
 
 export default function observeDocument() {
   // const documentObserver = new MutationObserver((mutations) => {
@@ -184,6 +184,49 @@ export default function observeDocument() {
             );
           });
         } else {
+          // Monitor changes during streaming to detect RTL content early
+          const contentObserver = new MutationObserver(async (mutations) => {
+            let shouldCheckContent = false;
+            
+            mutations.forEach((mutation) => {
+              if (mutation.type === "childList" || mutation.type === "characterData") {
+                shouldCheckContent = true;
+              }
+            });
+
+            if (shouldCheckContent) {
+              // Check if content has grown enough to detect language
+              const textContent = streamingElement.textContent?.trim() || "";
+              if (textContent.length > 20) { // Wait for some content before checking
+                try {
+                  const contentElement = streamingElement.children[0] as HTMLDivElement;
+                  if (contentElement) {
+                    // Check if already has RTL styling applied
+                    const hasRTLElements = Array.from(contentElement.querySelectorAll('*')).some(el => {
+                      const computedDirection = getComputedStyle(el as HTMLElement).getPropertyValue("direction");
+                      const inlineDirection = (el as HTMLElement).style.direction;
+                      return computedDirection === "rtl" || inlineDirection === "rtl";
+                    });
+
+                    if (!hasRTLElements) {
+                      // Only check language if not already RTL
+                      await handleGptResponseAlignment(streamingElement as HTMLDivElement);
+                    }
+                  }
+                } catch (error) {
+                  debugError("Error during streaming content check:", error);
+                }
+              }
+            }
+          });
+
+          // Start observing content changes during streaming
+          contentObserver.observe(streamingElement, {
+            childList: true,
+            subtree: true,
+            characterData: true
+          });
+
           const streamingObserver = new MutationObserver((mutations) => {
             mutations.forEach((mut) => {
               if (
@@ -194,6 +237,7 @@ export default function observeDocument() {
                 const newVal = target.getAttribute("data-is-streaming");
                 if (newVal === "false") {
                   streamingObserver.disconnect();
+                  contentObserver.disconnect(); // Stop content monitoring
                   waitForChildContent(target, async () => {
                     debugLog("Streaming Element finished D:", target);
                     await handleGptResponseAlignment(target);
