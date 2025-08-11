@@ -125,6 +125,68 @@
     "message": "",
     "description": ""
   },
+  "changelogTitle": {
+    "message": "היסטוריית עדכונים",
+    "description": "Changelog title"
+  },
+  "changelogMessage": {
+    "message": "כאן תוכל לראות את כל העדכונים וההיסטוריה המלאה של התוסף",
+    "description": "Changelog description message"
+  },
+  "viewFullChangelogButton": {
+    "message": "צפה בהיסטוריית עדכונים מלאה",
+    "description": "View full changelog button text"
+  },
+  "hideChangelogButton": {
+    "message": "הסתר היסטוריית עדכונים",
+    "description": "Hide changelog button text"
+  },
+  "currentVersionTitle": {
+    "message": "עדכונים בגרסה הנוכחית",
+    "description": "Current version updates title"
+  },
+  "version300Title": {
+    "message": "גרסה 3.0.0",
+    "description": "Version 3.0.0 title"
+  },
+  "version300Date": {
+    "message": "11 אוגוסט 2025",
+    "description": "Version 3.0.0 release date"
+  },
+  "version300Features": {
+    "message": "עיצוב אייקון מודרני חדש",
+    "description": "Version 3.0.0 new features"
+  },
+  "version300Fixes": {
+    "message": "תיקון בעיות עם כפתור יישור הטקסט באתרי ChatGPT ו-Claude.ai, ותיקון הצגת טקסט מתמטי בשפות RTL",
+    "description": "Version 3.0.0 fixes"
+  },
+  "addedLabel": {
+    "message": "נוסף:",
+    "description": "Added label for changelog"
+  },
+  "fixedLabel": {
+    "message": "תוקן:",
+    "description": "Fixed label for changelog"
+  },
+  "changedLabel": {
+    "message": "שונה:",
+    "description": "Changed label for changelog"
+  },
+  "removedLabel": {
+    "message": "הוסר:",
+    "description": "Removed label for changelog"
+  },
+  "changesInVersion": {
+    "message": "$COUNT$ עדכונים חדשים בגירסה זו",
+    "description": "Number of changes in current version",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "description": "Number of changes"
+      }
+    }
+  },
   "feedbackMessage": {
     "message": "אנחנו מעריכים מאוד את המשוב שלך. אם יש לך הערות, שאלות או הצעות, אנא צרו איתנו קשר.",
     "description": "Feedback message"
@@ -144,5 +206,145 @@
   "alignRight": {
     "message": "יישר לימין",
     "description": "Align text to the right"
+  },
+  "grokSupport": {
+    "message": "תמיכה באתר Grok.com",
+    "description": "Support for Grok.com website"
+  },
+  "wxtFrameworkUpdate": {
+    "message": "עדכון התוסף עם מסגרת WXT לביצועים ותחזוקה טובים יותר",
+    "description": "Updated extension with WXT framework"
+  },
+  "claudeAlignmentFix": {
+    "message": "תיקון בעיות יישור טקסט באתר Claude.ai",
+    "description": "Text alignment fixes on Claude.ai"
+  },
+  "claudeFullSupport": {
+    "message": "תמיכה מלאה באתר Claude.ai",
+    "description": "Full support for Claude.ai website"
+  },
+  "errorToastFeature": {
+    "message": "פונקציונליות הודעות שגיאה עם עדכוני תגיות ועיצוב",
+    "description": "Error toast functionality"
+  },
+  "timeoutHandling": {
+    "message": "טיפול בזמני קצוב והודעות שגיאה לאחזור רכיבי טפסים",
+    "description": "Timeout handling and error messaging"
+  },
+  "selectorUpdates": {
+    "message": "עדכון בוררים להצגת כפתור יישור לפי הסגנון החדש של האתר",
+    "description": "Updated selectors for new site style"
+  },
+  "automaticAlignment": {
+    "message": "יישור אוטומטי לאחר חיתוך או הדבקת טקסט",
+    "description": "Automatic alignment after cutting or pasting text"
+  },
+  "deleteAllTextSupport": {
+    "message": "תמיכה במחיקת כל הטקסט בבת אחת",
+    "description": "Support for deleting all text at once"
+  },
+  "disableAutoPopup": {
+    "message": "השבתת פתיחה אוטומטית של חלון קופץ בכל עדכון תוסף",
+    "description": "Disabled automatic popup opening"
+  },
+  "typingAlignmentFix": {
+    "message": "תיקון שינוי יישור בזמן הקלדה לאחר לחיצה על כפתור יישור הטקסט",
+    "description": "Fixed typing alignment issue"
+  },
+  "userPreferences": {
+    "message": "שמירת העדפות משתמש לשימוש חוזר",
+    "description": "User preference saving"
+  },
+  "whatsNewInPopup": {
+    "message": "הצגת התראת 'מה חדש' בחלון קופץ במקום בכרטיסייה חדשה",
+    "description": "Display what's new alert in popup"
+  },
+  "inactiveLinksFixed": {
+    "message": "תיקון קישורים לא פעילים בדף הקופץ",
+    "description": "Fixed inactive links"
+  },
+  "textDirectionAlignment": {
+    "message": "יישור כיוון טקסט על פי האות הראשונה בשיחה",
+    "description": "Text direction alignment based on first letter"
+  },
+  "installUpdatePages": {
+    "message": "דפי התקנה ועדכון תוסף",
+    "description": "Extension installation and update pages"
+  },
+  "viteSupport": {
+    "message": "תמיכה ב-Vite",
+    "description": "Vite support"
+  },
+  "dynamicVersionDisplay": {
+    "message": "הצגה דינמית של גירסת תוסף בחלון הקופץ",
+    "description": "Dynamic extension version display"
+  },
+  "typescriptSupport": {
+    "message": "יישום תמיכה ב-TypeScript",
+    "description": "TypeScript support implementation"
+  },
+  "separatedContentPages": {
+    "message": "הפרדת פונקציות תכונות לדפי תוכן נפרדים",
+    "description": "Separated feature functions into content pages"
+  },
+  "multipleButtonsFix": {
+    "message": "תיקון הופעת כפתורי יישור מרובים בדף הצ'אט הראשי",
+    "description": "Fixed multiple alignment buttons issue"
+  },
+  "feedbackLinkUpdate": {
+    "message": "עדכון קישור המשוב ל-URL הנכון של התוסף",
+    "description": "Updated feedback link"
+  },
+  "urduTranslationRemoval": {
+    "message": "הסרת תרגום אורדו (Chrome Web Store לא תומך בשפה זו)",
+    "description": "Removed Urdu translation"
+  },
+  "textAlignmentButton": {
+    "message": "פונקציונליות כפתור יישור טקסט",
+    "description": "Text alignment button functionality"
+  },
+  "mathTextLTR": {
+    "message": "הצגת טקסט מתמטי משמאל לימין בשפות RTL",
+    "description": "Mathematical text LTR display in RTL languages"
+  },
+  "arabicTranslation": {
+    "message": "תרגום ערבי",
+    "description": "Arabic translation"
+  },
+  "persianTranslation": {
+    "message": "תרגום פרסי",
+    "description": "Persian translation"
+  },
+  "hebrewTranslation": {
+    "message": "תרגום עברי",
+    "description": "Hebrew translation"
+  },
+  "modernIconDesign": {
+    "message": "עיצוב אייקון מודרני חדש",
+    "description": "Modern icon design"
+  },
+  "textAlignmentButtonFix": {
+    "message": "תיקון כפתור יישור טקסט שלא הופיע באתר ChatGPT",
+    "description": "Text alignment button fix for ChatGPT"
+  },
+  "claudeTextAlignmentFix": {
+    "message": "תיקון כפתור יישור טקסט שלא הופיע לפעמים באתר Claude.ai",
+    "description": "Text alignment button fix for Claude.ai"
+  },
+  "mathTextDisplayFix": {
+    "message": "תיקון הצגת טקסט מתמטי בשפות RTL",
+    "description": "Mathematical text display fix for RTL languages"
+  },
+  "claudeElementAlignment": {
+    "message": "שיפורי יישור אלמנטים ותיקוני באגים באתר Claude.ai",
+    "description": "Element alignment improvements on Claude.ai"
+  },
+  "popupErrorFix": {
+    "message": "תיקון פתיחת חלון קופץ לאחר הגדרת הודעת שגיאה ב-service worker",
+    "description": "Popup error fix"
+  },
+  "selectorUpdate": {
+    "message": "עדכון בוררים להצגת כפתור יישור לפי הסגנון החדש באתר",
+    "description": "Selector update for new site style"
   }
 }

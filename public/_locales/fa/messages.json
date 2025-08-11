@@ -125,6 +125,68 @@
     "message": "",
     "description": ""
   },
+  "changelogTitle": {
+    "message": "تاریخچه انتشار",
+    "description": "Changelog title"
+  },
+  "changelogMessage": {
+    "message": "اینجا می‌توانید تمام به‌روزرسانی‌ها و تاریخچه کامل افزونه را ببینید",
+    "description": "Changelog description message"
+  },
+  "viewFullChangelogButton": {
+    "message": "مشاهده تاریخچه کامل انتشار",
+    "description": "View full changelog button text"
+  },
+  "hideChangelogButton": {
+    "message": "مخفی کردن تاریخچه انتشار",
+    "description": "Hide changelog button text"
+  },
+  "currentVersionTitle": {
+    "message": "به‌روزرسانی‌های نسخه فعلی",
+    "description": "Current version updates title"
+  },
+  "version300Title": {
+    "message": "نسخه 3.0.0",
+    "description": "Version 3.0.0 title"
+  },
+  "version300Date": {
+    "message": "5 ژوئن 2025",
+    "description": "Version 3.0.0 release date"
+  },
+  "version300Features": {
+    "message": "طراحی آیکون مدرن جدید",
+    "description": "Version 3.0.0 new features"
+  },
+  "version300Fixes": {
+    "message": "رفع مشکلات دکمه تراز متن در وب‌سایت‌های ChatGPT و Claude.ai، و رفع نمایش متن ریاضی در زبان‌های RTL",
+    "description": "Version 3.0.0 fixes"
+  },
+  "addedLabel": {
+    "message": "اضافه شده:",
+    "description": "Added label for changelog"
+  },
+  "fixedLabel": {
+    "message": "رفع شده:",
+    "description": "Fixed label for changelog"
+  },
+  "changedLabel": {
+    "message": "تغییر یافته:",
+    "description": "Changed label for changelog"
+  },
+  "removedLabel": {
+    "message": "حذف شده:",
+    "description": "Removed label for changelog"
+  },
+  "changesInVersion": {
+    "message": "$COUNT$ به‌روزرسانی جدید در این نسخه",
+    "description": "Number of changes in current version",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "description": "Number of changes"
+      }
+    }
+  },
   "feedbackMessage": {
     "message": "اگر هر گونه بازخورد یا پیشنهادی دارید، لطفاً با ما تماس بگیرید.",
     "description": "Feedback message"
@@ -144,5 +206,141 @@
   "alignRight": {
     "message": "تراز به راست",
     "description": "Align text to the right"
+  },
+  "modernIconDesign": {
+    "message": "طراحی آیکون مدرن",
+    "description": "Modern icon design"
+  },
+  "textAlignmentButtonFix": {
+    "message": "رفع مشکل دکمه تراز متن که در وب‌سایت ChatGPT ظاهر نمی‌شد",
+    "description": "Text alignment button fix for ChatGPT"
+  },
+  "claudeTextAlignmentFix": {
+    "message": "رفع مشکل دکمه تراز متن که گاهی در وب‌سایت Claude.ai ظاهر نمی‌شد",
+    "description": "Text alignment button fix for Claude.ai"
+  },
+  "mathTextDisplayFix": {
+    "message": "رفع مشکلات نمایش متن ریاضی در زبان‌های RTL",
+    "description": "Mathematical text display fix for RTL languages"
+  },
+  "grokSupport": {
+    "message": "اضافه کردن پشتیبانی کامل از وب‌سایت Grok.com",
+    "description": "Support for Grok.com website"
+  },
+  "wxtFrameworkUpdate": {
+    "message": "به‌روزرسانی افزونه با فریم‌ورک WXT برای عملکرد بهتر",
+    "description": "Updated extension with WXT framework"
+  },
+  "claudeAlignmentFix": {
+    "message": "رفع مشکلات تراز متن در وب‌سایت Claude.ai",
+    "description": "Text alignment fixes on Claude.ai"
+  },
+  "claudeElementAlignment": {
+    "message": "بهبود تراز عناصر و رفع اشکالات در وب‌سایت Claude.ai",
+    "description": "Element alignment improvements on Claude.ai"
+  },
+  "claudeFullSupport": {
+    "message": "اضافه کردن پشتیبانی کامل از وب‌سایت Claude.ai",
+    "description": "Full support for Claude.ai website"
+  },
+  "errorToastFeature": {
+    "message": "قابلیت نمایش خطا با به‌روزرسانی نشان و تنظیمات طراحی",
+    "description": "Error toast functionality"
+  },
+  "timeoutHandling": {
+    "message": "مدیریت مهلت زمانی و پیام‌های خطا برای بازیابی عناصر فرم",
+    "description": "Timeout handling for form elements"
+  },
+  "popupErrorFix": {
+    "message": "رفع باز شدن پاپ‌آپ پس از تنظیم پیام خطا در service worker",
+    "description": "Popup error fix"
+  },
+  "selectorUpdate": {
+    "message": "به‌روزرسانی انتخابگرها برای نمایش دکمه تراز مطابق با سبک جدید سایت",
+    "description": "Selector update for new site style"
+  },
+  "automaticAlignment": {
+    "message": "تراز خودکار پس از برش یا چسباندن متن",
+    "description": "Automatic text alignment"
+  },
+  "deleteAllTextSupport": {
+    "message": "پشتیبانی از حذف تمام متن یکباره",
+    "description": "Delete all text support"
+  },
+  "disableAutoPopup": {
+    "message": "غیرفعال کردن باز شدن خودکار پاپ‌آپ در هر به‌روزرسانی افزونه",
+    "description": "Disable auto popup"
+  },
+  "typingAlignmentFix": {
+    "message": "رفع تغییر تراز متن هنگام تایپ پس از کلیک روی دکمه تراز",
+    "description": "Typing alignment fix"
+  },
+  "userPreferences": {
+    "message": "ذخیره تنظیمات کاربر برای استفاده مکرر",
+    "description": "User preferences saving"
+  },
+  "whatsNewInPopup": {
+    "message": "نمایش هشدار \"چه چیزی جدید است\" در پاپ‌آپ به جای تب جدید هنگام به‌روزرسانی افزونه",
+    "description": "What's new in popup"
+  },
+  "inactiveLinksFixed": {
+    "message": "رفع لینک‌های غیرفعال در صفحه پاپ‌آپ",
+    "description": "Inactive links fix"
+  },
+  "textDirectionAlignment": {
+    "message": "تراز جهت متن بر اساس اولین حرف در مکالمه",
+    "description": "Text direction alignment"
+  },
+  "installUpdatePages": {
+    "message": "صفحات نصب و به‌روزرسانی افزونه",
+    "description": "Installation and update pages"
+  },
+  "viteSupport": {
+    "message": "پشتیبانی از Vite",
+    "description": "Vite support"
+  },
+  "dynamicVersionDisplay": {
+    "message": "نمایش پویای نسخه افزونه در پاپ‌آپ",
+    "description": "Dynamic version display"
+  },
+  "typescriptSupport": {
+    "message": "پیاده‌سازی پشتیبانی از TypeScript",
+    "description": "TypeScript support"
+  },
+  "separatedContentPages": {
+    "message": "جداسازی توابع قابلیت‌ها به صفحات محتوای مجزا",
+    "description": "Separated content pages"
+  },
+  "multipleButtonsFix": {
+    "message": "رفع ظاهر شدن چندین دکمه \"تراز متن\" در صفحه اصلی چت",
+    "description": "Multiple buttons fix"
+  },
+  "feedbackLinkUpdate": {
+    "message": "به‌روزرسانی لینک بازخورد در پاپ‌آپ به URL صحیح افزونه",
+    "description": "Feedback link update"
+  },
+  "urduTranslationRemoval": {
+    "message": "حذف ترجمه اردو (فروشگاه Chrome از این زبان پشتیبانی نمی‌کند)",
+    "description": "Urdu translation removal"
+  },
+  "textAlignmentButton": {
+    "message": "قابلیت دکمه تراز متن",
+    "description": "Text alignment button"
+  },
+  "mathTextLTR": {
+    "message": "نمایش متن ریاضی از چپ به راست در زبان‌های RTL",
+    "description": "Mathematical text LTR"
+  },
+  "arabicTranslation": {
+    "message": "ترجمه عربی",
+    "description": "Arabic translation"
+  },
+  "persianTranslation": {
+    "message": "ترجمه فارسی",
+    "description": "Persian translation"
+  },
+  "hebrewTranslation": {
+    "message": "ترجمه عبری",
+    "description": "Hebrew translation"
   }
 }

@@ -125,6 +125,68 @@
     "message": "",
     "description": ""
   },
+  "changelogTitle": {
+    "message": "تاريخ الإصدارات",
+    "description": "Changelog title"
+  },
+  "changelogMessage": {
+    "message": "يمكنك هنا رؤية جميع التحديثات والتاريخ الكامل للإضافة",
+    "description": "Changelog description message"
+  },
+  "viewFullChangelogButton": {
+    "message": "عرض تاريخ الإصدارات الكامل",
+    "description": "View full changelog button text"
+  },
+  "hideChangelogButton": {
+    "message": "إخفاء تاريخ الإصدارات",
+    "description": "Hide changelog button text"
+  },
+  "currentVersionTitle": {
+    "message": "التحديثات في الإصدار الحالي",
+    "description": "Current version updates title"
+  },
+  "version300Title": {
+    "message": "الإصدار 3.0.0",
+    "description": "Version 3.0.0 title"
+  },
+  "version300Date": {
+    "message": "5 يونيو 2025",
+    "description": "Version 3.0.0 release date"
+  },
+  "version300Features": {
+    "message": "تصميم أيقونة حديث جديد",
+    "description": "Version 3.0.0 new features"
+  },
+  "version300Fixes": {
+    "message": "إصلاح مشاكل زر محاذاة النص في مواقع ChatGPT و Claude.ai، وإصلاح عرض النص الرياضي في لغات RTL",
+    "description": "Version 3.0.0 fixes"
+  },
+  "addedLabel": {
+    "message": "مضاف:",
+    "description": "Added label for changelog"
+  },
+  "fixedLabel": {
+    "message": "مُصلح:",
+    "description": "Fixed label for changelog"
+  },
+  "changedLabel": {
+    "message": "مُغير:",
+    "description": "Changed label for changelog"
+  },
+  "removedLabel": {
+    "message": "مُزال:",
+    "description": "Removed label for changelog"
+  },
+  "changesInVersion": {
+    "message": "$COUNT$ تحديثات جديدة في هذا الإصدار",
+    "description": "Number of changes in current version",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "description": "Number of changes"
+      }
+    }
+  },
   "feedbackMessage": {
     "message": "إذا كان لديك أي ملاحظات أو اقتراحات، فلا تتردد في إرسالها إلينا.",
     "description": "Feedback message"
@@ -144,5 +206,141 @@
   "alignRight": {
     "message": "محاذاة إلى اليمين",
     "description": "Align text to the right"
+  },
+  "modernIconDesign": {
+    "message": "تصميم أيقونة حديث",
+    "description": "Modern icon design"
+  },
+  "textAlignmentButtonFix": {
+    "message": "إصلاح زر محاذاة النص الذي لا يظهر على موقع ChatGPT",
+    "description": "Text alignment button fix for ChatGPT"
+  },
+  "claudeTextAlignmentFix": {
+    "message": "إصلاح زر محاذاة النص الذي لا يظهر أحياناً على موقع Claude.ai",
+    "description": "Text alignment button fix for Claude.ai"
+  },
+  "mathTextDisplayFix": {
+    "message": "إصلاح مشاكل عرض النص الرياضي في لغات RTL",
+    "description": "Mathematical text display fix for RTL languages"
+  },
+  "grokSupport": {
+    "message": "إضافة دعم كامل لموقع Grok.com",
+    "description": "Support for Grok.com website"
+  },
+  "wxtFrameworkUpdate": {
+    "message": "تحديث الإضافة بإطار عمل WXT لأداء أفضل",
+    "description": "Updated extension with WXT framework"
+  },
+  "claudeAlignmentFix": {
+    "message": "إصلاح مشاكل محاذاة النص على موقع Claude.ai",
+    "description": "Text alignment fixes on Claude.ai"
+  },
+  "claudeElementAlignment": {
+    "message": "تحسينات محاذاة العناصر وإصلاح الأخطاء على موقع Claude.ai",
+    "description": "Element alignment improvements on Claude.ai"
+  },
+  "claudeFullSupport": {
+    "message": "إضافة دعم كامل لموقع Claude.ai",
+    "description": "Full support for Claude.ai website"
+  },
+  "errorToastFeature": {
+    "message": "وظيفة تنبيه الأخطاء مع تحديثات الشارة وتعديلات التصميم",
+    "description": "Error toast functionality"
+  },
+  "timeoutHandling": {
+    "message": "معالجة المهلة الزمنية ورسائل الخطأ لاسترداد عناصر النموذج",
+    "description": "Timeout handling for form elements"
+  },
+  "popupErrorFix": {
+    "message": "إصلاح فتح النافذة المنبثقة بعد تعيين رسالة خطأ في service worker",
+    "description": "Popup error fix"
+  },
+  "selectorUpdate": {
+    "message": "تحديث المحددات لعرض زر المحاذاة وفقاً لنمط الموقع الجديد",
+    "description": "Selector update for new site style"
+  },
+  "automaticAlignment": {
+    "message": "محاذاة تلقائية بعد قص أو لصق النص",
+    "description": "Automatic text alignment"
+  },
+  "deleteAllTextSupport": {
+    "message": "دعم حذف كل النص دفعة واحدة",
+    "description": "Delete all text support"
+  },
+  "disableAutoPopup": {
+    "message": "تعطيل فتح النافذة المنبثقة التلقائي عند كل تحديث للإضافة",
+    "description": "Disable auto popup"
+  },
+  "typingAlignmentFix": {
+    "message": "إصلاح تغيير محاذاة النص أثناء الكتابة بعد النقر على زر المحاذاة",
+    "description": "Typing alignment fix"
+  },
+  "userPreferences": {
+    "message": "حفظ تفضيلات المستخدم للاستخدام المتكرر",
+    "description": "User preferences saving"
+  },
+  "whatsNewInPopup": {
+    "message": "عرض تنبيه \"ما الجديد\" في النافذة المنبثقة بدلاً من علامة تبويب جديدة عند تحديث الإضافة",
+    "description": "What's new in popup"
+  },
+  "inactiveLinksFixed": {
+    "message": "إصلاح الروابط غير النشطة في صفحة النافذة المنبثقة",
+    "description": "Inactive links fix"
+  },
+  "textDirectionAlignment": {
+    "message": "محاذاة اتجاه النص بناءً على الحرف الأول في المحادثة",
+    "description": "Text direction alignment"
+  },
+  "installUpdatePages": {
+    "message": "صفحات تثبيت وتحديث الإضافة",
+    "description": "Installation and update pages"
+  },
+  "viteSupport": {
+    "message": "دعم Vite",
+    "description": "Vite support"
+  },
+  "dynamicVersionDisplay": {
+    "message": "عرض ديناميكي لإصدار الإضافة في النافذة المنبثقة",
+    "description": "Dynamic version display"
+  },
+  "typescriptSupport": {
+    "message": "تنفيذ دعم TypeScript",
+    "description": "TypeScript support"
+  },
+  "separatedContentPages": {
+    "message": "فصل وظائف الميزات إلى صفحات محتوى منفصلة",
+    "description": "Separated content pages"
+  },
+  "multipleButtonsFix": {
+    "message": "إصلاح ظهور عدة أزرار \"محاذاة النص\" على صفحة الدردشة الرئيسية",
+    "description": "Multiple buttons fix"
+  },
+  "feedbackLinkUpdate": {
+    "message": "تحديث رابط الملاحظات في النافذة المنبثقة إلى URL الصحيح للإضافة",
+    "description": "Feedback link update"
+  },
+  "urduTranslationRemoval": {
+    "message": "إزالة الترجمة الأردية (متجر Chrome الإلكتروني لا يدعم هذه اللغة)",
+    "description": "Urdu translation removal"
+  },
+  "textAlignmentButton": {
+    "message": "وظيفة زر محاذاة النص",
+    "description": "Text alignment button"
+  },
+  "mathTextLTR": {
+    "message": "عرض النص الرياضي من اليسار إلى اليمين في لغات RTL",
+    "description": "Mathematical text LTR"
+  },
+  "arabicTranslation": {
+    "message": "الترجمة العربية",
+    "description": "Arabic translation"
+  },
+  "persianTranslation": {
+    "message": "الترجمة الفارسية",
+    "description": "Persian translation"
+  },
+  "hebrewTranslation": {
+    "message": "الترجمة العبرية",
+    "description": "Hebrew translation"
   }
 }
