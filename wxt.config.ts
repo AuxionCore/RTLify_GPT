@@ -10,7 +10,7 @@ export default defineConfig({
     disabled: true,
   },
   debug: false,
-  manifest: ({ browser, manifestVersion, mode, command }) => {
+  manifest: ({ browser, mode, command }) => {
     const isFirefox = browser === "firefox";
     const isChrome = browser === "chrome";
 
