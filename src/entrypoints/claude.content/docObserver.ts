@@ -1,5 +1,6 @@
 import handleGptResponseAlignment from "./gptResAlignment";
 import handleUserPromptsAlignment from "./userPromptsAlignment";
+import { debugLog } from "../../utils/debugLogger";
 
 export default function observeDocument() {
   // const documentObserver = new MutationObserver((mutations) => {
@@ -141,7 +142,7 @@ export default function observeDocument() {
 
               // Wait for full content before aligning
               waitForChildContent(target, async () => {
-                console.log("Streaming Element finished B:", target);
+                debugLog("Streaming Element finished B:", target);
                 // await handleGptResponseAlignment(target);
               });
             }
@@ -194,8 +195,8 @@ export default function observeDocument() {
                 if (newVal === "false") {
                   streamingObserver.disconnect();
                   waitForChildContent(target, async () => {
-                    console.log("Streaming Element finished D:", target);
-                    // await handleGptResponseAlignment(target);
+                    debugLog("Streaming Element finished D:", target);
+                    await handleGptResponseAlignment(target);
                   });
                 }
               }

@@ -1,5 +1,6 @@
 import {extractUserPromptsText} from "./extractTexts";
 import detectLanguage from "./detectLanguage";
+import { debugError } from "../../utils/debugLogger";
 
 async function applyRTLStyleToUserPrompts(el: HTMLDivElement) {
   const userMessages = el.querySelector<HTMLDivElement>(
@@ -28,7 +29,7 @@ export default async function handleUserPromptsAlignment(
         await applyRTLStyleToUserPrompts(element);
       }
     } catch (error) {
-      console.error("Error detecting language:", error);
+      debugError("Error detecting language:", error);
     }
   }
 }
