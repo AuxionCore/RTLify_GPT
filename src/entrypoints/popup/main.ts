@@ -1,3 +1,5 @@
+import { getCurrentVersionChanges } from "@/data/changelog";
+
 const elements = {
   closePopup: "closePopup",
   errorToast: "errorToast",
@@ -49,6 +51,7 @@ async function popupScript() {
     }
 
     async function setWhatsNewToast() {
+      const currentChanges = getCurrentVersionChanges(versionNumber);
       const newReleaseToast = document.getElementById(
         elements.newReleaseToast
       )!;
@@ -70,7 +73,24 @@ async function popupScript() {
 
       newReleaseToastTitle.textContent = newReleaseTitle;
       newReleaseToastMessage.textContent = extensionWasUpdated;
-      specialMessageForV2.textContent = version2Text;
+      
+      // Show summary of current version changes
+      if (currentChanges) {
+        const changesCount = 
+          (currentChanges.added?.length || 0) + 
+          (currentChanges.fixed?.length || 0) + 
+          (currentChanges.changed?.length || 0);
+        
+        if (changesCount > 0) {
+          specialMessageForV2.textContent = browser.i18n.getMessage("changesInVersion", [changesCount.toString()]) || 
+            `${changesCount} new updates in this version`;
+        } else {
+          specialMessageForV2.textContent = version2Text;
+        }
+      } else {
+        specialMessageForV2.textContent = version2Text;
+      }
+      
       newReleaseToastLink.textContent = whatsNewLinkText;
       newReleaseToastLink.setAttribute("title", whatsNewLinkText);
 
